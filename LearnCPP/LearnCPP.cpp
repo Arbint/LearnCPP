@@ -10,7 +10,7 @@ int externalVar;
 
 int main()
 {	
-	std::cout << "I just added a new ggg line " << std::endl;
+	std::cout << "I just added a new line gg " << std::endl;
 	std::cout << "now I have something new that I want to sync" << std::endl;
 	HowMuchMoneyDoYouHave();
 	return 0;
