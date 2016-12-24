@@ -10,6 +10,7 @@ int externalVar;
 
 int main()
 {	
+	std::cout << "I just added a new line " << std::endl;
 	HowMuchMoneyDoYouHave();
 	return 0;
 }
