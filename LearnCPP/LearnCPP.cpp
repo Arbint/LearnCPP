@@ -11,6 +11,7 @@ int externalVar;
 int main()
 {	
 	std::cout << "I just added a new line " << std::endl;
+	std::cout << "now I have something new that I want to sync" << std::endl;
 	HowMuchMoneyDoYouHave();
 	return 0;
 }
