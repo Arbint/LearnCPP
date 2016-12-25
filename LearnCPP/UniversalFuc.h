@@ -30,17 +30,33 @@ namespace io {
 	}
 
 	template<typename T>
-	void getMultiUserInputs(std::string info, std::vector<T>& outContainer)
+	void getMultiUserInputs(std::string info, std::vector<T>& outContainer, int NumberRequested = -1)
 	{
 		std::cout << info << std::endl;
 		std::cout << "(put space between items)" << std::endl;
 		T itemOne;
 		std::cin >> itemOne;
 		outContainer.push_back(itemOne);
-		while (!isBufferClean())
+		if (NumberRequested <= 0)
 		{
-			std::cin >> itemOne;
-			outContainer.push_back(itemOne);
+			while (!isBufferClean())
+			{
+				std::cin >> itemOne;
+				outContainer.push_back(itemOne);
+			}
+
+		}
+		else
+		{
+			for (int iter = 0; iter < NumberRequested - 1; ++iter)
+			{
+				if (isBufferClean())
+				{
+					std::cout << "need more input: " << std::endl;
+				}
+				std::cin >> itemOne;
+				outContainer.push_back(itemOne);
+			}
 		}
 	}
 	bool isBufferClean();
