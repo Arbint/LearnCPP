@@ -74,6 +74,8 @@ public:
 		return unit;
 	}
 	friend std::ostream& operator<<(std::ostream& out, unitInt& rhs);
+public:
+	friend std::istream& operator>>(std::istream& out, unitInt& rhs);
 };
 
 class LengthUnit : public unitInt

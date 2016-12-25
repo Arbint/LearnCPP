@@ -20,6 +20,9 @@ void HowMuchMoneyDoYouHave();
 void InchesCmConverter(unitInt& unit);
 void GetLengthAndConvert();
 
+void convertMoney(unitInt& money);
+void getMonyAndConvert();
+
 
 
 

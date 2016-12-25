@@ -11,9 +11,7 @@ constexpr double pi = 22 / 7;
 
 int main()
 {	
-	
-	GetLengthAndConvert();
-
+	getMonyAndConvert();
 	return 0;
 }
 

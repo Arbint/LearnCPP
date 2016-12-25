@@ -195,3 +195,42 @@ void GetLengthAndConvert()
 	InchesCmConverter(units);
 	std::cout << units << std::endl;
 }
+
+void convertMoney(unitInt& money)
+{
+	if (money.getUnit() == "yuan")
+	{
+		money.setAmount(money.getAmount() / 6);
+		money.setUnit("dollar");
+		std::cout << "it means: " << money << std::endl;
+		money.setAmount(money.getAmount() / 2);
+		money.setUnit("Euro");
+		std::cout << "it also means: " << money << std::endl;
+	}else if (money.getUnit() == "dollar")
+	{	
+		money.setAmount(money.getAmount() / 2);
+		money.setUnit("Euro");
+		std::cout << "it means: " << money << std::endl;
+		money.setAmount(money.getAmount() * 6);
+		money.setUnit("yuan");
+		std::cout << "it also means: " << money << std::endl;
+	}else if (money.getUnit() == "euro")
+	{
+		money.setAmount(money.getAmount() * 2);
+		money.setUnit("dollar");
+		std::cout << "it means: " << money << std::endl;
+		money.setAmount(money.getAmount() * 6);
+		money.setUnit("yuan");
+		std::cout << "it also means: " << money << std::endl;
+	}
+	else
+	{
+		io::printWithEndl(money.getUnit(), "I have no idea what ", " is.");
+	}
+}
+
+void getMonyAndConvert()
+{
+	unitInt userInput = io::GetUerInput<unitInt>("please give me some money:\n(example: 12 yuan)");
+	convertMoney(userInput);
+}

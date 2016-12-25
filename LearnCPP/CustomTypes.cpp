@@ -12,6 +12,16 @@ std::ostream& operator<<(std::ostream& out, unitInt& rhs)
 	return out;
 }
 
+std::istream& operator >> (std::istream& out, unitInt& rhs)
+{
+	double inAmount;
+	std::string inUnit;
+	out >> inAmount >> inUnit;
+	rhs.setAmount(inAmount);
+	rhs.setUnit(inUnit);
+	return out;
+}
+
 std::string ElengthTypeToString(ELengthType InType)
 {
 	switch (InType)
