@@ -7,12 +7,18 @@
 #include "Drills.h"
 
 int externalVar;
+constexpr double pi = 22 / 7;
 
 int main()
 {	
-	std::cout << "I just added a new ggg line " << std::endl;
-	std::cout << "now I have something new that I want to sync" << std::endl;
-	HowMuchMoneyDoYouHave();
+	std::string gaga = "gaga";
+	int x;
+	std::cin >> x;
+	char xToChar = x;
+	
+	gaga += x;
+	io::printWithEndl(xToChar);
+	io::printWithEndl(gaga);
 	return 0;
 }
 
