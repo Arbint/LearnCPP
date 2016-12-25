@@ -177,10 +177,14 @@ void InchesCmConverter(unitInt& unit)
 		unit.setAmount(unit.getAmount() * 2.54);
 		unit.setUnit(ElengthTypeToString(ELengthType::cm));
 	}
-	else
+	else if (unit.getUnit() == ElengthTypeToString(ELengthType::cm))
 	{
 		unit.setAmount(unit.getAmount() * 0.393701);
 		unit.setUnit(ElengthTypeToString(ELengthType::inch));
+	}
+	else
+	{
+		io::printWithEndl("Not a type I recognize...");
 	}
 }
 

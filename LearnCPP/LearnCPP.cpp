@@ -6,9 +6,6 @@
 #include "UniversialInclude.h"
 #include "Drills.h"
 
-int externalVar;
-constexpr double pi = 22 / 7;
-
 int main()
 {	
 	getMonyAndConvert();

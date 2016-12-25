@@ -5,6 +5,7 @@ int io::printWithEndl(int thingToPrint)
 {
 	std::cout << thingToPrint << std::endl;
 	return thingToPrint;
+
 }
 
 bool io::isBufferClean()
