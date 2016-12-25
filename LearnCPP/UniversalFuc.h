@@ -81,3 +81,5 @@ ReturnType calculateValues(NumberType num1, NumberType num2, EMath mathMethod)
 		break;
 	}
 }
+
+double CelsiusToFahrenHeight(double CelsiusDegree);

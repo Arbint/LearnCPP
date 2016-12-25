@@ -47,3 +47,8 @@ bool isIntOdd(int inInt)
 	}
 	return false;
 }
+
+double CelsiusToFahrenHeight(double CelsiusDegree)
+{
+	return 9.0 / 5 * CelsiusDegree + 32;
+}
