@@ -33,6 +33,7 @@ int main()
 	io::printWithEndl("So I create a new branch and trying to use it now");
 	io::printWithEndl("please make this work");
 	int ggag = 11;
+	std::string gaga= "I need to see it";
 	return 0;
 }
 
