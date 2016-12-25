@@ -50,5 +50,6 @@ bool isIntOdd(int inInt)
 
 double CelsiusToFahrenHeight(double CelsiusDegree)
 {
+
 	return 9.0 / 5 * CelsiusDegree + 32;
 }
