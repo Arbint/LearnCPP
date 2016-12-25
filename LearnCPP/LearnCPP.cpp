@@ -19,6 +19,7 @@ int main()
 	gaga += x;
 	io::printWithEndl(xToChar);
 	io::printWithEndl(gaga);
+	io::printWithEndl("wht");
 	return 0;
 }
 
