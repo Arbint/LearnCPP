@@ -158,13 +158,40 @@ void calculateTwoValues()
 
 void HowMuchMoneyDoYouHave()
 {
-	unitInt pennies{ io::GetUerInput<int>("how much pennies do you have?"), "penny" };
-	unitInt nickels{ io::GetUerInput<int>("how much nickels do you have?"), "nickel" };
-	unitInt dimes{ io::GetUerInput<int>("how much dimes do you have?"), "dime"};
-	unitInt quarters {io::GetUerInput<int>("how much quarters do you have?"), "quarter"};
-	unitInt halfDollars{ io::GetUerInput<int>("how much half dollars do you have?"), "half dollar"};
-	unitInt dollars{ io::GetUerInput<int>("how much dollars do you have?"), "dollar"};
+	unitInt pennies{ io::GetUerInput<double>("how much pennies do you have?"), "penny" };
+	unitInt nickels{ io::GetUerInput<double>("how much nickels do you have?"), "nickel" };
+	unitInt dimes{ io::GetUerInput<double>("how much dimes do you have?"), "dime"};
+	unitInt quarters {io::GetUerInput<double>("how much quarters do you have?"), "quarter"};
+	unitInt halfDollars{ io::GetUerInput<double>("how much half dollars do you have?"), "half dollar"};
+	unitInt dollars{ io::GetUerInput<double>("how much dollars do you have?"), "dollar"};
 	std::cout << "so you have:\n" << pennies << ".\n" << nickels << ".\n" << dimes << ".\n" << quarters << ".\n" << halfDollars << ".\n" << dollars << ".\n" << std::endl;
 	double totalDollars = dollars.getAmount() + halfDollars.getAmount() * 0.5 + quarters.getAmount() * 0.25 + dimes.getAmount() * 0.1 + nickels.getAmount() * 0.05 + pennies.getAmount()/100;
 	std::cout << "your total money is: " << totalDollars <<" dollars."<<std::endl;
+}
+
+void InchesCmConverter(unitInt& unit)
+{
+
+	if (unit.getUnit() == ElengthTypeToString(ELengthType::inch))
+	{
+		unit.setAmount(unit.getAmount() * 2.54);
+		unit.setUnit(ElengthTypeToString(ELengthType::cm));
+	}
+	else
+	{
+		unit.setAmount(unit.getAmount() * 0.393701);
+		unit.setUnit(ElengthTypeToString(ELengthType::inch));
+	}
+}
+
+void GetLengthAndConvert()
+{
+	std::cout << "please tell me what you want to convert: " << std::endl;
+	std::cout << "(12 cm, don't use 12 cms)" << std::endl;
+	double amount;
+	std::string unit;
+	std::cin >> amount >> unit;
+	unitInt units{amount, unit};
+	InchesCmConverter(units);
+	std::cout << units << std::endl;
 }

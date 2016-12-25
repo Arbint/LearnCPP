@@ -23,17 +23,31 @@ enum class ELiteralNum
 	nine,
 };
 
+enum class ELengthType
+{
+	mm = 0,
+	cm,
+	dm,
+	m,
+	km,
+	inch,
+	foot
+};
+
+//enmum value to string method for ELength Type
+std::string ElengthTypeToString(ELengthType InType);
+
 class unitInt
 {
-private:
-	int amount;
+protected:
+	double amount;
 	std::string unit;
 public:
-	void setAmount(int inAmount)
+	void setAmount(double inAmount)
 	{
 		amount = inAmount;
 	}
-	void setUnit(std::string inUnit)
+	virtual void setUnit(std::string inUnit)
 	{
 		unit = inUnit;
 	}
@@ -42,7 +56,7 @@ public:
 	{
 	
 	}
-	unitInt( int inAmount, std::string InUnit)
+	unitInt(double inAmount, std::string InUnit)
 		:amount(inAmount), unit(InUnit)
 	{
 
@@ -51,7 +65,7 @@ public:
 	{
 
 	}
-	int getAmount()
+	double getAmount()
 	{
 		return amount;
 	}
@@ -60,4 +74,14 @@ public:
 		return unit;
 	}
 	friend std::ostream& operator<<(std::ostream& out, unitInt& rhs);
+};
+
+class LengthUnit : public unitInt
+{
+public:
+	LengthUnit(double inAmount, ELengthType inUnitType)
+		:unitInt::unitInt(inAmount, ElengthTypeToString(inUnitType))
+	{
+
+	}
 };

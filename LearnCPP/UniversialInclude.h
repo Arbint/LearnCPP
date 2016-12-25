@@ -8,4 +8,5 @@
 #include <cmath>
 #include <sstream>
 #include <typeinfo>
+#include "UniversalMacros.h"
 #include "CustomTypes.h"
