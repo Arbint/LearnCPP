@@ -1,5 +1,6 @@
 #pragma once
 #include "UniversialInclude.h"
+#include "Trigger.h"
 void writeLetter();
 
 double milesToKilometer(double inMiles);
@@ -24,6 +25,8 @@ void convertMoney(unitInt& money);
 void getMonyAndConvert();
 
 void checkEmail();
+
+void mimicAddDynamics();
 
 
 

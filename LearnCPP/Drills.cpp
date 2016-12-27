@@ -260,3 +260,15 @@ void checkEmail()
 	std::cout <<"the longgest message has: "<< MyMessageSizeStore.getSize() << " characters" << std::endl;
 }
 
+void mimicAddDynamics()
+{
+
+	Trigger A{ "A says wo ca ni ma" };
+	Trigger B{ "B says ni ma bi" };
+	Trigger C{ "C Says Fuck your mother" };
+	A.AddDynamic([&]() {B.triggered(); });
+	A.AddDynamic([&]() {C.triggered(); });
+
+	A.triggerDynamic();
+}
+

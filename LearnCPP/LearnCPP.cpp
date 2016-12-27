@@ -7,13 +7,12 @@
 #include "Drills.h"
 #include "Notes.h"
 
-
+#include "trigger.h"
 
 
 int main()
 {	
-
-	checkEmail();
+	mimicAddDynamics();
 	return 0;
 }
 
