@@ -23,7 +23,7 @@ void GetLengthAndConvert();
 void convertMoney(unitInt& money);
 void getMonyAndConvert();
 
-
+void checkEmail();
 
 
 

@@ -1,6 +1,7 @@
 #pragma once
 #include "UniversialInclude.h"
 
+
 namespace io {
 	template<typename T>
 	T GetUerInput(std::string info = "", std::string errorIfWrongType = "You didn't give me what I am asking for..\n Please Try Again:")
@@ -166,4 +167,7 @@ void sortVector(std::vector<T> outVector, int sortStart = 0, int sortEnd = 0, bo
 	sort(outVector.begin() + sortStart, outVector.begin() + sortEnd);
 }
 
+void insertLine(int lineAmount = 1);
+
 using namespace io;
+

@@ -8,8 +8,12 @@
 #include "Notes.h"
 
 
+
+
 int main()
 {	
-	
+
+	checkEmail();
+	return 0;
 }
 

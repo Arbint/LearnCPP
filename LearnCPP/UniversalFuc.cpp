@@ -75,4 +75,11 @@ int getIntFromChar(char inChar)
 	return outInt;
 }
 
+void insertLine(int lineAmount /*= 1*/)
+{
+	for (int i = 0; i < lineAmount; ++i)
+	{
+		std::cout << '\n';
+	}
+}
 

@@ -59,3 +59,56 @@ std::string ElengthTypeToString(ELengthType InType)
 		break;
 	}
 }
+
+bool MessageSorter::memberOfMessageSorter(int x) const
+{
+	std::cout << x - _x << std::endl;
+	return true;
+}
+
+void MessageSorter::setX(int inX)
+{
+	_x = inX;
+}
+
+EmailProcessor::EmailProcessor()
+{
+
+}
+
+EmailProcessor::EmailProcessor(std::vector<std::string>& inVector)
+	:messages(inVector)
+{
+
+}
+
+void EmailProcessor::receiveMessage(const std::string& message)
+{
+	messages.push_back(message);
+	_handler_func(message);
+}
+
+void EmailProcessor::setHandlerFunc(std::function<void(const std::string&)> in_handler_fun)
+{
+	_handler_func = in_handler_fun;
+}
+
+std::vector<std::string>& EmailProcessor::getMessages()
+{
+	return messages;
+}
+
+void MessageSizeStore::checkMessage(const std::string& msg)
+{
+	const int size = msg.size();
+
+	if (size > _max_size)
+	{
+		_max_size = size;
+	}
+}
+
+int MessageSizeStore::getSize()
+{
+	return _max_size;
+}

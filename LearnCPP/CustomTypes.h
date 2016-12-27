@@ -1,5 +1,7 @@
+
 #pragma once
 #include "UniversialInclude.h"
+#include <functional>
 enum class EMath
 {
 	add,
@@ -117,10 +119,15 @@ public:
 	MessageSorter(const std::string& infield) : field(infield) {}
 	bool operator()(const Message& lhs, const Message& rhs)
 	{
+		std::cout << field << std::endl;
 		return lhs.getHeader(field) < rhs.getHeader(field);
 	}
+	bool memberOfMessageSorter (int x) const;
+	void setX(int inX);
 private:
 	std::string field;
+public:
+	int _x;
 };
 
 class AdressBook 
@@ -146,4 +153,27 @@ public:
 
 private:
 	std::vector<std::string> _addresses;
+};
+
+class EmailProcessor
+{
+public:
+	EmailProcessor();
+	EmailProcessor(std::vector<std::string>& invector);
+	void receiveMessage(const std::string& message);
+	void setHandlerFunc(std::function<void(const std::string&)> in_handler_fun);
+	std::vector<std::string>& getMessages();
+private:
+	std::vector<std::string> messages;
+	std::function<void(const std::string&)> _handler_func;
+};
+
+class MessageSizeStore
+{
+public:
+	MessageSizeStore() : _max_size(0) {}
+	void checkMessage(const std::string& msg);
+	int getSize();
+private:
+	int _max_size;
 };

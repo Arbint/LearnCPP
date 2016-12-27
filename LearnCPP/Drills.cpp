@@ -4,6 +4,7 @@
 #include "UniversialInclude.h"
 
 
+
 void writeLetter()
 {
 	std::string letterText = " ";
@@ -238,3 +239,24 @@ void getMonyAndConvert()
 	unitInt userInput = io::GetUerInput<unitInt>("please give me some money:\n(example: 12 yuan)");
 	convertMoney(userInput);
 }
+
+void checkEmail()
+{
+	EmailProcessor MyEmailprosessor;
+	MessageSizeStore MyMessageSizeStore;
+	
+	//using lambdas to setup delegates between myEmailProsessor and MyMessageSizeStore, so when my email gets 
+	//message, MyMessagesSizeStore will be notified and run checkMessage on the new message to update it's member
+	//_max_size
+	MyEmailprosessor.setHandlerFunc([&](const std::string& gaga) {MyMessageSizeStore.checkMessage(gaga); });
+	std::cout << MyMessageSizeStore.getSize() << std::endl;
+
+	std::vector<std::string> messages;
+	io::getMultiUserInputs<std::string>("Please give me a bouch of strings", messages);
+	for (std::string gaga : messages)
+	{
+		MyEmailprosessor.receiveMessage(gaga);
+	}
+	std::cout <<"the longgest message has: "<< MyMessageSizeStore.getSize() << " characters" << std::endl;
+}
+

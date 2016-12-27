@@ -10,5 +10,6 @@
 #include <typeinfo>
 #include "UniversalMacros.h"
 #include "CustomTypes.h"
+#include <functional>
 
 using namespace std;
