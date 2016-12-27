@@ -53,7 +53,7 @@ namespace io {
 		}
 		else
 		{
-			for (int iter = 0; iter < NumberRequested; ++iter)
+			for (int iter = 0; iter < NumberRequested - 1; ++iter)
 			{
 				if (isBufferClean())
 				{
@@ -168,6 +168,8 @@ void sortVector(std::vector<T> outVector, int sortStart = 0, int sortEnd = 0, bo
 }
 
 void insertLine(int lineAmount = 1);
+
+void replaceWord(std::string& StringToAlter, std::vector<string>& WordsToReplace, std::string wordToReplaceWith);
 
 using namespace io;
 

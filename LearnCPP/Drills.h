@@ -30,7 +30,7 @@ void mimicAddDynamics();
 
 void getWordsAndBeepInApproporateOnes();
 
-
+void readTwoIntsAndPrintsThem();
 //template implementations
 
 

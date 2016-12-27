@@ -278,26 +278,17 @@ void getWordsAndBeepInApproporateOnes()
 	io::getMultiUserInputs("please give me a sentence: ", userInput);
 	std::vector<std::string> badWords;
 	io::getMultiUserInputs("What words should be considered bad? ", badWords);
-	for (auto worlds : userInput)
+	for (auto iter = userInput.begin(), end = userInput.end(); iter != end; ++iter)
 	{
-
-		bool bIsBadWorld = false;
-		for (auto badword : badWords)
-		{
-			if (worlds == badword)
-			{
-				bIsBadWorld = true;
-			}
-		}
-		if (bIsBadWorld)
-		{
-			std::cout << "beep ";
-		}
-		else
-		{
-			std::cout << worlds << " ";
-		}
+		replaceWord(*iter, badWords, "beep");
 	}
-	std::cout << "\n";
+	printVector(userInput);
+}
+
+void readTwoIntsAndPrintsThem()
+{
+	std::vector<int> inInt;
+	io::getMultiUserInputs<int>("please give two int",inInt, 2);
+	printVector(inInt);
 }
 

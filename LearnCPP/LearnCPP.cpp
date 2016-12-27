@@ -12,7 +12,7 @@
 
 int main()
 {	
-	getWordsAndBeepInApproporateOnes();
+	readTwoIntsAndPrintsThem();
 	return 0;
 }
 
