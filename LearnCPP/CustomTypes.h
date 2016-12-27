@@ -122,3 +122,28 @@ public:
 private:
 	std::string field;
 };
+
+class AdressBook 
+{
+public:
+	//using a template allows us to ignore the differences between functors, function pointers
+	//add lambda
+	AdressBook(std::vector<std::string> inVector) :_addresses(inVector) {}
+	template<typename Func>
+	std::vector<std::string> findMatchingAddresses(Func func)
+	{
+		std::vector<std::string> results;
+		for (auto iter = _addresses.begin(); iter != _addresses.end(); ++iter)
+		{
+			//call the function passed into findMatchAddresses and see if it matches:
+			if (func(*iter))
+			{
+				results.push_back(*iter);
+			}
+		}
+		return results;
+	}
+
+private:
+	std::vector<std::string> _addresses;
+};
