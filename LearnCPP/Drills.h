@@ -28,7 +28,7 @@ void checkEmail();
 
 void mimicAddDynamics();
 
-
+void getWordsAndBeepInApproporateOnes();
 
 
 //template implementations

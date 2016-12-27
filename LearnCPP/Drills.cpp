@@ -272,3 +272,32 @@ void mimicAddDynamics()
 	A.triggerDynamic();
 }
 
+void getWordsAndBeepInApproporateOnes()
+{
+	std::vector<std::string> userInput;
+	io::getMultiUserInputs("please give me a sentence: ", userInput);
+	std::vector<std::string> badWords;
+	io::getMultiUserInputs("What words should be considered bad? ", badWords);
+	for (auto worlds : userInput)
+	{
+
+		bool bIsBadWorld = false;
+		for (auto badword : badWords)
+		{
+			if (worlds == badword)
+			{
+				bIsBadWorld = true;
+			}
+		}
+		if (bIsBadWorld)
+		{
+			std::cout << "beep ";
+		}
+		else
+		{
+			std::cout << worlds << " ";
+		}
+	}
+	std::cout << "\n";
+}
+

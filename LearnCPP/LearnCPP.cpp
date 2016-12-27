@@ -12,7 +12,7 @@
 
 int main()
 {	
-	mimicAddDynamics();
+	getWordsAndBeepInApproporateOnes();
 	return 0;
 }
 
