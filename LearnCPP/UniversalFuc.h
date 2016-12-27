@@ -29,6 +29,10 @@ namespace io {
 		return thingToPrint;
 	}
 
+	// get multiple input form user
+	//* std::string info - the text to ask for, use "" if you don't need any query
+	//* std:vector<T>& outContainer - the container that will eventually be filled with user inputs.
+	//* int NumberRequested = -1 - how many do you want to get, if -1 or default value, then read as much as there are in the std::cin
 	template<typename T>
 	void getMultiUserInputs(std::string info, std::vector<T>& outContainer, int NumberRequested = -1)
 	{
@@ -48,7 +52,7 @@ namespace io {
 		}
 		else
 		{
-			for (int iter = 0; iter < NumberRequested - 1; ++iter)
+			for (int iter = 0; iter < NumberRequested; ++iter)
 			{
 				if (isBufferClean())
 				{
@@ -121,9 +125,45 @@ void arrangeNumbers(std::vector<T>& numbers)
 template<typename T>
 void printVector(std::vector<T>& VectorToPrint)
 {
-	for (auto it = VectorToPrint.begin(); it != VectorToPrint.end(); ++it)
+	for (T iter : VectorToPrint)
 	{
-		std::cout << *it << " ";
+		std::cout << iter << " ";
 	}
-	std::cout << "\n";
+	std::cout << '\n';
+	//alternative using iterators.
+	if (false)
+	{
+		for (auto iter = VectorToPrint.begin(); iter != VectorToPrint.end(); ++iter)
+		{
+			std::cout << *iter << " ";
+		}
+		std::cout << '\n';
+	}
 }
+
+template<typename T>
+T square(T inRoot)
+{
+	return inRoot * inRoot;
+}
+
+char getCharFromInt(int inInt);
+int getIntFromChar(char inChar);
+
+template<typename T>
+void sortVector(std::vector<T> outVector, int sortStart = 0, int sortEnd = 0, bool reverseSort = false)
+{
+	if (sortStart == 0 && sortEnd == 0)
+	{
+		std::sort(outVector.begin(), outVector.end());
+		return;
+	}
+	if ( sortStart < 0 || sortStart >= sortEnd || sortEnd > (outVector.size() - 1))
+	{
+		std::cout << "range are not right, no sort performed" << std::endl;
+		return;
+	}
+	sort(outVector.begin() + sortStart, outVector.begin() + sortEnd);
+}
+
+using namespace io;

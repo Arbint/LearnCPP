@@ -54,3 +54,25 @@ double CelsiusToFahrenHeight(double CelsiusDegree)
 
 	return 9.0 / 5 * CelsiusDegree + 32;
 }
+
+char getCharFromInt(int inInt)
+{
+	if (inInt >= 0 && inInt < 256)
+	{
+		char outChar = inInt;
+		return outChar;
+	}
+	else
+	{
+		std::cout << "error, out of range, returning the last one" << std::endl;
+		return 127;
+	}
+}
+
+int getIntFromChar(char inChar)
+{
+	int outInt = inChar;
+	return outInt;
+}
+
+

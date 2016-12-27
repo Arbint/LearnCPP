@@ -12,6 +12,13 @@ std::ostream& operator<<(std::ostream& out, unitInt& rhs)
 	return out;
 }
 
+std::ostream& operator<<(std::ostream& outStream, const Message& rhs)
+{
+	std::string outString = rhs.getHeader("what ever");
+	outStream << outString;
+	return outStream;
+}
+
 std::istream& operator >> (std::istream& out, unitInt& rhs)
 {
 	double inAmount;

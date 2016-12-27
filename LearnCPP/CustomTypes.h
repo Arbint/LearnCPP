@@ -34,7 +34,7 @@ enum class ELengthType
 	foot
 };
 
-//enmum value to string method for ELength Type
+//en mum value to string method for ELength Type
 std::string ElengthTypeToString(ELengthType InType);
 
 class unitInt
@@ -86,4 +86,39 @@ public:
 	{
 
 	}
+};
+
+class MyFunctorClass 
+{
+private:
+	int Value;
+public:
+	MyFunctorClass(int inVlaue) : Value(inVlaue) {}
+	int operator()(int inInt) { return Value + inInt; };
+};
+
+class Message
+{
+public:
+	Message(std::string inString) :stringHeader(inString) {}
+	std::string getHeader(const std::string& header_name) const { return stringHeader; }
+private:
+	std::string stringHeader;
+
+	//other methods...
+	friend std::ostream& operator<<(std::ostream& outStream, const Message& rhs);
+};
+
+//this is an functor that can be used to sort stuff
+class MessageSorter
+{
+public:
+	//talk the field to sort by in the constructor
+	MessageSorter(const std::string& infield) : field(infield) {}
+	bool operator()(const Message& lhs, const Message& rhs)
+	{
+		return lhs.getHeader(field) < rhs.getHeader(field);
+	}
+private:
+	std::string field;
 };
