@@ -113,3 +113,9 @@ void replaceWord(std::string& StringToAlter, std::vector<string>& WordsToReplace
 	}
 }
 
+void flushAndResetBuffer()
+{
+	std::cin.clear();
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+}
+

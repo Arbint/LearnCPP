@@ -36,3 +36,4 @@ void readTwoIntsAndPrintTheBiggrOne();
 
 void askAndPrintBiggestAndSmallestValueSofar();
 
+void ReadLengthInMultiUnits();

@@ -320,13 +320,20 @@ void askAndPrintBiggestAndSmallestValueSofar()
 		std::cout << "please give me a int:(type 'exit' to quit) " << std::endl;
 		int input;
 		std::cin >> input;
-		if (!io::isBufferClean())
+		if (std::cin.fail())
 		{
+			std::cin.clear();
 			std::string captureString;
 			std::cin >> captureString;
 			if (captureString == "exit")
 			{
 				break;
+			}
+			else
+			{
+				std::cout << "not an int or a command" << std::endl;
+				flushAndResetBuffer();
+				continue;
 			}
 		}
 	
@@ -337,4 +344,41 @@ void askAndPrintBiggestAndSmallestValueSofar()
 	}
 }
 
+void ReadLengthInMultiUnits()
+{
+	std::vector<unitInt> lengthes;
+
+	io::getMultiUserInputs<unitInt>("please give me some lengthes",lengthes);
+	sortVectorFromSmallToBig(lengthes);
+	printVector(lengthes);
+	double totalAmount = 0;
+	for (auto iter = lengthes.begin(), end = lengthes.end(); iter != end; ++iter)
+	{
+		if (iter->getUnit() == "m")
+		{
+			totalAmount += iter->getAmount();
+			continue;
+		}
+		else if (iter->getUnit() == "cm")
+		{
+			iter->convertTo("m", 0.01);
+			totalAmount += iter->getAmount();
+		}
+		else if (iter->getUnit() == "inch")
+		{
+			iter->convertTo("m", 0.0254);
+			totalAmount += iter->getAmount();
+		}
+		else if (iter->getUnit() == "foot")
+		{
+			totalAmount += iter->getAmount();
+			iter->convertTo("m", 0.3048);
+		}
+	}
+	sortVectorFromSmallToBig(lengthes);
+	printVector(lengthes);
+	std::cout << "it's " << totalAmount << " meters in total.\n";
+	std::cout << "the shortest is: " << lengthes[0] << "\n";
+	std::cout << "the longest is: " << *(lengthes.end() - 1) << "\n";
+}
 

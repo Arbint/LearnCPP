@@ -23,10 +23,26 @@ std::istream& operator >> (std::istream& out, unitInt& rhs)
 {
 	double inAmount;
 	std::string inUnit;
-	out >> inAmount >> inUnit;
-	rhs.setAmount(inAmount);
-	rhs.setUnit(inUnit);
-	return out;
+	WrongInputRedoLabel:out >> inAmount >> inUnit;
+	if (std::cin.fail())
+	{
+		std::cin.clear();
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		std::cout << "wrong input format, please use amount unit format, like 12 cm" << std::endl;
+		goto WrongInputRedoLabel;
+	}
+	//need for the readlengthInMultiUnit() drill to work, thinkg of making a new class for it
+	if (inUnit == "m" || inUnit == "cm" || inUnit == "inch" || inUnit == "foot")
+	{
+		rhs.setAmount(inAmount);
+		rhs.setUnit(inUnit);
+		return out;
+	}
+	else
+	{
+		std::cout << "cannot support the format, please re enter" << std::endl;
+		goto WrongInputRedoLabel;
+	}
 }
 
 std::string ElengthTypeToString(ELengthType InType)
@@ -111,4 +127,20 @@ void MessageSizeStore::checkMessage(const std::string& msg)
 std::size_t MessageSizeStore::getSize()
 {
 	return _max_size;
+}
+
+void unitInt::convertTo(std::string newUnit, double raito)
+{
+	setUnit(newUnit);
+	setAmount(amount * raito);
+}
+
+bool unitInt::operator>(unitInt& rhs)
+{
+	return amount > rhs.getAmount();
+}
+
+bool unitInt::operator<(unitInt& rhs)
+{
+	return amount < rhs.getAmount();
 }

@@ -71,10 +71,14 @@ public:
 	{
 		return amount;
 	}
+	void convertTo(std::string newUnit, double raito);
 	std::string getUnit()
 	{
 		return unit;
 	}
+public:
+	bool operator>(unitInt& rhs);
+	bool operator<(unitInt& rhs);
 	friend std::ostream& operator<<(std::ostream& out, unitInt& rhs);
 public:
 	friend std::istream& operator>>(std::istream& out, unitInt& rhs);

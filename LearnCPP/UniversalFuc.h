@@ -184,5 +184,6 @@ void insertLine(int lineAmount = 1);
 
 void replaceWord(std::string& StringToAlter, std::vector<string>& WordsToReplace, std::string wordToReplaceWith);
 
-using namespace io;
+void flushAndResetBuffer();
 
+using namespace io;

@@ -10,7 +10,7 @@
 
 int main()
 {	
-	askAndPrintBiggestAndSmallestValueSofar();
+	ReadLengthInMultiUnits();
 	return 0;
 }
 
