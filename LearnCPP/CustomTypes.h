@@ -173,7 +173,7 @@ class MessageSizeStore
 public:
 	MessageSizeStore() : _max_size(0) {}
 	void checkMessage(const std::string& msg);
-	int getSize();
+	std::size_t getSize();
 private:
-	int _max_size;
+	std::size_t _max_size;
 };

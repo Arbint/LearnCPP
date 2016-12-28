@@ -89,9 +89,9 @@ void replaceWord(std::string& StringToAlter, std::vector<string>& WordsToReplace
 	{
 		while (StringToAlter.find(iter) != std::string::npos)
 		{
-			int FrontLeakEndIndex = StringToAlter.find(iter) - 1;
-			int BackLeakStartIndex = FrontLeakEndIndex + iter.size() + 1;
-			int BackleakEndIndex = StringToAlter.size() - 1;
+			std::size_t FrontLeakEndIndex = StringToAlter.find(iter) - 1;
+			std::size_t  BackLeakStartIndex = FrontLeakEndIndex + iter.size() + 1;
+			std::size_t  BackleakEndIndex = StringToAlter.size() - 1;
 			std::string FrontLeak = "";
 			std::string BackLeak = "";
 			if (FrontLeakEndIndex >= 0)
@@ -103,7 +103,7 @@ void replaceWord(std::string& StringToAlter, std::vector<string>& WordsToReplace
 			}
 			if (BackleakEndIndex - BackLeakStartIndex >= 0)
 			{
-				for (int i = BackLeakStartIndex; i <= BackleakEndIndex; ++i)
+				for (int i = (int)BackLeakStartIndex; i <= BackleakEndIndex; ++i)
 				{
 					BackLeak += StringToAlter[i];
 				}

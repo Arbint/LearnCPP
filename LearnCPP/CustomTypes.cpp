@@ -100,7 +100,7 @@ std::vector<std::string>& EmailProcessor::getMessages()
 
 void MessageSizeStore::checkMessage(const std::string& msg)
 {
-	const int size = msg.size();
+	const std::size_t size = msg.size();
 
 	if (size > _max_size)
 	{
@@ -108,7 +108,7 @@ void MessageSizeStore::checkMessage(const std::string& msg)
 	}
 }
 
-int MessageSizeStore::getSize()
+std::size_t MessageSizeStore::getSize()
 {
 	return _max_size;
 }

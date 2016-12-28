@@ -152,11 +152,11 @@ char getCharFromInt(int inInt);
 int getIntFromChar(char inChar);
 
 template<typename T>
-void sortVector(std::vector<T> outVector, int sortStart = 0, int sortEnd = 0, bool reverseSort = false)
+void sortVector(std::vector<T>& outVector, std::function<bool(T&, T&)> SortFuc = [](T& VarOne, T& VarTwo)->bool {return VarOne < VarTwo; }, std::size_t sortStart = 0, std::size_t sortEnd = 0)
 {
 	if (sortStart == 0 && sortEnd == 0)
 	{
-		std::sort(outVector.begin(), outVector.end());
+		std::sort(outVector.begin(), outVector.end(), SortFuc);
 		return;
 	}
 	if ( sortStart < 0 || sortStart >= sortEnd || sortEnd > (outVector.size() - 1))
@@ -164,7 +164,20 @@ void sortVector(std::vector<T> outVector, int sortStart = 0, int sortEnd = 0, bo
 		std::cout << "range are not right, no sort performed" << std::endl;
 		return;
 	}
-	sort(outVector.begin() + sortStart, outVector.begin() + sortEnd);
+	sort(outVector.begin() + sortStart, outVector.begin() + sortEnd, SortFuc);
+}
+
+template<typename T>
+void sortVectorFromSmallToBig(std::vector<T>& outVector, std::size_t sortStart = 0, std::size_t sortEnd = 0, bool SmallToBig = true)
+{
+	if (SmallToBig)
+	{
+		sortVector<T>(outVector, [](T& VarOne, T& VarTwo)->bool {return VarOne < VarTwo; }, sortStart, sortEnd);
+	}
+	else
+	{
+		sortVector<T>(outVector, [](T& VarOne, T& VarTwo)->bool {return VarOne > VarTwo; }, sortStart, sortEnd);
+	}
 }
 
 void insertLine(int lineAmount = 1);
