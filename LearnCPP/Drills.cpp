@@ -263,9 +263,9 @@ void checkEmail()
 void mimicAddDynamics()
 {
 
-	Trigger A{ "A says wo ca ni ma" };
-	Trigger B{ "B says ni ma bi" };
-	Trigger C{ "C Says Fuck your mother" };
+	Trigger A{ "A says: happy." };
+	Trigger B{ "B says: who summoned me?" };
+	Trigger C{ "C says: the sleeper has awake." };
 	A.AddDynamic([&]() {B.triggered(); });
 	A.AddDynamic([&]() {C.triggered(); });
 
