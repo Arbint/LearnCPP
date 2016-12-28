@@ -37,3 +37,5 @@ void readTwoIntsAndPrintTheBiggrOne();
 void askAndPrintBiggestAndSmallestValueSofar();
 
 void ReadLengthInMultiUnits();
+
+void ReadMultipleNumbersAndExportMedian();

@@ -383,3 +383,21 @@ void ReadLengthInMultiUnits()
 	std::cout << "the longest is: " << *(lengthes.end() - 1) << "\n";
 }
 
+void ReadMultipleNumbersAndExportMedian()
+{
+	std::vector<double> numbers;
+	io::getMultiUserInputs("please give me a few decimal numbers", numbers);
+	printVector(numbers);
+	sort(numbers.begin(), numbers.end(), [](double lhs, double rhs)->bool {return lhs < rhs; });
+	printVector(numbers);
+	std::size_t numberSize = numbers.size();
+	std::cout << "there are " << numberSize << " values" << std::endl;
+	if (numberSize%2 == 1)
+	{
+		std::cout << "the median number is: " << numbers[numberSize/2 + 1] << std::endl;
+	}
+	else
+	{
+		std::cout << "the median number is: " << 0.5 * (numbers[(numberSize -1)/ 2] + numbers[(numberSize-1) / 2 + 1]) << "\n";
+	}
+}
