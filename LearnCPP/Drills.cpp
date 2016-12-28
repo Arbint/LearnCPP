@@ -377,6 +377,7 @@ void ReadLengthInMultiUnits()
 	}
 	sortVectorFromSmallToBig(lengthes);
 	printVector(lengthes);
+	std::cout << "there are " << lengthes.size() << " values" << std::endl;
 	std::cout << "it's " << totalAmount << " meters in total.\n";
 	std::cout << "the shortest is: " << lengthes[0] << "\n";
 	std::cout << "the longest is: " << *(lengthes.end() - 1) << "\n";
