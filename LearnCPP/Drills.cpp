@@ -371,8 +371,8 @@ void ReadLengthInMultiUnits()
 		}
 		else if (iter->getUnit() == "foot")
 		{
-			totalAmount += iter->getAmount();
 			iter->convertTo("m", 0.3048);
+			totalAmount += iter->getAmount();
 		}
 	}
 	sortVectorFromSmallToBig(lengthes);
