@@ -96,14 +96,14 @@ void replaceWord(std::string& StringToAlter, std::vector<string>& WordsToReplace
 			std::string BackLeak = "";
 			if (FrontLeakEndIndex >= 0)
 			{
-				for (int i = 0; i <= FrontLeakEndIndex; ++i)
+				for (int i = 0; i <= (int)FrontLeakEndIndex; ++i)
 				{
 					FrontLeak += StringToAlter[i];
 				}
 			}
 			if (BackleakEndIndex - BackLeakStartIndex >= 0)
 			{
-				for (int i = (int)BackLeakStartIndex; i <= BackleakEndIndex; ++i)
+				for (int i = (int)BackLeakStartIndex; i <= (int)BackleakEndIndex; ++i)
 				{
 					BackLeak += StringToAlter[i];
 				}

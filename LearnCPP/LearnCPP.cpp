@@ -6,11 +6,14 @@
 #include "Drills.h"
 #include "Notes.h"
 #include "trigger.h"
-
+#include "InputManager.h"
 
 int main()
 {	
-	askAndPrintBiggestAndSmallestValueSofar();
+	InputManager MyInputManager;
+
+	MyInputManager.listenToKeys();
+
 	return 0;
 }
 
