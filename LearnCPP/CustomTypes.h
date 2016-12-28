@@ -177,3 +177,16 @@ public:
 private:
 	std::size_t _max_size;
 };
+
+class keyBind
+{
+public:
+	keyBind(int inKey, std::function<void()> inFunc)
+	:Key(inKey), Func(inFunc), prevkeyStatus(false)
+	{
+
+	}
+	int Key;
+	std::function<void()> Func;
+	bool prevkeyStatus;
+};

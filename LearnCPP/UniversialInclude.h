@@ -9,6 +9,7 @@
 #include <cmath>
 #include <sstream>
 #include <typeinfo>
+#include <memory>
 #include "UniversalMacros.h"
 #include "CustomTypes.h"
 #include <functional>

@@ -314,16 +314,27 @@ void readTwoIntsAndPrintTheBiggrOne()
 
 void askAndPrintBiggestAndSmallestValueSofar()
 {
-	int input;
-	int smallest;
-	int biggest;
+	std::vector<int> inputs;
 	while (true)
 	{
-		if (GetAsyncKeyState(VK_ESCAPE))
+		std::cout << "please give me a int:(type 'exit' to quit) " << std::endl;
+		int input;
+		std::cin >> input;
+		if (!io::isBufferClean())
 		{
-			std::cout << "Quiting.. " << std::endl;
-
+			std::string captureString;
+			std::cin >> captureString;
+			if (captureString == "exit")
+			{
+				break;
+			}
 		}
+	
+		inputs.push_back(input);
+		sortVectorFromSmallToBig(inputs);
+		std::cout << "the smallest we got so far is: " << *(inputs.begin()) << std::endl;
+		std::cout << "the biggest we got so far is: " << *(inputs.end()-1) << std::endl;
 	}
 }
+
 

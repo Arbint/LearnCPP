@@ -10,10 +10,7 @@
 
 int main()
 {	
-	InputManager MyInputManager;
-
-	MyInputManager.listenToKeys();
-
+	askAndPrintBiggestAndSmallestValueSofar();
 	return 0;
 }
 

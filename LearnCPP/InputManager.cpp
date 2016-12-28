@@ -9,19 +9,26 @@ InputManager::InputManager()
 
 void InputManager::listenToKeys()
 {
-	bool bIsPreviousKeyDown = false;
 	while (true)
 	{
-		if (isKeyDown(VK_ESCAPE) && !bIsPreviousKeyDown)
+		for (auto iter = keyBinds.begin(), end =keyBinds.end(); iter < end; ++iter)
 		{
-			std::cout << "you pressed escape" << std::endl;
-			bIsPreviousKeyDown = true;
-		}
-		if (!isKeyDown(VK_ESCAPE))		
-		{
-			bIsPreviousKeyDown = false;
+			if (isKeyDown((*iter)->Key) && !(*iter)->prevkeyStatus)
+			{
+				(*iter)->Func();
+				(*iter)->prevkeyStatus = true;
+			}
+			if (!isKeyDown((*iter)->Key))
+			{
+				(*iter)->prevkeyStatus = false;
+			}
 		}
 	}
+}
+
+void InputManager::AddKeyListening(std::shared_ptr<keyBind>& inKeyBind)
+{
+	keyBinds.push_back(inKeyBind);
 }
 
 bool InputManager::isKeyDown(int vKey)
