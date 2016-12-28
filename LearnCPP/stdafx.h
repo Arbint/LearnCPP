@@ -4,7 +4,8 @@
 //
 
 #pragma once
-
+#define NOMINMAX ____nothingReal
+#include <windows.h>
 #include "targetver.h"
 
 #include <stdio.h>

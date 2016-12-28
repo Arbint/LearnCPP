@@ -83,3 +83,33 @@ void insertLine(int lineAmount /*= 1*/)
 	}
 }
 
+void replaceWord(std::string& StringToAlter, std::vector<string>& WordsToReplace, std::string wordToReplaceWith)
+{
+	for (auto iter : WordsToReplace)
+	{
+		while (StringToAlter.find(iter) != std::string::npos)
+		{
+			std::size_t FrontLeakEndIndex = StringToAlter.find(iter) - 1;
+			std::size_t  BackLeakStartIndex = FrontLeakEndIndex + iter.size() + 1;
+			std::size_t  BackleakEndIndex = StringToAlter.size() - 1;
+			std::string FrontLeak = "";
+			std::string BackLeak = "";
+			if (FrontLeakEndIndex >= 0)
+			{
+				for (int i = 0; i <= FrontLeakEndIndex; ++i)
+				{
+					FrontLeak += StringToAlter[i];
+				}
+			}
+			if (BackleakEndIndex - BackLeakStartIndex >= 0)
+			{
+				for (int i = (int)BackLeakStartIndex; i <= BackleakEndIndex; ++i)
+				{
+					BackLeak += StringToAlter[i];
+				}
+			}
+			StringToAlter = FrontLeak + wordToReplaceWith + BackLeak;
+		}
+	}
+}
+

@@ -66,8 +66,8 @@ void MileToKilometerConverter()
 
 void compareValues(int intX, int intY)
 {
-	float x = intX;
-	float y = intY;
+	float x = (float)intX;
+	float y = (float)intY;
 	if (x > y)
 	{
 		std::cout << "value one is bigger than value two" << "\n";
@@ -257,7 +257,7 @@ void checkEmail()
 	{
 		MyEmailprosessor.receiveMessage(gaga);
 	}
-	std::cout <<"the longgest message has: "<< MyMessageSizeStore.getSize() << " characters" << std::endl;
+	std::cout <<"the longest message has: "<< MyMessageSizeStore.getSize() << " characters" << std::endl;
 }
 
 void mimicAddDynamics()
@@ -278,26 +278,53 @@ void getWordsAndBeepInApproporateOnes()
 	io::getMultiUserInputs("please give me a sentence: ", userInput);
 	std::vector<std::string> badWords;
 	io::getMultiUserInputs("What words should be considered bad? ", badWords);
-	for (auto worlds : userInput)
+	for (auto iter = userInput.begin(), end = userInput.end(); iter != end; ++iter)
 	{
+		replaceWord(*iter, badWords, "beep");
+	}
+	printVector(userInput);
+}
 
-		bool bIsBadWorld = false;
-		for (auto badword : badWords)
+void readTwoIntsAndPrintsThem()
+{
+	std::vector<int> inInt;
+	io::getMultiUserInputs<int>("please give two int",inInt, 2);
+	printVector(inInt);
+}
+
+void readTwoIntsAndPrintTheBiggrOne()
+{
+	std::vector<double> userInput;
+	io::getMultiUserInputs("please give me 2 inputs", userInput, 2);
+	sortVectorFromSmallToBig(userInput);
+	if (userInput[0] == userInput[1])
+	{
+		std::cout << "the two numbers are all: " <<userInput[0]<< std::endl;
+	}
+	else
+	{
+		std::cout << "the smallest number is: " << userInput[0] << std::endl;
+		std::cout << "the biggest number is: " << userInput[1] << std::endl;
+		if (std::abs(userInput[0] - userInput[1]) < 0.01)
 		{
-			if (worlds == badword)
-			{
-				bIsBadWorld = true;
-			}
-		}
-		if (bIsBadWorld)
-		{
-			std::cout << "beep ";
-		}
-		else
-		{
-			std::cout << worlds << " ";
+			std::cout << "the two value is real close though.." << std::endl;
 		}
 	}
-	std::cout << "\n";
 }
+
+void askAndPrintBiggestAndSmallestValueSofar()
+{
+	int input;
+	int smallest;
+	int biggest;
+	while (true)
+	{
+		if (GetAsyncKeyState(VK_ESCAPE))
+		{
+			std::cout << "Quiting.. " << std::endl;
+
+		}
+	}
+}
+
 
