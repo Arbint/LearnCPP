@@ -10,7 +10,7 @@
 
 int main()
 {	
-	ReadMultipleNumbersAndExportMedian();
+	
 	return 0;
 }
 

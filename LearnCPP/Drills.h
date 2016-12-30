@@ -39,3 +39,6 @@ void askAndPrintBiggestAndSmallestValueSofar();
 void ReadLengthInMultiUnits();
 
 void ReadMultipleNumbersAndExportMedian();
+
+void GuessingNumber();
+void GuessingNumberGame();

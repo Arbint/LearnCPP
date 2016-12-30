@@ -401,3 +401,90 @@ void ReadMultipleNumbersAndExportMedian()
 		std::cout << "the median number is: " << 0.5 * (numbers[(numberSize -1)/ 2] + numbers[(numberSize-1) / 2 + 1]) << "\n";
 	}
 }
+
+void GuessingNumber()
+{
+	int uerInput = io::GetUerInput<int>("please choice a number between 1 and 100: I will guess it in 7 tries.");
+	while (uerInput < 0 || uerInput> 100)
+	{
+		uerInput = io::GetUerInput<int>("well, your number is out of range(1 - 100): ");
+	}
+	int RangeMin = 0;
+	int RangeMax = 100;
+	int guessing = 50;
+	int respond = 1;
+	int tryCount = 0;
+	while(true)
+	{
+		//check if the computer our of tries
+		if (tryCount >= 7)
+		{
+			if (uerInput > RangeMax || uerInput < RangeMin)
+			{
+				std::cout << "you give me the wrong hint...\n" << "Fucking cheater!!" << std::endl;
+			}
+			else
+			{
+				std::cout << "guess I can never get it then..." << std::endl;
+			}
+			break;
+		}
+
+		//ask if the new guess correct.
+		std::cout << "is " << guessing << " the number ?\n" << "1. Higher\n2.lower\n3.correct" << std::endl;
+		std::cin >> respond;
+		while (respond != 1 && respond !=2 && respond !=3)
+		{
+			std::cout << "not the available choice, please chose:\n1. Higher\n2.lower\n3.correct" << std::endl;
+			std::cin >> respond;
+		}
+		
+		//check if the user is cheating
+		if (uerInput == guessing && respond < 3)
+		{
+			std::cout << "you are cheating!!" << std::endl;
+			break;
+		}
+		//check if the user forget the number:
+		if (uerInput != guessing && respond == 3)
+		{
+			std::cout << "I think you forget your original number.." << std::endl;
+			break;
+		}
+
+		if (respond == 1 && uerInput != guessing)
+		{
+			RangeMin = guessing;
+			RangeMax = RangeMax;
+			guessing = (RangeMin + RangeMax) / 2;
+		}else if (respond == 2 && uerInput != guessing)
+		{
+			RangeMin = RangeMin;
+			RangeMax = guessing;
+			guessing = (RangeMin + RangeMax) / 2;
+		}else if (respond == 3 && uerInput == guessing)
+		{
+			std::cout << "told you I will guess it with in 7 tries! it's " << uerInput << std::endl;
+			break;
+		}
+		tryCount += 1;
+	}
+}
+
+void GuessingNumberGame()
+{
+	int command = 0;
+	while (command != 2)
+	{
+		GuessingNumber();
+		std::cout << "do you want to play again?\n1.Yes\n2.No\n";
+		std::cin >> command;
+		while (command < 1 || command > 2)
+		{
+			std::cout << "please give me a valid command:\n1.Yes\n2.No\n";
+			std::cin >> command;
+		}
+	}
+	std::cout << "Thanks for playing.." << std::endl;
+
+}
