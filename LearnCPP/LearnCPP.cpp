@@ -10,8 +10,9 @@
 
 int main()
 {
-	void(*GameToPlay)() = GuessingNumber;
+	void(*GameToPlay)() = Calculator;
 	PlayBox(GameToPlay);
+
 	return 0;
 }
 

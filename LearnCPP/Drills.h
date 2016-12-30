@@ -42,8 +42,6 @@ void ReadMultipleNumbersAndExportMedian();
 
 void GuessingNumber();
 
-void GuessingNumberGame();
-
 void Calculator();
 
 void PlayBox(std::function<void()> GameToPlay);
