@@ -9,8 +9,9 @@
 #include "InputManager.h"
 
 int main()
-{	
-	
+{
+	void(*GameToPlay)() = GuessingNumber;
+	PlayBox(GameToPlay);
 	return 0;
 }
 

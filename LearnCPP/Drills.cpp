@@ -488,3 +488,54 @@ void GuessingNumberGame()
 	std::cout << "Thanks for playing.." << std::endl;
 
 }
+
+void Calculator()
+{
+	std::cout << "please type in the simple binary calculation you want: " << std::endl;
+	double lhs;
+	char operation;
+	double rhs;
+	std::cin >> lhs >> operation >> rhs;
+	while (std::cin.fail())
+	{
+		std::cout << "not the right format, the format should be like\n 1 * 2\nPlease try again:\n";
+		flushAndResetBuffer();
+		std::cin >> lhs >> operation >> rhs;
+	}
+	switch (operation)
+	{
+	case '+':
+		std::cout << "the sum of " << lhs << " and " << rhs << " is: " << lhs + rhs << "\n";
+		break;
+	case '-':
+		std::cout << "the subtraction of " << lhs << " and " << rhs << " is: " << lhs - rhs << "\n";
+		break;
+	case '*':
+		std::cout << "the multiplication of " << lhs << " and " << rhs << " is: " << lhs * rhs << "\n";
+		break;
+	case '\\':
+		std::cout << "the division of " << lhs << " and " << rhs << " is: " << lhs / rhs << "\n";
+		break;
+	default:
+		break;
+	}
+}
+
+void PlayBox(std::function<void()> GameToPlay)
+{
+	int command = 0;
+	while (command != 2)
+	{
+		GameToPlay();
+		std::cout << "do you want to play again?\n1.Yes\n2.No\n";
+		std::cin >> command;
+		while (command < 1 || command > 2)
+		{
+			std::cout << "please give me a valid command:\n1.Yes\n2.No\n";
+			std::cin >> command;
+		}
+	}
+	std::cout << "Thanks for playing.." << std::endl;
+
+
+}
