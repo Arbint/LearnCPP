@@ -503,6 +503,12 @@ void Calculator()
 	}
 }
 
+void NumberStringConverter()
+{
+	std::vector<int> numbers;
+
+}
+
 void PlayBox(std::function<void()> GameToPlay)
 {
 	int command = 0;

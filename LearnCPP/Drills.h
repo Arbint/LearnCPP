@@ -44,4 +44,7 @@ void GuessingNumber();
 
 void Calculator();
 
+void NumberStringConverter();
+
 void PlayBox(std::function<void()> GameToPlay);
+
