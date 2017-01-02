@@ -194,3 +194,52 @@ public:
 	std::function<void()> Func;
 	bool prevkeyStatus;
 };
+
+template<class TOne, class TTwo>
+class Typepairs
+{
+public:
+	TOne _TOne;
+	TTwo _TTwo;	
+	Typepairs(TOne inTOne, TTwo inTTow)
+		:_TOne{ inTOne }, _TTwo{inTTow}
+	{
+		
+	}
+
+};
+
+template<typename TypeOne, typename TypeTwo>
+class Library
+{
+public:
+	std::vector<Typepairs<TypeOne, TypeTwo>> typePaires;
+	Library(std::vector<Typepairs<TypeOne, TypeTwo>> inPairs)
+		: typePaires{inPairs}
+	{
+	}
+
+	TypeTwo get(TypeOne inKey)
+	{
+		for (Typepairs<TypeOne, TypeTwo> pairIter : typePaires)
+		{
+			if (pairIter._TOne == inKey)
+			{
+				return pairIter._TTwo;
+			}
+		}
+		return typePaires[0]._TTwo;
+	}
+	TypeOne get(TypeTwo inKey)
+	{
+		for (Typepairs<TypeOne, TypeTwo> pairIter : typePaires)
+		{
+			if (pairIter._TTwo== inKey)
+			{
+				return pairIter._TOne;
+			}
+		}
+		return typePaires[0]._TOne;
+		
+	}
+};

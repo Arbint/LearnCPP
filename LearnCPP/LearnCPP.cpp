@@ -10,9 +10,11 @@
 
 int main()
 {
-	void(*GameToPlay)() = Calculator;
+	void(*GameToPlay)() = SingleDigitCalculator;
 	PlayBox(GameToPlay);
 
+
 	return 0;
+
 }
 

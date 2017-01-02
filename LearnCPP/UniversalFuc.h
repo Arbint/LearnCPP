@@ -65,6 +65,55 @@ namespace io {
 		}
 	}
 	bool isBufferClean();
+
+
+	template<typename TypeOne, typename TypeTwo>
+	void getMultipleImputOfTwoDifferentTypes(std::vector<TypeOne>& VectorOne, std::vector<TypeTwo>& VectorTwo, std::string info, unsigned int numberRequest = 0)
+	{
+		std::cout << info << std::endl;
+		TypeOne TypeOneInput;
+		TypeTwo TypeTwoInput;
+		if (numberRequest == 0)
+		{
+			while (!isBufferClean())
+			{
+				std::cin >> TypeOneInput >> TypeTwoInput;
+				while (std::cin.fail())
+				{
+					std::cout << "You are not typing in the right format,please try again " << std::endl;
+					flushAndResetBuffer();
+					std::cin >> TypeOneInput >> TypeTwoInput;
+				}
+				VectorOne.push_back(TypeOneInput);
+				VectorTwo.push_back(TypeTwoInput);
+			}
+
+		}
+		else if (numberRequest > 0)
+		{
+			for (unsigned int number = 1; number <= numberRequest; ++number)
+			{
+				std::cin >> TypeOneInput >> TypeTwoInput;
+				while (std::cin.fail())
+				{
+					std::cout << "you are not typing in the right format, please try again " << std::endl;
+					flushAndResetBuffer();
+					std::cin >> TypeOneInput >> TypeTwoInput;
+				}
+				VectorOne.push_back(TypeOneInput);
+				VectorTwo.push_back(TypeTwoInput);
+				if (number == numberRequest)
+				{
+					break;
+				}
+				if (isBufferClean())
+				{
+					std::cout << "more input are needed: " << std::endl;
+				}
+			}
+			flushAndResetBuffer();
+		}
+	}
 }
 
 //add a new line to a string, " " means adding only a new line with no letters. or just 
@@ -124,22 +173,33 @@ void arrangeNumbers(std::vector<T>& numbers)
 }
 
 template<typename T>
-void printVector(std::vector<T>& VectorToPrint)
+void printVector(std::vector<T>& VectorToPrint, int bWithSpecificIndexes = false, std::vector<int> indexes = std::vector<int>())
 {
-	for (T iter : VectorToPrint)
+	if (!bWithSpecificIndexes)
 	{
-		std::cout << iter << " ";
-	}
-	std::cout << '\n';
-	//alternative using iterators.
-	if (false)
-	{
-		for (auto iter = VectorToPrint.begin(); iter != VectorToPrint.end(); ++iter)
+		for (T iter : VectorToPrint)
 		{
-			std::cout << *iter << " ";
+			std::cout << iter << " ";
 		}
 		std::cout << '\n';
+		//alternative using iterators.
+		if (false)
+		{
+			for (auto iter = VectorToPrint.begin(); iter != VectorToPrint.end(); ++iter)
+			{
+				std::cout << *iter << " ";
+			}
+			std::cout << '\n';
+		}
 	}
+	else
+	{
+		for (int indexIter : indexes)
+		{
+			std::cout << VectorToPrint[indexIter] << std::endl;
+		}
+	}
+	
 }
 
 template<typename T>
@@ -186,4 +246,19 @@ void replaceWord(std::string& StringToAlter, std::vector<string>& WordsToReplace
 
 void flushAndResetBuffer();
 
+bool isSingleDigit(double testedNumber);
+
+template<typename T>
+std::vector<int> getIndexOfElementValue(std::vector<T> VectorToSerch, T element)
+{
+	std::vector<int> returnIndexs;
+	for (int index = 0; index < VectorToSerch.size(); ++index)
+	{
+		if (VectorToSerch[index] == element)
+		{
+			returnIndexs.push_back(index);
+		}
+	}
+	return returnIndexs;
+}
 using namespace io;

@@ -496,6 +496,11 @@ void Calculator()
 		std::cout << "the multiplication of " << lhs << " and " << rhs << " is: " << lhs * rhs << "\n";
 		break;
 	case '/':
+		if (rhs == 0)
+		{
+			std::cout << " it is not possible to divide something by 0 " << std::endl;
+			break;
+		}
 		std::cout << "the division of " << lhs << " and " << rhs << " is: " << lhs / rhs << "\n";
 		break;
 	default:
@@ -503,10 +508,168 @@ void Calculator()
 	}
 }
 
+void SingleDigitCalculator()
+{
+	
+	std::vector<Typepairs<int, std::string>> pairs{
+		Typepairs<int, std::string>(0, "zero"),
+		Typepairs<int, std::string>(1, "one"),
+		Typepairs<int, std::string>(2, "two"),
+		Typepairs<int, std::string>(3, "three"),
+		Typepairs<int, std::string>(4, "four"),
+		Typepairs<int, std::string>(5, "five"),
+		Typepairs<int, std::string>(6, "six"),
+		Typepairs<int, std::string>(7, "seven"),
+		Typepairs<int, std::string>(8, "eight"),
+		Typepairs<int, std::string>(9, "nine"),
+	};
+
+	Library<int, string> SingleDigitNmubers(pairs);
+
+	std::cout << "please type in the single digit binary calculation you want: " << std::endl;
+	
+	std::string lhsString;
+	std::string rhsString;
+	int lhs;
+	char operation;
+	int rhs;
+
+	bool lsFormatChecker = true;
+	bool rsFormatChecter = true;
+	
+	bool bShouldErrorMessageOn = false;
+
+	do 
+	{
+		if (bShouldErrorMessageOn)
+		{
+			std::cout << "Wrong Formate.." << std::endl;
+			lsFormatChecker = true;
+			rsFormatChecter = true;
+			flushAndResetBuffer();
+		}
+		std::cin >> lhs;
+		if (std::cin.fail())
+		{
+			std::cin.clear();
+			std::cin >> lhsString;
+			lhs = SingleDigitNmubers.get(lhsString);
+			std::string checker = SingleDigitNmubers.get(lhs);
+			if (checker != lhsString)
+			{
+				lsFormatChecker = false;
+			}
+			else
+			{
+				lsFormatChecker = true;
+			}
+		}
+		std::cin >> operation;
+		std::cin >> rhs;
+		if (std::cin.fail())
+		{
+			std::cin.clear();
+			std::cin >> rhsString;
+			rhs = SingleDigitNmubers.get(rhsString);
+			std::string checker = SingleDigitNmubers.get(rhs);
+			if (checker != rhsString)
+			{
+				rsFormatChecter = false;
+			}
+			else
+			{
+				rsFormatChecter = true;
+			}
+		}
+		bShouldErrorMessageOn = true;
+	} while ( !lsFormatChecker || !rsFormatChecter || !isSingleDigit(lhs) || !isSingleDigit(rhs) || (!(operation == '+' || operation == '-' || operation == '*' || operation == '/')));
+
+
+	switch (operation)
+	{
+	case '+':
+		std::cout << "the sum of " << lhs << " and " << rhs << " is: " << lhs + rhs << "\n";
+		break;
+	case '-':
+		std::cout << "the subtraction of " << lhs << " and " << rhs << " is: " << lhs - rhs << "\n";
+		break;
+	case '*':
+		std::cout << "the multiplication of " << lhs << " and " << rhs << " is: " << lhs * rhs << "\n";
+		break;
+	case '/':
+		if (rhs == 0)
+		{
+			std::cout << " it is not possible to divide something by 0 " << std::endl;
+			break;
+		}
+		std::cout << "the division of " << lhs << " and " << rhs << " is: " << lhs / rhs << "\n";
+		break;
+	default:
+		break;
+	}
+	flushAndResetBuffer();
+}
+
 void NumberStringConverter()
 {
 	std::vector<int> numbers;
+	std::vector<string> numberStrings;
+	io::getMultipleImputOfTwoDifferentTypes(numbers, numberStrings, "please give me number and corresponding strings:\n example number:\n example: 12 twelve");
+	
+	//get element to search:
+	std::cout << "please give me one element of one of the pairs: put 'string' if you want to indicate it it string" << std::endl;
+	int tryNumber;
+	std::string tryString;
+	std::string catchString;
+	std::cin >> tryNumber;
+	bool bIsString = false;
+	if (std::cin.fail())
+	{
+		std::cin.clear();
+		std::cin >> tryString;
+		bIsString = true;
+	}
+	if (!isBufferClean() && !bIsString)
+	{
+		std::cin >> catchString;
+		if (catchString == "string")
+		{
+			bIsString = true;
+			tryString = std::to_string(tryNumber);
+		}
+	}
 
+	//getting element based on input
+	std::vector<int> indexesFound;
+	if (bIsString)
+	{
+		indexesFound = getIndexOfElementValue(numberStrings, tryString);
+	
+	}
+	else
+	{
+		indexesFound = getIndexOfElementValue(numbers, tryNumber);
+	}
+
+	//check if we found something:
+	if (indexesFound.size() == 0)
+	{
+		std::cout << "nothing found..." << std::endl;
+	}
+	else
+	{
+		if (bIsString)
+		{
+			std::cout << "the corresponds pairs :\n";
+			printVector(numbers, true, indexesFound);
+		}
+		else
+		{
+			std::cout << "the corresponds pairs :\n";
+			printVector(numberStrings, true, indexesFound);
+		}
+	}
+	
 }
 
 void PlayBox(std::function<void()> GameToPlay)

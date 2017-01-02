@@ -119,3 +119,14 @@ void flushAndResetBuffer()
 	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 }
 
+bool isSingleDigit(double testedNumber)
+{
+	int intyfi = static_cast<int>(testedNumber) ;
+	double doublefi = intyfi;
+	if (testedNumber == doublefi && testedNumber < 10 && testedNumber > -10)
+	{
+		return true;
+	}
+	return false;
+}
+
