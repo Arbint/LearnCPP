@@ -240,6 +240,28 @@ public:
 			}
 		}
 		return typePaires[0]._TOne;
-		
+	}
+
+	bool Check(TypeOne inKey)
+	{
+		for (Typepairs<TypeOne, TypeTwo> pairIter : typePaires)
+		{
+			if (pairIter._TOne == inKey)
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+	bool Check(TypeTwo inKey)
+	{
+		for (Typepairs<TypeOne, TypeTwo> pairIter : typePaires)
+		{
+			if (pairIter._TTwo == inKey)
+			{
+				return true;
+			}
+		}
+		return false;
 	}
 };

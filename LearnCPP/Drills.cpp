@@ -553,15 +553,14 @@ void SingleDigitCalculator()
 		{
 			std::cin.clear();
 			std::cin >> lhsString;
-			lhs = SingleDigitNmubers.get(lhsString);
-			std::string checker = SingleDigitNmubers.get(lhs);
-			if (checker != lhsString)
+			if (SingleDigitNmubers.Check(lhsString))
 			{
-				lsFormatChecker = false;
+				lhs = SingleDigitNmubers.get(lhsString);
+				lsFormatChecker = true;
 			}
 			else
 			{
-				lsFormatChecker = true;
+				lsFormatChecker = false;
 			}
 		}
 		std::cin >> operation;
@@ -570,15 +569,15 @@ void SingleDigitCalculator()
 		{
 			std::cin.clear();
 			std::cin >> rhsString;
-			rhs = SingleDigitNmubers.get(rhsString);
-			std::string checker = SingleDigitNmubers.get(rhs);
-			if (checker != rhsString)
+			
+			if (SingleDigitNmubers.Check(rhsString))
 			{
-				rsFormatChecter = false;
+				rhs = SingleDigitNmubers.get(rhsString);
+				rsFormatChecter = true;
 			}
 			else
 			{
-				rsFormatChecter = true;
+				rsFormatChecter = false;
 			}
 		}
 		bShouldErrorMessageOn = true;
