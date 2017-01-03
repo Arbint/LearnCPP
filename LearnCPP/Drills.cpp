@@ -503,12 +503,32 @@ void Calculator()
 	}
 }
 
+void doubleGrains()
+{
+	std::cout << "give me the maximum count you want: " << std::endl;
+	int maxAmount = 0;
+	std::cin >> maxAmount;
+	int lastGrainCount = 1;
+	int currentGrainCount = 0;
+	int totalGrainCount = 1;
+	int OneKGrainSquareAmount = 1;
+	for (int i = 0; i < maxAmount; ++i)
+	{
+		std::cout << totalGrainCount << " " << OneKGrainSquareAmount << endl;
+		currentGrainCount = lastGrainCount * 2;
+		OneKGrainSquareAmount += 1;
+		totalGrainCount = currentGrainCount + totalGrainCount;
+		lastGrainCount = currentGrainCount;
+	}
+}
+
 void PlayBox(std::function<void()> GameToPlay)
 {
 	int command = 0;
 	while (command != 2)
 	{
 		GameToPlay();
+		flushAndResetBuffer();
 		std::cout << "do you want to play again?\n1.Yes\n2.No\n";
 		std::cin >> command;
 		while (command < 1 || command > 2)

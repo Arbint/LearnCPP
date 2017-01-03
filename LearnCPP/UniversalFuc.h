@@ -186,4 +186,6 @@ void replaceWord(std::string& StringToAlter, std::vector<string>& WordsToReplace
 
 void flushAndResetBuffer();
 
+int getBiggestInt();
+
 using namespace io;

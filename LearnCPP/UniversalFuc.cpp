@@ -119,3 +119,16 @@ void flushAndResetBuffer()
 	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 }
 
+int getBiggestInt()
+{
+	int incrementInt = 0;
+	int biggestInt = -1;
+	while (incrementInt >= 0)
+	{
+		biggestInt += 1;
+		incrementInt += 1;
+		std::cout << biggestInt << std::endl;
+	}
+	return biggestInt;
+}
+
