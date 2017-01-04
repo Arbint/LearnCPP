@@ -10,10 +10,8 @@
 
 int main()
 {
-	/*void(*GameToPlay)() = doubleGrains;
+	void(*GameToPlay)() = doubleGrains;
 	PlayBox(GameToPlay);
-*/
-	getBiggestInt();
 	return 0;
 }
 

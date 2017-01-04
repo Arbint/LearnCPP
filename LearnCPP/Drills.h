@@ -44,6 +44,8 @@ void GuessingNumber();
 
 void Calculator();
 
+void IntGrains();
+
 void doubleGrains();
 
 void PlayBox(std::function<void()> GameToPlay);

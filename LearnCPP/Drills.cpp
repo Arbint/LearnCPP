@@ -503,7 +503,7 @@ void Calculator()
 	}
 }
 
-void doubleGrains()
+void IntGrains()
 {
 	std::cout << "give me the maximum count you want: " << std::endl;
 	int maxAmount = 0;
@@ -519,6 +519,22 @@ void doubleGrains()
 		OneKGrainSquareAmount += 1;
 		totalGrainCount = currentGrainCount + totalGrainCount;
 		lastGrainCount = currentGrainCount;
+	}
+}
+
+void doubleGrains()
+{
+	double currentSqureGrains = 0;
+	double currentSqureNum = 2;
+	double lastSqureGrains = 1;
+	double TotalGrains = 1;
+	for (currentSqureNum; TotalGrains <= std::numeric_limits<double>::max(); ++currentSqureNum)
+	{
+		std::cout << "in square " << currentSqureNum << " there are " << TotalGrains << " grains" << std::endl;
+
+		currentSqureGrains = lastSqureGrains + lastSqureGrains;
+		TotalGrains = currentSqureGrains + TotalGrains;
+		lastSqureGrains = currentSqureGrains;
 	}
 }
 

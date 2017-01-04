@@ -121,14 +121,16 @@ void flushAndResetBuffer()
 
 int getBiggestInt()
 {
-	int incrementInt = 0;
-	int biggestInt = -1;
-	while (incrementInt >= 0)
+	
+	int biggestNumberSoFar = 2;
+	for (int i = 1; biggestNumberSoFar > 0; ++i)
 	{
-		biggestInt += 1;
-		incrementInt += 1;
-		std::cout << biggestInt << std::endl;
+		biggestNumberSoFar = static_cast<int>(pow(2, i));
 	}
-	return biggestInt;
+	return biggestNumberSoFar - 1;
 }
 
+int getSmallestInt()
+{
+	return getBiggestInt() + 1;
+}
