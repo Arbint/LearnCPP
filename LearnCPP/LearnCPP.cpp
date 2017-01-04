@@ -10,8 +10,9 @@
 
 int main()
 {
-	void(*GameToPlay)() = doubleGrains;
+	void(*GameToPlay)() = PaperRockScissors;
 	PlayBox(GameToPlay);
+	
 	return 0;
 }
 

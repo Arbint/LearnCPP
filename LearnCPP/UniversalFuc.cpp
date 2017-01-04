@@ -134,3 +134,37 @@ int getSmallestInt()
 {
 	return getBiggestInt() + 1;
 }
+
+int getANumberBasedOnCurentTime()
+{
+	std::time_t time = std::time(0);
+	return static_cast<int>(time);
+}
+
+std::tm getCurrentTime()
+{
+	//create a struct of type tm.
+	std::tm currentTime;
+
+	//get the raw time from the system, time in seconds since 1900
+	std::time_t rawTime = std::time(0);
+
+	//transfer the time in rawTime to currentTime
+	localtime_s(&currentTime, &rawTime);
+
+	return currentTime;
+}
+
+void printTime(std::tm timeToPrint, std::string info)
+{
+	std::cout << info << std::endl;
+	std::cout << timeToPrint.tm_year + 1900 << "/"
+		<< timeToPrint.tm_mon + 1 << "/"
+		<< timeToPrint.tm_mday
+		<< " " << timeToPrint.tm_hour
+		<< ":" << timeToPrint.tm_min
+		<< ":" << timeToPrint.tm_sec
+		<< std::endl;
+}
+
+

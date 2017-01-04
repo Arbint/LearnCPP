@@ -188,4 +188,21 @@ void flushAndResetBuffer();
 
 int getBiggestInt();
 int getSmallestInt();
+
+int getANumberBasedOnCurentTime();
+
+std::tm getCurrentTime();
+
+void printTime(std::tm timeToPrint, std::string info = "The time and date is: ");
+
+template<typename T>
+T randomNmuberBasedOnCurrentTime(T rangMin, T RangeMax)
+{
+	int randomSeed = getANumberBasedOnCurentTime();
+	std::srand(randomSeed);
+
+	return rangMin + (T)rand() % (RangeMax + 1 - rangMin);
+	
+}
+
 using namespace io;

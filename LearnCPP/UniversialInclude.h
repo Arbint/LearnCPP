@@ -10,6 +10,8 @@
 #include <sstream>
 #include <typeinfo>
 #include <memory>
+#include <ctime>
+#include <cstdlib>
 #include "UniversalMacros.h"
 #include "CustomTypes.h"
 #include <functional>

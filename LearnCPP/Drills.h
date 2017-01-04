@@ -48,4 +48,6 @@ void IntGrains();
 
 void doubleGrains();
 
+void PaperRockScissors();
+
 void PlayBox(std::function<void()> GameToPlay);

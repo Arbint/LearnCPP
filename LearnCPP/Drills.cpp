@@ -538,6 +538,29 @@ void doubleGrains()
 	}
 }
 
+void PaperRockScissors()
+{
+	int randomGuess = randomNmuberBasedOnCurrentTime(1, 3);
+	RockPaperScissors randomGesture = static_cast<RockPaperScissors>(randomGuess);
+	std::cout << "please choose your move:\n1.Rock\n2.Paper\n3.Scissors\n";
+	int userInput = io::GetUerInput<int>();
+	switch (randomGesture)
+	{
+	case ERPS_Rock:
+		std::cout << "Rock" << std::endl;
+		break;
+	case ERPS_Paper:
+		std::cout << "Paper" << std::endl;
+		break;
+	case ERPS_Scissors:
+		std::cout << "Scissors" << std::endl;
+		break;
+	default:
+		break;
+	}
+
+}
+
 void PlayBox(std::function<void()> GameToPlay)
 {
 	int command = 0;
