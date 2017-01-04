@@ -13,7 +13,7 @@ int main()
 	//void(*GameToPlay)() = GetPrimNumberBetween;
 	//PlayBox(GameToPlay);
 	
-	std::cout << "gaga" << std::endl;
+	std::cout << "gagas" << std::endl;
 	return 0;
 
 }
