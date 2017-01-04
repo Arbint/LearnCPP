@@ -261,15 +261,26 @@ std::vector<int> getIndexOfElementValue(std::vector<T> VectorToSerch, T element)
 	}
 	return returnIndexs;
 }
+
+//get the biggest number int type can possible hold
 int getBiggestInt();
+//get the smallest number int type can possible hold
 int getSmallestInt();
 
 int getANumberBasedOnCurentTime();
 
+
+/*get the current time in the type of std::tm, which you can further
+On use it's members to get specific part of the time, like year, month etc.
+print it use printTime()
+*/
 std::tm getCurrentTime();
 
+//print the current time, you can get the current time use getCurrentTime()
 void printTime(std::tm timeToPrint, std::string info = "The time and date is: ");
 
+
+//Get current time in seconds since 1900
 template<typename T>
 T randomNmuberBasedOnCurrentTime(T rangMin, T RangeMax)
 {
@@ -280,6 +291,20 @@ T randomNmuberBasedOnCurrentTime(T rangMin, T RangeMax)
 	
 }
 
+
+/*
+* Do a count down in seconds
+*
+* CountDownTime - the length of the count down
+*/
 void DoCountDown(int CountDownTime);
+
+//check if a number is a prime number
+bool IsPrimeNumber(int tryNumber);
+
+/*find all the prime numbers between rangeStart and rangeEnd(include both)
+and return a vector of them.
+*/
+std::vector<int> GetPrimeNumberBetween(int rangeStart, int rangeEnd);
 
 using namespace io;

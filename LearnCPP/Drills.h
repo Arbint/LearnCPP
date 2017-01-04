@@ -59,6 +59,8 @@ void doubleGrains();
 
 void PaperRockScissors();
 
+void GetPrimNumberBetween();
+
 EWinLose PaperRockScissorsCompare(RockPaperScissors PlayerOneChoice, RockPaperScissors PlayerTwoChoice);
 
 std::string PaperRockScissorsToString(RockPaperScissors inEnum);

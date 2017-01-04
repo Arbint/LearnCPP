@@ -10,7 +10,7 @@
 
 int main()
 {
-	void(*GameToPlay)() = PaperRockScissors;
+	void(*GameToPlay)() = GetPrimNumberBetween;
 	PlayBox(GameToPlay);
 
 	return 0;

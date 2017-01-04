@@ -196,3 +196,32 @@ void DoCountDown(int CountDownTime)
 	}
 }
 
+bool IsPrimeNumber(int tryNumber)
+{
+	if (tryNumber <= 1)
+	{
+		return false;
+	}
+	for (int i = 2; i < tryNumber; ++i)
+	{
+		if (tryNumber%i == 0)
+		{
+			return false;
+		}
+	}
+	return true;
+}
+
+std::vector<int> GetPrimeNumberBetween(int rangeStart, int rangeEnd)
+{
+	std::vector<int> primeNumbers;
+	for (int current = rangeStart; current <= rangeEnd; ++current)
+	{
+		if (IsPrimeNumber(current))
+		{
+			primeNumbers.push_back(current);
+		}
+	}
+	return primeNumbers;
+}
+

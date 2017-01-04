@@ -744,6 +744,15 @@ void PaperRockScissors()
 	std::cout << "\n" << std::endl;
 }
 
+void GetPrimNumberBetween()
+{
+	std::vector<int> range;
+	io::getMultiUserInputs("please give the range you want to find prime number from: ", range, 2);
+	std::vector<int> primeNumbers = GetPrimeNumberBetween(range[0], range[1]);
+	std::cout << "the prime numbers between " << range[0] << " and " << range[1] << " are:\n ";
+	printVector(primeNumbers);
+}
+
 EWinLose PaperRockScissorsCompare(RockPaperScissors PlayerOneChoice, RockPaperScissors PlayerTwoChoice)
 {
 	switch (PlayerOneChoice)
