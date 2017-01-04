@@ -10,10 +10,9 @@
 
 int main()
 {
-	/*void(*GameToPlay)() = PaperRockScissors;
+	void(*GameToPlay)() = PaperRockScissors;
 	PlayBox(GameToPlay);
-*/
-	DoCountDown(10);
+
 	return 0;
 
 }

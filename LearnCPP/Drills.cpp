@@ -708,27 +708,120 @@ void doubleGrains()
 
 void PaperRockScissors()
 {
-	int randomGuess = randomNmuberBasedOnCurrentTime(1, 3);
-	RockPaperScissors randomGesture = static_cast<RockPaperScissors>(randomGuess);
-	std::cout << "please choose your move:\n1.Rock\n2.Paper\n3.Scissors\n";
-	int userInput = io::GetUerInput<int>();
-	RockPaperScissors UserChoice = static_cast<RockPaperScissors>(userInput);
 	
-	switch (randomGesture)
+	std::cout << "Welcome to Paper Rock Scissors!\nplease choose your move:\n1.Rock\n2.Paper\n3.Scissors\n";
+	
+	//get user's choice and convert it to enum
+	int userInput = io::GetUerInput<int>();
+	RockPaperScissors UserChoice = static_cast<RockPaperScissors>(userInput); 
+
+	//random an int form time and then convert it to enum
+	int randomGuess = randomNmuberBasedOnCurrentTime(1, 3);
+	RockPaperScissors ComputerChoice = static_cast<RockPaperScissors>(randomGuess);
+	
+	//do a count down to build up tension
+	std::cout << "\nResult shows in: " << std::endl;
+	DoCountDown(3);
+	
+	//print choices
+	std::cout << "You: " << PaperRockScissorsToString(UserChoice) << std::endl;
+	std::cout << "Me: " << PaperRockScissorsToString(ComputerChoice) << "\n"<< std::endl;
+	
+	//compare choices and then print out win lose result
+	switch (PaperRockScissorsCompare(UserChoice, ComputerChoice))
+	{
+	case EWL_Win:
+		std::cout << "you win!" << std::endl;
+		break;
+	case EWL_Lose:
+		std::cout << "you lose!" << std::endl;
+		break;
+	case EWL_Even:
+		std::cout << "we are even!" << std::endl;
+	default:
+		break;
+	}
+	std::cout << "\n" << std::endl;
+}
+
+EWinLose PaperRockScissorsCompare(RockPaperScissors PlayerOneChoice, RockPaperScissors PlayerTwoChoice)
+{
+	switch (PlayerOneChoice)
 	{
 	case ERPS_Rock:
-		std::cout << "Rock" << std::endl;
+		switch (PlayerTwoChoice)
+		{
+		case ERPS_Rock:
+			return EWL_Even;
+			break;
+		case ERPS_Paper:
+			return EWL_Lose;
+			break;
+		case ERPS_Scissors:
+			return EWL_Win;
+			break;
+		default:
+			return EWL_Even;
+			break;
+		}
 		break;
 	case ERPS_Paper:
-		std::cout << "Paper" << std::endl;
+		switch (PlayerTwoChoice)
+		{
+		case ERPS_Rock:
+			return EWL_Win;
+			break;
+		case ERPS_Paper:
+			return EWL_Even;
+			break;
+		case ERPS_Scissors:
+			return EWL_Lose;
+			break;
+		default:
+			return EWL_Even;
+			break;
+		}
 		break;
 	case ERPS_Scissors:
-		std::cout << "Scissors" << std::endl;
+		switch (PlayerTwoChoice)
+		{
+		case ERPS_Rock:
+			return EWL_Lose;
+			break;
+		case ERPS_Paper:
+			return EWL_Win;
+			break;
+		case ERPS_Scissors:
+			return EWL_Even;
+			break;
+		default:
+			return EWL_Even;
+			break;
+		}
 		break;
 	default:
 		break;
 	}
+	return EWL_Even;
+}
 
+std::string PaperRockScissorsToString(RockPaperScissors inEnum)
+{
+	switch (inEnum)
+	{
+	case ERPS_Rock:
+		return "Rock";
+		break;
+	case ERPS_Paper:
+		return "Paper";
+		break;
+	case ERPS_Scissors:
+		return "Scissors";
+		break;
+	default:
+		return "No Idea...";
+		break;
+	}
 }
 
 void PlayBox(std::function<void()> GameToPlay)
@@ -751,3 +844,4 @@ void PlayBox(std::function<void()> GameToPlay)
 
 
 }
+

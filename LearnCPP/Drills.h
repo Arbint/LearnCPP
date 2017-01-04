@@ -1,6 +1,9 @@
 #pragma once
 #include "UniversialInclude.h"
 #include "Trigger.h"
+
+
+
 void writeLetter();
 
 double milesToKilometer(double inMiles);
@@ -56,3 +59,6 @@ void doubleGrains();
 
 void PaperRockScissors();
 
+EWinLose PaperRockScissorsCompare(RockPaperScissors PlayerOneChoice, RockPaperScissors PlayerTwoChoice);
+
+std::string PaperRockScissorsToString(RockPaperScissors inEnum);

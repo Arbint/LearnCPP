@@ -19,6 +19,13 @@ enum RockPaperScissors
 	ERPS_Scissors = 3
 };
 
+enum EWinLose
+{
+	EWL_Win = 1,
+	EWL_Lose = 2,
+	EWL_Even = 3
+};
+
 enum class ELiteralNum
 {
 	one,
@@ -272,3 +279,4 @@ public:
 		return false;
 	}
 };
+
