@@ -712,6 +712,8 @@ void PaperRockScissors()
 	RockPaperScissors randomGesture = static_cast<RockPaperScissors>(randomGuess);
 	std::cout << "please choose your move:\n1.Rock\n2.Paper\n3.Scissors\n";
 	int userInput = io::GetUerInput<int>();
+	RockPaperScissors UserChoice = static_cast<RockPaperScissors>(userInput);
+	
 	switch (randomGesture)
 	{
 	case ERPS_Rock:

@@ -280,4 +280,6 @@ T randomNmuberBasedOnCurrentTime(T rangMin, T RangeMax)
 	
 }
 
+void DoCountDown(int CountDownTime);
+
 using namespace io;

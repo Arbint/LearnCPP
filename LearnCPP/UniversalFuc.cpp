@@ -178,4 +178,21 @@ void printTime(std::tm timeToPrint, std::string info)
 		<< std::endl;
 }
 
+void DoCountDown(int CountDownTime)
+{
+	int CountStartTime = getANumberBasedOnCurentTime();
+	int TimeToStop = CountStartTime + CountDownTime;
+	
+	int loopTime = getANumberBasedOnCurentTime();
+	int lastLoopTime = loopTime;
+	while ( loopTime - 1 != TimeToStop)
+	{
+		loopTime = getANumberBasedOnCurentTime();
+		if (lastLoopTime != loopTime)
+		{
+			std::cout << CountDownTime - (loopTime - CountStartTime) + 1 << std::endl;
+			lastLoopTime = loopTime;
+		}
+	}
+}
 
