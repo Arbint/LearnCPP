@@ -10,9 +10,8 @@
 
 int main()
 {
-	void(*GameToPlay)() = SingleDigitCalculator;
+	void(*GameToPlay)() = PaperRockScissors;
 	PlayBox(GameToPlay);
-
 
 	return 0;
 

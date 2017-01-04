@@ -12,6 +12,13 @@ enum class EMath
 	power
 };
 
+enum RockPaperScissors
+{
+	ERPS_Rock = 1,
+	ERPS_Paper = 2,
+	ERPS_Scissors = 3
+};
+
 enum class ELiteralNum
 {
 	one,

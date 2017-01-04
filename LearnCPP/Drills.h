@@ -50,3 +50,9 @@ void NumberStringConverter();
 
 void PlayBox(std::function<void()> GameToPlay);
 
+void IntGrains();
+
+void doubleGrains();
+
+void PaperRockScissors();
+
