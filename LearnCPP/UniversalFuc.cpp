@@ -225,3 +225,57 @@ std::vector<int> GetPrimeNumberBetween(int rangeStart, int rangeEnd)
 	return primeNumbers;
 }
 
+std::vector<int> GetPrimeNumberFromOneTo(int EndNumber)
+{
+	//create a vector of number from 2 to endNumber 
+	std::vector<int> primeNumbers;
+	for (int i = 2; i <= EndNumber; ++i)
+	{
+		primeNumbers.push_back(i);
+	}
+	
+	//we start from the first
+	int DeleteBaseStartIndex = 0;
+	
+	//try to delete elements that are not prime numbers by using the Sieve of Eratosthenes method
+	while (true)
+	{
+		//record the size of the primeNumbers at the beginning of the loop;
+		std::size_t primeVectorSize = primeNumbers.size();
+		
+		//create a loopNonePrimeNumbers and populate it start from the first number that is a mutiples of the first premie number in the primeNumbers, next loop in this while loop
+		//we will do the second;
+		std::vector<int> loopNonePrimeNumbers;
+		for (int loopbaseNum = primeNumbers[DeleteBaseStartIndex]*2; loopbaseNum <= EndNumber; loopbaseNum += primeNumbers[DeleteBaseStartIndex])
+		{
+			loopNonePrimeNumbers.push_back(loopbaseNum);
+		}
+		
+		//remove all element in loopNonePrimeNumbers from primeNumbers.
+		DeleteElementsInVectorHasValues(primeNumbers, loopNonePrimeNumbers);
+		//increment the index so next time we populate the loopNonePrimeNumbers with the second primeNumber in primeNumber and store all it's multiples.
+		++DeleteBaseStartIndex;
+		
+		//if after removal, nothing is removed, then we should have element all the non-prime numbers. break the loop
+		if (primeVectorSize == primeNumbers.size())
+		{
+			break;
+		}
+	}
+	return primeNumbers;
+}
+
+std::vector<int> GetTheFirstNPrimes(int n)
+{
+	std::vector<int> primeNumbers;
+	std::size_t numberOfPrimesNeeded = static_cast<std::size_t>(n);
+	for (int TryNumber = 2; (primeNumbers.size() != numberOfPrimesNeeded); ++TryNumber)
+	{
+		if (IsPrimeNumber(TryNumber))
+		{
+			primeNumbers.push_back(TryNumber);
+		}
+	}
+	return primeNumbers;
+}
+

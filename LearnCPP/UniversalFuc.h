@@ -306,5 +306,23 @@ bool IsPrimeNumber(int tryNumber);
 and return a vector of them.
 */
 std::vector<int> GetPrimeNumberBetween(int rangeStart, int rangeEnd);
+std::vector<int> GetPrimeNumberFromOneTo(int EndNumber);
+
+template<typename T>
+void DeleteElementsInVectorHasValue(std::vector<T>& outVector, T& value)
+{
+	outVector.erase(std::remove(outVector.begin(), outVector.end(), value), outVector.end());
+}
+
+template<typename T>
+void DeleteElementsInVectorHasValues(std::vector<T>& outVector, std::vector<T>& valuesToDelete)
+{
+	for (T iter : valuesToDelete)
+	{
+		DeleteElementsInVectorHasValue(outVector, iter);
+	}
+}
+
+std::vector<int> GetTheFirstNPrimes(int n);
 
 using namespace io;

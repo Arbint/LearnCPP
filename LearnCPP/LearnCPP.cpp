@@ -10,8 +10,9 @@
 
 int main()
 {
-	void(*GameToPlay)() = GetPrimNumberBetween;
-	PlayBox(GameToPlay);
+	//void(*GameToPlay)() = GetPrimNumberBetween;
+	//PlayBox(GameToPlay);
+	
 
 	return 0;
 
