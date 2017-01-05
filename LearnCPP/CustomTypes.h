@@ -26,6 +26,19 @@ enum EWinLose
 	EWL_Even = 3
 };
 
+template<typename T>
+struct EquationResult
+{
+	std::vector<T> results;
+	bool bIsValid;
+
+	//check if the result is valid;
+	bool Successed()
+	{
+		return bIsValid;
+	}
+};
+
 enum class ELiteralNum
 {
 	one,
@@ -254,6 +267,32 @@ public:
 			}
 		}
 		return typePaires[0]._TOne;
+	}
+
+	std::vector<TypeTwo> getMulti(TypeOne inKey)
+	{
+		std::vector<TypeTwo> returnValues;
+		for (Typepairs<TypeOne, TypeTwo> pairIter : typePaires)
+		{
+			if (pairIter._TOne == inKey)
+			{
+				returnValues.push_back(pairIter._TTwo);
+			}
+		}
+		return returnValues;
+	}
+
+	std::vector<TypeOne> getMulti(TypeTwo inKey)
+	{
+		std::vector<TypeOne> returnValues;
+		for (Typepairs<TypeOne, TypeTwo> pairIter : typePaires)
+		{
+			if (pairIter._TTwo == inKey)
+			{
+				returnValues.push_back(pairIter._TOne);
+			}
+		}
+		return returnValues;
 	}
 
 	bool Check(TypeOne inKey)

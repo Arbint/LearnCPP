@@ -35,8 +35,12 @@ namespace io {
 	//* std:vector<T>& outContainer - the container that will eventually be filled with user inputs.
 	//* int NumberRequested = -1 - how many do you want to get, if -1 or default value, then read as much as there are in the std::cin
 	template<typename T>
-	void getMultiUserInputs(std::string info, std::vector<T>& outContainer, int NumberRequested = -1)
+	void getMultiUserInputs(std::string info, std::vector<T>& outContainer, int NumberRequested = -1, bool AddtiveMode = false)
 	{
+		if (!AddtiveMode)
+		{
+			outContainer.clear();
+		}
 		std::cout << info << std::endl;
 		std::cout << "(put space between items)" << std::endl;
 		T itemOne;
@@ -68,8 +72,13 @@ namespace io {
 
 
 	template<typename TypeOne, typename TypeTwo>
-	void getMultipleImputOfTwoDifferentTypes(std::vector<TypeOne>& VectorOne, std::vector<TypeTwo>& VectorTwo, std::string info, unsigned int numberRequest = 0)
+	void getMultipleImputOfTwoDifferentTypes(std::vector<TypeOne>& VectorOne, std::vector<TypeTwo>& VectorTwo, std::string info, unsigned int numberRequest = 0, bool AddtiveMode = false)
 	{
+		if (!AddtiveMode)
+		{
+			VectorOne.clear();
+			VectorTwo.clear();
+		}
 		std::cout << info << std::endl;
 		TypeOne TypeOneInput;
 		TypeTwo TypeTwoInput;
@@ -323,14 +332,113 @@ void DeleteElementsInVectorHasValues(std::vector<T>& outVector, std::vector<T>& 
 	}
 }
 
+
+
+std::vector<int> GetTheFirstNPrimes(int n);
+
+template<typename T>
+std::vector<T> FindMode(std::vector<T> vectorToExam)
+{
+	std::vector<T> ModeItems{ vectorToExam[0] };
+
+	int highestNumRepeatation = 1;
+
+	//compare every element with all the element in the vectorToExam
+	for (T Item : vectorToExam)
+	{
+
+		//if they are the same, then there is one more repeat, we start from 0 so when it compares to it self, it added one.
+		int repeation = 0;
+		for (T OtherItem : vectorToExam)
+		{
+			if (Item == OtherItem)
+			{
+				repeation += 1;
+			}
+		}
+
+		//after finding out how many element in vectotExam has the same value of number. compare it with the highestNumberRepeatation
+
+		// if they are the same, then we got one more mode number
+		if (repeation == highestNumRepeatation && !VectorHasElement(ModeItems, Item))
+		{
+			ModeItems.push_back(Item);
+		}
+		else if (repeation > highestNumRepeatation)//it the new repeation is bigger, all previous mode should not be mode any more, this one will be the mode.
+		{
+			ModeItems.clear();
+			ModeItems.push_back(Item);
+			highestNumRepeatation = repeation;
+		}
+	}
+	return ModeItems;
+}
+
+template<typename T>
+T FindInVectorBasedOnRule(std::vector<T> VectorToLookInTo,std::function<bool(T&, T&)> Rule)
+{
+	sortVector(VectorToLookInTo, Rule);
+	return VectorToLookInTo[0];
+}
+
+/*
+return the value of x from equation ax^2 + bx + c = 0
+*/
+EquationResult<double> QuadraticEquation(double a, double b, double c);
+
 template<typename T>
 bool VectorHasElement(std::vector<T> VectorToCheck, T ElementToCheekFor)
 {
 	return (std::find(VectorToCheck.begin(), VectorToCheck.end(), ElementToCheekFor) != VectorToCheck.end());
 }
 
-std::vector<int> GetTheFirstNPrimes(int n);
+template<typename T>
+bool isAllElementUnique(std::vector<T> VectorToCheck)
+{
+	
+	for (T iter : VectorToCheck)
+	{
+		if (!isElementUnique(VectorToCheck, iter))
+		{
+			return false;
+		}
+	}
+	return true;
+}
 
-std::vector<int> FindMode(std::vector<int> vectorToExam);
+template<typename T>
+bool isElementUnique(std::vector<T> VectorToCheck, T ElemetToCheck)
+{
+	int repeation = 0;
+	for (T OhterIter : VectorToCheck)
+	{
+		if (ElemetToCheck == OhterIter)
+		{
+			++repeation;
+			if (repeation > 1)
+			{
+				return false;
+			}
+		}
+	}	
+	return true;
+}
+
+template<typename T>
+std::vector<T> GetReaptedElements(std::vector<T> VectorToCheck)
+{
+	std::vector<T> repeatedElements;
+	for (T iter : VectorToCheck)
+	{
+		if (!isElementUnique(VectorToCheck, iter))
+		{
+			if (!VectorHasElement(repeatedElements, iter))
+			{
+				repeatedElements.push_back(iter);
+			}
+		}
+	}
+	return repeatedElements;
+}
 
 using namespace io;

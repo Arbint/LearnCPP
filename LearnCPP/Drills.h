@@ -63,6 +63,12 @@ void GetPrimNumberBetween();
 
 void FindModeInVector();
 
+void FindMinMaxModeInStringVector();
+
+void SolveQuadraticEquation();
+
+void NameScoreRecorder();
+
 EWinLose PaperRockScissorsCompare(RockPaperScissors PlayerOneChoice, RockPaperScissors PlayerTwoChoice);
 
 std::string PaperRockScissorsToString(RockPaperScissors inEnum);

@@ -10,11 +10,9 @@
 
 int main()
 {
-	void(*GameToPlay)() = FindModeInVector;
+	void(*GameToPlay)() = NameScoreRecorder;
 	PlayBox(GameToPlay);
-
-
+	
 	return 0;
 
 }
-

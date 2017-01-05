@@ -753,15 +753,8 @@ void GetPrimNumberBetween()
 	printVector(primeNumbers);
 }
 
-void FindModeInVector()
-{
-	std::vector<int> numbers;
-	io::getMultiUserInputs<int>("please give me some int", numbers);
 
-	std::vector<int> modeNumbers = FindMode(numbers);
 
-	printVector(modeNumbers);
-}
 
 EWinLose PaperRockScissorsCompare(RockPaperScissors PlayerOneChoice, RockPaperScissors PlayerTwoChoice)
 {
@@ -864,3 +857,125 @@ void PlayBox(std::function<void()> GameToPlay)
 
 }
 
+void FindModeInVector()
+{
+	std::vector<int> numbers;
+	io::getMultiUserInputs<int>("please give me some int", numbers);
+
+	std::vector<int> modeNumbers = FindMode(numbers);
+
+	printVector(modeNumbers);
+}
+
+void FindMinMaxModeInStringVector()
+{
+	std::vector<std::string> strings;
+	io::getMultiUserInputs<std::string>("give me some string", strings);
+	
+	std::string smallest = FindInVectorBasedOnRule<std::string>(strings, [](std::string& stringOne, std::string& stringTwo)->bool {return stringOne < stringTwo; });
+	std::string biggest = FindInVectorBasedOnRule<std::string>(strings, [](std::string& stringOne, std::string& stringTwo)->bool {return stringOne > stringTwo; });
+	std::vector<std::string> modeStrings = FindMode(strings);
+
+	std::cout << "The smallest string is: " << smallest << std::endl;
+	std::cout << "The biggest string is: " << biggest << std::endl;
+
+	std::cout << "all the modes are: ";
+	printVector(modeStrings);
+}
+
+void SolveQuadraticEquation()
+{
+	std::vector<double> indexes;
+	io::getMultiUserInputs("please give me the indexes of the equation:(the a, b, c in ax^2 + bx + c = 0)", indexes, 3);
+	
+	std::cout << "so the equation you want to solve is: " << indexes[0] << "x^2 + " << indexes[1] << "x + " << indexes[2] << " = 0." << std::endl;
+	
+	EquationResult<double> GetResultOfX = QuadraticEquation(indexes[0], indexes[1], indexes[2]);
+	
+	if (GetResultOfX.Successed())
+	{
+		std::cout << "the result(s) of x is: ";
+		printVector(GetResultOfX.results);
+	}
+	else
+	{
+		std::cout << "there is no result for this equation." << std::endl;
+	}
+}
+
+void NameScoreRecorder()
+{
+	std::vector<Typepairs<std::string, int>> pairs;
+	std::vector<std::string> pairsStringElements;
+	std::vector<int> pairsIntElements;
+
+	io::getMultipleImputOfTwoDifferentTypes<std::string, int>(pairsStringElements, pairsIntElements, "give me the names and scores (example: Joe 17 Allie 21...): ");
+	while(!isAllElementUnique(pairsStringElements))
+	{
+		std::vector<string> repeations = GetReaptedElements(pairsStringElements);
+		std::cout << "you got more than one of name: ";
+		printVector(repeations);
+		std::cout << "please re-enter the name score paires(): (example: Joe 17 Allie 21...):";
+		io::getMultipleImputOfTwoDifferentTypes<std::string, int>(pairsStringElements, pairsIntElements,"");
+	}
+
+	for (int iter = 0; iter < pairsIntElements.size(); ++iter)
+	{
+		pairs.push_back(Typepairs<std::string, int>(pairsStringElements[iter], pairsIntElements[iter]));
+	}
+
+	Library<std::string, int> NameScoreChart(pairs);
+
+	bool bIsUserGivingMeInt = true;
+	int UserFindingInputKey_TryInt;
+	std::string UserFindingInputKey_TryString;
+	
+	std::function<void()> FindNameOrScore = [&]()
+	{
+		bIsUserGivingMeInt = true;
+		std::cout << "Please give me the score or name you are checking:\n";
+		std::cin >> UserFindingInputKey_TryInt;
+		if (std::cin.fail())
+		{
+			std::cin.clear();
+			std::cin >> UserFindingInputKey_TryString;
+			bIsUserGivingMeInt = false;
+		}
+		if (bIsUserGivingMeInt)
+		{
+			if (NameScoreChart.Check(UserFindingInputKey_TryInt))
+			{
+				std::vector<std::string> names = NameScoreChart.getMulti(UserFindingInputKey_TryInt);
+				std::cout << "the play has score of " << UserFindingInputKey_TryInt << " is(are): " << std::endl;
+				printVector(names);
+			}
+			else
+			{
+				std::cout << "No such name or score " << std::endl;
+			}
+
+		}
+		else
+		{
+			if (NameScoreChart.Check(UserFindingInputKey_TryString))
+			{
+				int score = NameScoreChart.get(UserFindingInputKey_TryString);
+				std::cout << UserFindingInputKey_TryString << "'s score is: " << score << std::endl;
+
+			}
+			else
+			{
+				std::cout << "No such name or score " << std::endl;
+			}
+		}
+	};
+	
+	int userChoice = 0;
+	while (userChoice != 2)
+	{
+		flushAndResetBuffer();
+		FindNameOrScore();
+		std::cout << "do you want to check another?\n1.Yes\n2.No\n";
+		std::cin >> userChoice;
+	}
+}

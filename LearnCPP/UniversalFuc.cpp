@@ -279,41 +279,27 @@ std::vector<int> GetTheFirstNPrimes(int n)
 	return primeNumbers;
 }
 
-std::vector<int> FindMode(std::vector<int> vectorToExam)
+EquationResult<double> QuadraticEquation(double a, double b, double c)
 {
-
-	std::vector<int> modeNumbers{vectorToExam[0]};
-
-	int highestNum = vectorToExam[0];
-	int highestNumRepeatation = 1;
-
-	//compare every element with all the element in the vectorToExam
-	for (int number : vectorToExam)
+	EquationResult<double> ReturnResult;
+	if (b*b - 4*a*c < 0)
 	{
-		
-		//if they are the same, then there is one more repeat, we start from 0 so when it compares to it self, it added one.
-		int repeation = 0;
-		for (int OtherNumber : vectorToExam)
-		{
-			if (number == OtherNumber)
-			{
-				repeation += 1;
-			}
-		}
-
-		//after finding out how many element in vectotExam has the same value of number. compare it with the highestNumberRepeatation
-		
-		// if they are the same, then we got one more mode number
-		if (repeation == highestNumRepeatation && !VectorHasElement(modeNumbers, number))
-		{
-			modeNumbers.push_back(number);
-		}else if (repeation > highestNumRepeatation)//it the new repeation is bigger, all previous mode should not be mode any more, this one will be the mode.
-		{
-			modeNumbers.clear();
-			modeNumbers.push_back(number);
-			highestNumRepeatation = repeation;
-		}
+		ReturnResult.bIsValid = false;
+		return ReturnResult;
 	}
-	return modeNumbers;
+	else
+	{
+		ReturnResult.bIsValid = true;
+		
+		double PossibleResultValueOne = ((-1 * b / (a * 2)) + std::sqrt(square(b / (2 * a)) - c / a));
+		ReturnResult.results.push_back(PossibleResultValueOne);
+		
+		double PossibleResultValueTwo = ((-1 * b / (a * 2)) - std::sqrt(square(b / (2 * a)) - c / a));
+		if (PossibleResultValueTwo != PossibleResultValueOne)
+		{
+			ReturnResult.results.push_back(PossibleResultValueTwo);
+		}
+		return ReturnResult;
+	}
 }
 
