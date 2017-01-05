@@ -10,10 +10,10 @@
 
 int main()
 {
-	//void(*GameToPlay)() = GetPrimNumberBetween;
-	//PlayBox(GameToPlay);
-	
-	std::cout << "gagas" << std::endl;
+	void(*GameToPlay)() = FindModeInVector;
+	PlayBox(GameToPlay);
+
+
 	return 0;
 
 }

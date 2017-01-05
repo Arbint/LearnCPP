@@ -323,6 +323,14 @@ void DeleteElementsInVectorHasValues(std::vector<T>& outVector, std::vector<T>& 
 	}
 }
 
+template<typename T>
+bool VectorHasElement(std::vector<T> VectorToCheck, T ElementToCheekFor)
+{
+	return (std::find(VectorToCheck.begin(), VectorToCheck.end(), ElementToCheekFor) != VectorToCheck.end());
+}
+
 std::vector<int> GetTheFirstNPrimes(int n);
+
+std::vector<int> FindMode(std::vector<int> vectorToExam);
 
 using namespace io;

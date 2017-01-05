@@ -753,6 +753,16 @@ void GetPrimNumberBetween()
 	printVector(primeNumbers);
 }
 
+void FindModeInVector()
+{
+	std::vector<int> numbers;
+	io::getMultiUserInputs<int>("please give me some int", numbers);
+
+	std::vector<int> modeNumbers = FindMode(numbers);
+
+	printVector(modeNumbers);
+}
+
 EWinLose PaperRockScissorsCompare(RockPaperScissors PlayerOneChoice, RockPaperScissors PlayerTwoChoice)
 {
 	switch (PlayerOneChoice)
