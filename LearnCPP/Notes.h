@@ -64,3 +64,48 @@ void tryRepresents()
 	lambdaRep("happy");
 }
 
+/************************************************************************/
+/* Chapter 5                                                            */
+/************************************************************************/
+
+//Error Reporting using return error value:
+//ask user for a yes or no answer
+//return 'b' to indicated a bad answer
+char AskUser(std::string question)
+{
+	std::cout << question << "?(yes or no)\n";
+	string answer = " ";
+	cin >> answer;
+	if (answer == "y" || answer == "yes") return 'y';
+	if (answer == "n" || answer == "no") return 'n';
+	return 'b';
+}
+//return  -1 to indicate a bad argument
+int CalculateArea(int length, int width)
+{
+	if (length <=0 || width <=0)
+	{
+		return -1;
+	}
+	return length * width;
+}
+
+int FramedArea(int length, int width)
+{
+	return CalculateArea(length - 2, width - 2);
+}
+
+
+//Error Reporting using Exceptions:
+class BadArea {}; //A type specifically for reporting errors from AreaWithException()
+
+//calculate area of a rectangle;
+//throw a BadArea exception in case of a bad argument
+int AreaWithException(int length, int width)
+{
+	if (length <= 0 || width <= 0)
+	{
+		throw BadArea{};
+	}
+	return length*width;
+}

@@ -303,3 +303,8 @@ EquationResult<double> QuadraticEquation(double a, double b, double c)
 	}
 }
 
+int area(int lenght, int width)
+{
+	return lenght * width;
+}
+

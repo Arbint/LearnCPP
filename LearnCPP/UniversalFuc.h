@@ -441,4 +441,6 @@ std::vector<T> GetReaptedElements(std::vector<T> VectorToCheck)
 	return repeatedElements;
 }
 
+int area(int lenght, int width);
+
 using namespace io;
