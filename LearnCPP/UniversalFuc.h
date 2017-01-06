@@ -446,4 +446,18 @@ int area(int lenght, int width);
 void error(string errorInfo);
 void error(std::string messageOne, std::string messageTwo);
 
+// run-time checked narrowing cast (type conversion). See ???.
+template<class TypeToConvertTo, class TypeToConvertFrom> 
+TypeToConvertTo narrow_cast(const TypeToConvertFrom& ConvertFormVal)
+{
+	//declare and initialize a TypeToCOnverTo called RetrunVal from the ConvertFromVal
+	TypeToConvertTo RetrunVal = TypeToConvertTo(ConvertFormVal);
+
+	//if we try to convert it back and we are not getting the same value, that means we have lost data during previous conversion
+	//if so, we throw an error using our error fuction right above
+	if (TypeToConvertFrom(RetrunVal) != ConvertFormVal) error(string("info loss"));
+
+	return RetrunVal;
+}
+
 using namespace io;

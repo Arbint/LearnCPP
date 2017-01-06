@@ -184,3 +184,8 @@ int badInputErrors()
 		
 	}
 }
+
+void NarrowTest()
+{
+	
+}
