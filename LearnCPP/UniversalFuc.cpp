@@ -308,3 +308,13 @@ int area(int lenght, int width)
 	return lenght * width;
 }
 
+void error(string errorInfo)
+{
+	throw runtime_error(errorInfo);
+}
+
+void error(std::string messageOne, std::string messageTwo)
+{
+	throw runtime_error(messageOne + messageTwo);
+}
+

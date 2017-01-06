@@ -443,4 +443,7 @@ std::vector<T> GetReaptedElements(std::vector<T> VectorToCheck)
 
 int area(int lenght, int width);
 
+void error(string errorInfo);
+void error(std::string messageOne, std::string messageTwo);
+
 using namespace io;

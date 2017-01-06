@@ -17,7 +17,7 @@ void getNumberAndDecideOddOrEven();
 void getLiteralNumAndPrintDigit();
 
 void calculateTwoValues();
-
+ 
 void HowMuchMoneyDoYouHave();
 
 //portaintial error

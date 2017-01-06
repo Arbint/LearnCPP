@@ -8,28 +8,30 @@
 #include "trigger.h"
 #include "InputManager.h"
 
-
-
 int main()
 {
 	/*void(*GameToPlay)() = NameScoreRecorder;
 	PlayBox(GameToPlay);
 	*/
-	try
-	{
-		int x = -1;
-		int y = 2;
-		int z = 4;
-		//...
-		int area1 = AreaWithException(x, y);
-		int area2 = FramedArea(1, z);
-		int area3 = FramedArea(y, z);
-		double ratio = area1 / area3;
+	try{
+		double d = 0;
+		std::cin >> d;
+		if (!std::cin)
+		{
+			error("ok, I cannot find any double to read");
+		}
+		
 	}
-	catch (BadArea Area)
+	catch (runtime_error& e)
 	{
-		std::cout << "Oops, bad arguments to area()\n";
+		std::cerr <<"Runtime error: " << e.what() << std::endl;
+		return 1;
 	}
-	return 0;
+	catch (...)
+	{
+		std::cerr << "Unknown Exception" << std::endl;
+	}
+	error("gaga");
 
+	return 0;
 }

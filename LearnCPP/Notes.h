@@ -109,3 +109,78 @@ int AreaWithException(int length, int width)
 	}
 	return length*width;
 }
+
+//so now, what we can do is try catch like this:
+void tryCatchException()
+{
+	
+	try
+	{
+		int x = -1;
+		int y = 2;
+		int z = 4;
+		//...
+		int area1 = AreaWithException(x, y);
+		int area2 = FramedArea(1, z);
+		int area3 = FramedArea(y, z);
+		double ratio = area1 / area3;
+	}
+	catch (BadArea badAreaCatched)
+	{
+		//this is to get rid of the none referenced variable warning when compiling
+		badAreaCatched = BadArea();
+		std::cout << "you got bad input for area" << std::endl;
+		//do something
+
+	}
+}
+
+
+//Out of range error:
+int outOfRangeError()
+{
+	try
+	{
+		vector<int> v;
+		for (int x; cin >> x;)
+		{
+			v.push_back(x);
+		}
+		for (int i = 0; i <= v.size(); ++i)
+		{
+			cout << "v[" << i << "] ==" << v[i] << std::endl;
+		}
+	}
+	catch (out_of_range)
+	{
+		cerr << "Opps! Ranage Error\n";
+		return 1;
+	}
+	catch (...)
+	{
+		cerr << "Exception: something went wrong\n";
+		return 2;
+	}
+	return 0;
+}
+
+
+//Bad input Errors
+int badInputErrors()
+{
+	double d = 0;
+	std::cin >> d;
+	
+	//!std::cin means cin is not in a good state, means that the previous operation on cin failed.
+	if (!std::cin)
+	{
+		return 1;
+		//the last read didn't succeed, so we take some other action
+	}
+	else
+	{
+		//all is well, and we can try reading again
+		return 0;
+		
+	}
+}
