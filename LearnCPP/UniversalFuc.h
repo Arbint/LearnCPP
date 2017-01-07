@@ -460,4 +460,9 @@ TypeToConvertTo narrow_cast(const TypeToConvertFrom& ConvertFormVal)
 	return RetrunVal;
 }
 
+/*get the area of the hexagon
+*	Param - SideLenght The lenght of the side of the Hexagon
+*/
+double GetHexagonArea(double SideLenght);
+
 using namespace io;

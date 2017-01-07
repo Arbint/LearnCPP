@@ -318,3 +318,8 @@ void error(std::string messageOne, std::string messageTwo)
 	throw runtime_error(messageOne + messageTwo);
 }
 
+double GetHexagonArea(double SideLenght)
+{
+	return 6 * ((SideLenght/2) * std::sqrt(square(SideLenght) - square(SideLenght/2)));
+}
+

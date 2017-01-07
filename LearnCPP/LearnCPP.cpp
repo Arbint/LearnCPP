@@ -10,10 +10,24 @@
 
 int main()
 {
-	/*void(*GameToPlay)() = NameScoreRecorder;
-	PlayBox(GameToPlay);
-	*/
+	try {
+		/*void(*GameToPlay)() = NameScoreRecorder;
+		PlayBox(GameToPlay);
+		*/
 
+		std::cout << std::sqrt(3) * 6 << std::endl;
+		std::cout << GetHexagonArea(2) << std::endl;
+		return 0;
+		}
+	
 
-	return 0;
+	//Error Catching Blocks:
+	catch (BadArea)
+	{
+		std::cout << "the area calculation is having bad input somewhere." << std::endl;
+	}
+	catch (...)
+	{
+
+	}
 }
