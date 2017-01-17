@@ -168,24 +168,24 @@ int outOfRangeError()
 //Bad input Errors
 int badInputErrors()
 {
-	double d = 0;
-	std::cin >> d;
-	
-	//!std::cin means cin is not in a good state, means that the previous operation on cin failed.
-	if (!std::cin)
+	try
 	{
-		return 1;
-		//the last read didn't succeed, so we take some other action
+		double d = 0;
+		std::cin >> d;
+		if (!cin)
+		{
+			throw(runtime_error("this is getting out of hand"));
+		}
+
 	}
-	else
+	catch (runtime_error& error)
 	{
-		//all is well, and we can try reading again
-		return 0;
-		
+		std::cerr << error.what() << std::endl;
+		return 2;
 	}
 }
 
 void NarrowTest()
 {
-	
+	 
 }
