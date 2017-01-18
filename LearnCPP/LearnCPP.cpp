@@ -10,24 +10,23 @@
 
 int main()
 {
+	/*void(*GameToPlay)() = NameScoreRecorder;
+	PlayBox(GameToPlay);
+	*/
 	try {
-		/*void(*GameToPlay)() = NameScoreRecorder;
-		PlayBox(GameToPlay);
-		*/
-
-		std::cout << std::sqrt(3) * 6 << std::endl;
-		std::cout << GetHexagonArea(2) << std::endl;
-		return 0;
-		}
-	
-
-	//Error Catching Blocks:
-	catch (BadArea)
-	{
-		std::cout << "the area calculation is having bad input somewhere." << std::endl;
+		int cTempreature = io::GetUerInput<int>("Please give me the temperature in Celsius:");
+		std::cout << "it is " << ctok(cTempreature) << " Kalvin out side";
 	}
-	catch (...)
+	catch (runtime_error& error)
 	{
-
+		std::cerr << error.what() << std::endl;
+	}
+	catch (BadRange& error)
+	{
+		std::cerr << "Runtime Error: " << error.what() << std::endl;
+	}
+	catch(...)
+	{
+		std::cerr << "Unknown error happens." << std::endl;
 	}
 }

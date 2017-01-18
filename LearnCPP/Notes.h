@@ -47,7 +47,7 @@ std::function<bool(const Message&, const Message&)> functorRep = std::ref(sorter
 std::function<bool(const MessageSorter&, int)> memberRep = &MessageSorter::memberOfMessageSorter;
 
 //member variable:
-std::function<int(MessageSorter const&)> m_VarRep = &MessageSorter::_x;
+std::function<int(const MessageSorter&)> m_VarRep = &MessageSorter::_x;
 
 // lambdas:
 std::function<bool(const std::string&)> lambdaRep = [](const std::string& gaga) {if (gaga == "happy") { std::cout << "it's happy" << std::endl; return true; }return false; };

@@ -135,6 +135,12 @@ void unitInt::convertTo(std::string newUnit, double raito)
 	setAmount(amount * raito);
 }
 
+void unitInt::SetAmountAndUnit(double newAmount, std::string NewUnit)
+{
+	amount = newAmount;
+	unit = NewUnit;
+}
+
 bool unitInt::operator>(unitInt& rhs)
 {
 	return amount > rhs.getAmount();

@@ -103,6 +103,7 @@ public:
 	{
 		return unit;
 	}
+	void SetAmountAndUnit(double newAmount, std::string NewUnit);
 public:
 	bool operator>(unitInt& rhs);
 	bool operator<(unitInt& rhs);
@@ -319,3 +320,22 @@ public:
 	}
 };
 
+class BadRange {
+	std::string _ErrorMessage;
+public:
+	BadRange(std::string InMessage)
+		:_ErrorMessage(InMessage)
+	{
+
+	}
+	BadRange() = delete;
+	std::string what()
+	{
+		return _ErrorMessage;
+	}
+};
+
+class Temperature : public unitInt
+{
+
+};

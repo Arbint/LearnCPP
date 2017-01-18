@@ -455,8 +455,10 @@ TypeToConvertTo narrow_cast(const TypeToConvertFrom& ConvertFormVal)
 
 	//if we try to convert it back and we are not getting the same value, that means we have lost data during previous conversion
 	//if so, we throw an error using our error fuction right above
-	if (TypeToConvertFrom(RetrunVal) != ConvertFormVal) error(string("info loss"));
-
+	if (TypeToConvertFrom(RetrunVal) != ConvertFormVal) 
+	{
+		error(string("info loss"));
+	}
 	return RetrunVal;
 }
 

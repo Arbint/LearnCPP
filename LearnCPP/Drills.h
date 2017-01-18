@@ -69,6 +69,9 @@ void SolveQuadraticEquation();
 
 void NameScoreRecorder();
 
+double ctok(double c);
+Temperature CelsiusKalvienConverter(Temperature inTemperature);
+
 EWinLose PaperRockScissorsCompare(RockPaperScissors PlayerOneChoice, RockPaperScissors PlayerTwoChoice);
 
 std::string PaperRockScissorsToString(RockPaperScissors inEnum);

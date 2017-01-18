@@ -979,3 +979,42 @@ void NameScoreRecorder()
 		std::cin >> userChoice;
 	}
 }
+
+double ctok(double c)
+{
+	//pre-check of the argument
+	if (c < -273.15)
+	{
+		throw BadRange("Temperature cannot be lower than -273.15");
+	}
+	double k = c + 273.15;
+	return k;
+}
+
+Temperature CelsiusKalvienConverter(Temperature inTemperature)
+{
+	if (inTemperature.getUnit() != "C" || inTemperature.getUnit() != "K")
+	{
+		error("Wrong Data Type of Temperature");
+	}
+
+	if (inTemperature.getUnit() == "C" && inTemperature.getAmount() < -273.15)
+	{
+		error("Temperature cannot be lower than -273.15 C");
+	}
+
+	if (inTemperature.getUnit() == "K" && inTemperature.getAmount() < 0)
+	{
+		error("Temperature cannot be lower than 0 K");
+	}
+
+	Temperature outTemperature;
+	if (inTemperature.getUnit() == "C")
+	{
+		inTemperature.SetAmountAndUnit(inTemperature.getAmount() - 273.15, "K");
+	}
+	else if (inTemperature.getUnit() == "T")
+	{
+		inTemperature.SetAmountAndUnit(inTemperature.getAmount() + 273.15, "C");
+	}
+}
