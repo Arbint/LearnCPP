@@ -10,12 +10,11 @@
 
 int main()
 {
-	/*void(*GameToPlay)() = NameScoreRecorder;
-	PlayBox(GameToPlay);
-	*/
-	try {
-		int cTempreature = io::GetUerInput<int>("Please give me the temperature in Celsius:");
-		std::cout << "it is " << ctok(cTempreature) << " Kalvin out side";
+	
+	try
+	{	
+		std::function<void()> GameToPlay = GetBigestFibonacci;
+		PlayBox(GameToPlay);	
 	}
 	catch (runtime_error& error)
 	{

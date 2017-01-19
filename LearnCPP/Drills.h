@@ -75,3 +75,11 @@ Temperature CelsiusKalvienConverter(Temperature inTemperature);
 EWinLose PaperRockScissorsCompare(RockPaperScissors PlayerOneChoice, RockPaperScissors PlayerTwoChoice);
 
 std::string PaperRockScissorsToString(RockPaperScissors inEnum);
+
+void TemperatureConverter();
+
+void GetFirstNNumbersAddedTogether();
+
+void GetNumbersAndShowDifferences();
+
+void GetBigestFibonacci();

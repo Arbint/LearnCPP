@@ -32,7 +32,7 @@ std::istream& operator >> (std::istream& out, unitInt& rhs)
 		goto WrongInputRedoLabel;
 	}
 	//need for the readlengthInMultiUnit() drill to work, thinkg of making a new class for it
-	if (inUnit == "m" || inUnit == "cm" || inUnit == "inch" || inUnit == "foot")
+	if (inUnit == "m" || inUnit == "cm" || inUnit == "inch" || inUnit == "foot" || inUnit == "C" || inUnit == "K")
 	{
 		rhs.setAmount(inAmount);
 		rhs.setUnit(inUnit);

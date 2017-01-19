@@ -836,13 +836,106 @@ std::string PaperRockScissorsToString(RockPaperScissors inEnum)
 	}
 }
 
+void TemperatureConverter()
+{
+	Temperature temp(0, "C");
+	std::cout << "Please give me the temperature:\n";
+	std::cin >> temp;
+	while (!cin || (temp.getUnit() != "C" && temp.getUnit() != "K"))
+	{
+		std::cin.clear();
+		flushAndResetBuffer();
+		std::cout << "Wrong Import" << std::endl;
+		std::cin >> temp;
+	}
+
+	std::cout << "You typed in: " << temp << std::endl;
+
+	Temperature ConvertTemp = CelsiusKalvienConverter(temp);
+	std::cout << "that means: " << ConvertTemp << std::endl;
+}
+
+void GetFirstNNumbersAddedTogether()
+{
+	std::cout << "How many do you want to add Together: " << std::endl;
+	int Number = io::GetUerInput<int>();
+
+	while (Number <= 0)
+	{
+		std::cout << "Please give me a positive number: " << std::endl;
+		std::cin >> Number;;
+	}
+
+	std::vector<int> numbers;
+	io::getMultiUserInputs<int>("Please Give the numbers:", numbers);
+	while (numbers.size() < Number)
+	{
+		std::string wrongInfo = "Not Enough Numbers to calculate, you need at least " + std::to_string(Number);
+		io::getMultiUserInputs<int>(wrongInfo, numbers, -1, false);
+	}
+	double TestResult = 0;
+	int Result = 0;
+	for (int i = 0; i < Number; ++i)
+	{
+		TestResult += numbers[i];
+		Result += numbers[i];
+	}
+	if (Result != TestResult)
+	{
+		std::cout << "The sum is out of the range of what an int can store." << std::endl;
+		std::cout << TestResult << "\n";
+	}
+	else
+	{
+		std::cout << "The sum of the first " << Number << " is: " << Result << std::endl;
+	}
+}
+
+void GetNumbersAndShowDifferences()
+{
+	std::vector<double> Numbers;
+	io::getMultiUserInputs<double>("Please give me a few Numbers: ", Numbers);
+	while (Numbers.size() < 2)
+	{
+		io::getMultiUserInputs<double>("I need at least 2 numbers, please re enter: ", Numbers, -1, false);
+	}
+	for (int i = 0; i < (Numbers.size() - 1); ++i)
+	{
+		std::cout << "The different between " << Numbers[i] << " and " << Numbers[i + 1] << " is: " << Numbers[i] - Numbers[i + 1] << std::endl;
+	}
+}
+
+void GetBigestFibonacci()
+{
+	double PreviousFibnacci = 1;
+	double PPreviousFibnacci = 0;
+	int FIbnacciConuntedNow = 1;
+	double TestFeb = 1;
+	while (true)
+	{
+		FIbnacciConuntedNow = PreviousFibnacci + PPreviousFibnacci;
+		TestFeb = PreviousFibnacci + PPreviousFibnacci;
+		if (FIbnacciConuntedNow != TestFeb)
+		{
+			break;
+		}
+		PPreviousFibnacci = PreviousFibnacci;
+		PreviousFibnacci = FIbnacciConuntedNow;
+	}
+	std::cout << "The biggest Fibonacci in Int is: " << static_cast<int>(PreviousFibnacci) << std::endl;
+}
+
 void PlayBox(std::function<void()> GameToPlay)
 {
 	int command = 0;
 	while (command != 2)
 	{
 		GameToPlay();
-		flushAndResetBuffer();
+		std::string line;
+		if (getline(std::cin, line))
+		{
+			flushAndResetBuffer();
+		}
 		std::cout << "do you want to play again?\n1.Yes\n2.No\n";
 		std::cin >> command;
 		while (command < 1 || command > 2)
@@ -993,7 +1086,7 @@ double ctok(double c)
 
 Temperature CelsiusKalvienConverter(Temperature inTemperature)
 {
-	if (inTemperature.getUnit() != "C" || inTemperature.getUnit() != "K")
+	if (inTemperature.getUnit() != "C" && inTemperature.getUnit() != "K")
 	{
 		error("Wrong Data Type of Temperature");
 	}
@@ -1008,13 +1101,14 @@ Temperature CelsiusKalvienConverter(Temperature inTemperature)
 		error("Temperature cannot be lower than 0 K");
 	}
 
-	Temperature outTemperature;
+	Temperature outTemperature(0, "C");
 	if (inTemperature.getUnit() == "C")
 	{
-		inTemperature.SetAmountAndUnit(inTemperature.getAmount() - 273.15, "K");
+		outTemperature.SetAmountAndUnit(inTemperature.getAmount() - 273.15, "K");
 	}
-	else if (inTemperature.getUnit() == "T")
+	else if (inTemperature.getUnit() == "K")
 	{
-		inTemperature.SetAmountAndUnit(inTemperature.getAmount() + 273.15, "C");
+		outTemperature.SetAmountAndUnit(inTemperature.getAmount() + 273.15, "C");
 	}
+	return outTemperature;
 }

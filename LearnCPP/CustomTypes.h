@@ -338,4 +338,13 @@ public:
 class Temperature : public unitInt
 {
 
+public:
+	Temperature(int Amount, std::string Unit)
+		:unitInt(Amount, Unit)
+	{
+
+	}
+	~Temperature()
+	{
+	}
 };
