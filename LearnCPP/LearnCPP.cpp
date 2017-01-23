@@ -10,7 +10,6 @@
 
 int main()
 {
-	
 	try
 	{	
 		std::function<void()> GameToPlay = GetBigestFibonacci;

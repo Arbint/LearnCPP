@@ -253,6 +253,7 @@ void insertLine(int lineAmount = 1);
 
 void replaceWord(std::string& StringToAlter, std::vector<string>& WordsToReplace, std::string wordToReplaceWith);
 
+//Clear and reset the cin buffer.
 void flushAndResetBuffer();
 
 bool isSingleDigit(double testedNumber);
