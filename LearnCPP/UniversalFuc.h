@@ -297,6 +297,7 @@ T randomNmuberBasedOnCurrentTime(T rangMin, T RangeMax)
 	int randomSeed = getANumberBasedOnCurentTime();
 	std::srand(randomSeed);
 
+	//Get a random number:
 	return rangMin + (T)rand() % (RangeMax + 1 - rangMin);
 	
 }

@@ -12,8 +12,9 @@ int main()
 {
 	try
 	{	
-		std::function<void()> GameToPlay = GetBigestFibonacci;
-		PlayBox(GameToPlay);	
+		std::function<void()> GameToPlay = BullsAndCows;
+		PlayBox(GameToPlay);
+
 	}
 	catch (runtime_error& error)
 	{

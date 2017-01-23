@@ -83,3 +83,5 @@ void GetFirstNNumbersAddedTogether();
 void GetNumbersAndShowDifferences();
 
 void GetBigestFibonacci();
+
+void BullsAndCows();

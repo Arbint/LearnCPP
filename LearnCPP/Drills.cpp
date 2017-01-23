@@ -925,6 +925,8 @@ void GetBigestFibonacci()
 	std::cout << "The biggest Fibonacci in Int is: " << static_cast<int>(PreviousFibnacci) << std::endl;
 }
 
+
+
 void PlayBox(std::function<void()> GameToPlay)
 {
 	int command = 0;
@@ -1110,4 +1112,65 @@ Temperature CelsiusKalvienConverter(Temperature inTemperature)
 		outTemperature.SetAmountAndUnit(inTemperature.getAmount() + 273.15, "C");
 	}
 	return outTemperature;
+}
+
+
+void BullsAndCows()
+{
+	std::vector<int> Numbers{1, 1, 1, 1};
+	
+	
+	while (!isAllElementUnique(Numbers))
+	{
+		//Get a random seed using current time
+		int CurrentTimeInSec = getANumberBasedOnCurentTime();
+		std::srand(CurrentTimeInSec);
+		
+		
+		//Populate Numbers;
+		for (int index = 0; index < 4; ++index)
+		{
+			//Get a random Number from 0 t0 9:
+			int RandNumber = rand() % 10;
+			Numbers[index] = RandNumber;
+		}
+	}
+
+	int Command = 0;
+	while (Command != 2)
+	{
+		flushAndResetBuffer();
+		std::vector<int> UserGuess;
+		io::getMultiUserInputs<int>("OK, Type in you guess: ", UserGuess, 4);
+		while (!isAllElementUnique(UserGuess))
+		{
+			io::getMultiUserInputs<int>("there are repeations in the input, please retype: ", UserGuess, 4, false);
+		}
+		std::cout << "Your Guess is: ";
+		printVector(UserGuess);
+		int NumBulls = 0;
+		int NumCows = 0;
+
+		for (int index = 0; index < 4; ++index)
+		{
+			if (Numbers[index] == UserGuess[index])
+			{
+				NumBulls += 1;
+			}
+			else if (VectorHasElement<int>(Numbers, UserGuess[index]))
+			{
+				NumCows += 1;
+			}
+		}
+		if (NumBulls == 4)
+		{
+			std::cout << "you win!" << std::endl;
+			break;
+		}
+		std::cout << "You got: " << NumBulls << " Bulls, " << NumCows << " Cows." << std::endl;
+		std::cout << "Do you want to try again?\n1,Yes, 2.No\n";
+		std::cin >> Command;
+	}
+	std::cout << "The 4 Number is:\n";
+	printVector(Numbers);
 }
