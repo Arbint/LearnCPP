@@ -10,7 +10,7 @@ int io::printWithEndl(int thingToPrint)
 
 bool io::isBufferClean()
 {
-	if (std::cin.rdbuf()->in_avail() == -1)
+	if (std::cin.rdbuf()->in_avail() == 1)
 	{
 		return true;
 	}

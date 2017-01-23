@@ -12,8 +12,9 @@ int main()
 {
 	try
 	{	
-		std::function<void()> GameToPlay = BullsAndCows;
+		std::function<void()> GameToPlay = BookExpresionCalculator;
 		PlayBox(GameToPlay);
+	
 
 	}
 	catch (runtime_error& error)

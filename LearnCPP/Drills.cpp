@@ -1174,3 +1174,140 @@ void BullsAndCows()
 	std::cout << "The 4 Number is:\n";
 	printVector(Numbers);
 }
+
+void DayOfTheWeekValue()
+{
+	//I have no idea what this thing does:
+	/*
+	*/
+}
+
+void ExpressionCalculator()
+{
+	std::cout << "Please enter expressions(we can handle + - * \ and chainning):\n";
+	std::vector<int> numbers;
+	std::vector<char> ops;
+	
+	bool isImportValid = false;
+
+	while (!isImportValid)
+	{
+		flushAndResetBuffer();
+		isImportValid = true;
+		//Getting use Input
+		while (!isBufferClean())
+		{
+			int newNum = 0;
+			std::cin >> newNum;
+			if (std::cin.fail())
+			{
+				std::cout << "WrongInput, please re type your expression: " << std::endl;
+				numbers.clear();
+				ops.clear();
+				isImportValid = false;
+				break;
+			}
+			numbers.push_back(newNum);
+
+			if (isBufferClean())
+			{
+				break;
+			}
+
+			char op = '=';
+			std::cin >> op;
+			if (std::cin.fail() || !isOperationValid(op))
+			{
+				std::cout << "WrongInput, please re type your expression: " << std::endl;
+				numbers.clear();
+				ops.clear();
+				isImportValid = false;
+				break;
+			}
+			ops.push_back(op);
+		}
+		if (numbers.size() - 1 != ops.size() && isImportValid)
+		{
+			std::cout << "WrongInput, please re type your expression: " << std::endl;
+			numbers.clear();
+			ops.clear();
+			isImportValid = false;
+		}
+		
+	}
+	std::cout << "you typed in:\n" << std::endl;
+	for (int index = 0; index < numbers.size(); ++index)
+	{
+		if (index != (numbers.size() - 1))
+		{
+			std::cout << numbers[index] << ops[index];
+		}
+		else
+		{
+			std::cout << numbers[index] << std::endl;
+		}
+	}
+
+	//find out the result:
+	double CalculatingResult = calculatingExpression(numbers, ops);
+	std::cout << "The Result is: " << std::endl;
+	std::cout << CalculatingResult << std::endl;
+}
+
+void BookExpresionCalculator()
+{
+	std::cout << "Please Enter Expressions(we can handle  + - * / ):\n";
+	std::cout << "add an x to end expression(e.g. 1+2*3x): ";
+	int lval = 0;
+	int rval = 0;
+	cin >> lval;
+	
+	//check if the first import is good:
+	if (std::cin.fail())
+	{
+		error("No First Operand");
+	}
+
+	for (char op; cin >> op;)
+	{
+		if (op!='x')
+		{
+			cin >> rval;
+		}
+		if (std::cin.fail())
+		{
+			error("no second operand");
+		}
+	
+		switch (op)
+		{
+		case '+':
+			lval += rval;
+			break;
+		case '-':
+			lval -= rval;
+			break;
+		case '*':
+			lval *= rval;
+			break;
+		case'/':
+			lval /= rval;
+			break;
+		default:
+			cout << "result: " << lval << std::endl;
+			return;
+		}
+	}
+	error("bad expression");
+}
+
+bool isOperationValid(char operation)
+{
+	if (operation == '+' || operation == '-' || operation == '*' || operation == '/')
+	{
+		return true;
+	}
+	return false;
+}
+
+

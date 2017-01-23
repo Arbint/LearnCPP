@@ -85,3 +85,11 @@ void GetNumbersAndShowDifferences();
 void GetBigestFibonacci();
 
 void BullsAndCows();
+
+void DayOfTheWeekValue();
+
+void ExpressionCalculator();
+
+void BookExpresionCalculator();
+
+bool isOperationValid(char operation);
