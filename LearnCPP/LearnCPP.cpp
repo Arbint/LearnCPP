@@ -10,11 +10,12 @@
 
 int main()
 {
-	
 	try
 	{	
-		std::function<void()> GameToPlay = GetBigestFibonacci;
-		PlayBox(GameToPlay);	
+	/*	std::function<void()> GameToPlay = BookExpresionCalculator;
+		PlayBox(GameToPlay);
+	*/
+			
 	}
 	catch (runtime_error& error)
 	{

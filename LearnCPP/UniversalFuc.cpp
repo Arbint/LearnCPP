@@ -10,7 +10,7 @@ int io::printWithEndl(int thingToPrint)
 
 bool io::isBufferClean()
 {
-	if ((std::cin.rdbuf()->in_avail() - 1) == 0)
+	if (std::cin.rdbuf()->in_avail() == 1)
 	{
 		return true;
 	}
@@ -116,7 +116,10 @@ void replaceWord(std::string& StringToAlter, std::vector<string>& WordsToReplace
 void flushAndResetBuffer()
 {
 	std::cin.clear();
-	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+	//std::cin.rdbuf() returns a pointer to the stream buffer associated with std::cin, which is std::streambuf
+	//std::streambuf::in_avail returns the number of characters available in the get area of the streambuf 
+	//(or -1 if no characters are available).
+	std::cin.ignore(std::cin.rdbuf()->in_avail());
 }
 
 bool isSingleDigit(double testedNumber)

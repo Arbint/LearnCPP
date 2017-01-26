@@ -253,6 +253,7 @@ void insertLine(int lineAmount = 1);
 
 void replaceWord(std::string& StringToAlter, std::vector<string>& WordsToReplace, std::string wordToReplaceWith);
 
+//Clear and reset the cin buffer.
 void flushAndResetBuffer();
 
 bool isSingleDigit(double testedNumber);
@@ -296,6 +297,7 @@ T randomNmuberBasedOnCurrentTime(T rangMin, T RangeMax)
 	int randomSeed = getANumberBasedOnCurentTime();
 	std::srand(randomSeed);
 
+	//Get a random number:
 	return rangMin + (T)rand() % (RangeMax + 1 - rangMin);
 	
 }
@@ -468,3 +470,44 @@ TypeToConvertTo narrow_cast(const TypeToConvertFrom& ConvertFormVal)
 double GetHexagonArea(double SideLenght);
 
 using namespace io;
+
+template<typename T>
+T calculatingExpression(std::vector<T> Numbers, std::vector<char> Ops)
+{
+	if (Numbers.size() - 1 != Ops.size())
+	{
+		std::cout << "WrongArgu" << std::endl;
+		throw WrongArg("calculatingExpression has wrong arguments");
+	}
+	for (char op : Ops)
+	{
+		if (!isOperationValid(op))
+		{
+			std::cout << "WrongArgu" << std::endl;
+			throw WrongArg("calculatingExpression has wrong arguments");
+		}
+	}
+
+	T RetrunResult = Numbers[0];
+	for (int index = 0; index < Ops.size(); ++index)
+	{
+		switch (Ops[index])
+		{
+			case '+':
+				RetrunResult += Numbers[index + 1];
+				break;
+			case '-':
+				RetrunResult -= Numbers[index + 1];
+				break;
+			case '*':
+				RetrunResult *= Numbers[index + 1];
+				break;
+			case '/':
+				RetrunResult /= Numbers[index + 1];
+				break;
+			default:
+				break;
+		}
+	}
+	return RetrunResult;
+}

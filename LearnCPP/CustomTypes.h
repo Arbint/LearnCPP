@@ -348,3 +348,26 @@ public:
 	{
 	}
 };
+
+class WrongArg {
+	std::string _info;
+public:
+	WrongArg(std::string inInfo)
+		:_info(inInfo)
+	{
+
+	}
+	std::string what()
+	{
+		return _info;
+	}
+
+};
+
+class Token
+{
+public:
+	char kind;
+	double value;
+
+};
