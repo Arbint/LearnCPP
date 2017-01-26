@@ -93,3 +93,5 @@ void ExpressionCalculator();
 void BookExpresionCalculator();
 
 bool isOperationValid(char operation);
+
+Token get_token();
