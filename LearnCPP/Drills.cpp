@@ -931,8 +931,11 @@ void PlayBox(std::function<void()> GameToPlay)
 	while (command != 2)
 	{
 		GameToPlay();
-		flushAndResetBuffer();
-		
+		std::string line;
+		if (getline(std::cin, line))
+		{
+			flushAndResetBuffer();
+		}
 		std::cout << "do you want to play again?\n1.Yes\n2.No\n";
 		std::cin >> command;
 		while (command < 1 || command > 2)
@@ -941,7 +944,6 @@ void PlayBox(std::function<void()> GameToPlay)
 			std::cin >> command;
 		}
 		flushAndResetBuffer();
-		std::cout << "End Buffer Flushed" << std::endl;
 	}
 	std::cout << "Thanks for playing.." << std::endl;
 
