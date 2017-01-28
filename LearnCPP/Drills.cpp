@@ -1310,3 +1310,8 @@ bool isOperationValid(char operation)
 	return false;
 }
 
+Token get_token()
+{
+
+}
+
