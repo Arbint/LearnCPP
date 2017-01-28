@@ -1310,4 +1310,3 @@ bool isOperationValid(char operation)
 	return false;
 }
 
-
