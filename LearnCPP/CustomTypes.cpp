@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#include "UniversalFuc.h"
 #include "CustomTypes.h"
 
 std::ostream& operator<<(std::ostream& out, unitInt& rhs)
@@ -149,4 +150,52 @@ bool unitInt::operator>(unitInt& rhs)
 bool unitInt::operator<(unitInt& rhs)
 {
 	return amount < rhs.getAmount();
+}
+
+Token Token_Stream::get()
+{
+	if (full)
+	{
+		full = false;
+		return buffer;
+	}
+	char getAnInput;
+	std::cin >> getAnInput;
+	switch (getAnInput)
+	{
+
+	//if the cin letter is directives or operators, return a token built from that
+	case ';'://for printing
+	case 'q'://for quitting
+	case '(': case ')': case '+': case '-': case '*': case '/':
+		std::cout << "First attempt to get input is: " << getAnInput << std::endl;
+		return Token{ getAnInput }; // let each character represent itself
+
+	//if the cin letter is a number or a decimal, put the number back and red it as a double
+	//return a Token built from that
+	case '.':
+	case '0': case '1': case '2': case '3': case '4': case '5':
+	case '6': case '7': case '8': case '9':
+	{
+		cin.putback(getAnInput);
+		double getADouble;
+		std::cin >> getADouble;
+		std::cout << "First attempt to get input is: " << getADouble << std::endl;
+		return Token{ '8', getADouble };
+	}
+
+	default:
+		error("Bad Token");
+		break;
+	}
+}
+
+void Token_Stream::putback(Token t)
+{
+	if (full)
+	{
+		error("putback() into a full buffer");
+	}
+	buffer = t;
+	full = true;
 }

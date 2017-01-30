@@ -371,3 +371,20 @@ public:
 	double value;
 
 };
+
+class Token_Stream {
+public:
+	//user interface
+	Token_Stream()
+	{
+	}//make a token_stream that reads from cin
+	Token get();
+	void putback(Token t);
+
+private:
+	//implementation details
+	//Not directly accessible to user of Token_stream
+	bool full{ false };
+	Token buffer;
+
+};

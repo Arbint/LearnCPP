@@ -1316,49 +1316,26 @@ bool isOperationValid(char operation)
 	return false;
 }
 
-Token get_token()
-{
-	char redOneLetter;
-	std::cin >> redOneLetter;
-	switch (redOneLetter)
-	{
-	case '+': case '-': case '*': case '/':
-		return Token{redOneLetter};
-	case '0': case '1': case '2': case '3': case '4':
-	case '5': case '6': case '7': case '8': case '9':
-	case '.':
-		{
-			std::cin.putback(redOneLetter);
-			double tokenValue = 0;
-			std::cin >> tokenValue;
-			return Token{ '8', tokenValue };
-		}
-			
-	default:
-		{
-			error("invalid token");
-			break;
-		}
-	}
-}
-
 double expression()
 {
+	Token_Stream InputReader;
 	double left = term();
-	Token t = get_token();
+	Token t = InputReader.get();
 	while (true)
 	{
 		switch (t.kind)
 		{
 		case '+':
 			left += term();
-			t = get_token();
+			//get the next token to continue the next while loop
+			t = InputReader.get();
 			break;
 		case '-':
 			left -= term();
-			t = get_token();
+			t = InputReader.get();
 			break;
 		default:
+			InputReader.putback(t);
 			return left;
 		}
 	
@@ -1368,15 +1345,16 @@ double expression()
 
 double term()
 {
+	Token_Stream InputReader;
 	double left = primary();
-	Token t = get_token();
+	Token t = InputReader.get();
 	while (true)
 	{
 		switch (t.kind)
 		{
 		case '*':
 			left *= primary();
-			t = get_token();
+			t = InputReader.get();
 			break;
 		case '/':
 		//block is need in a case of a switch statement if you want to define and initialize variables
@@ -1387,24 +1365,27 @@ double term()
 				error("divided by 0");
 			}
 			left /= nexPrim;
-			t = get_token();
+			t = InputReader.get();
 			break;
 		}
 		default:
+			InputReader.putback(t);
 			return left;
+
 		}
 	}
 }
 
 double primary()
 {
-	Token t = get_token();
+	Token_Stream InputReader;
+	Token t = InputReader.get();
 	switch (t.kind)
 	{
 	case '(':
 		{
 			double nextExpression = expression();
-			t = get_token();
+			t = InputReader.get();
 			if (t.kind != ')')
 			{
 				error("')' is expected");
@@ -1417,4 +1398,5 @@ double primary()
 		error("primary expected");
 	}
 }
+
 
