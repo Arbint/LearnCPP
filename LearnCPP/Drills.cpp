@@ -1301,6 +1301,12 @@ void BookExpresionCalculator()
 	error("bad expression");
 }
 
+void WorkingCalculator()
+{
+	std::cout << "Please Enter Expressions(we can handle  + - * / ):\n";
+	std::cout << "the answer is: " << expression() << std::endl;
+}
+
 bool isOperationValid(char operation)
 {
 	if (operation == '+' || operation == '-' || operation == '*' || operation == '/')
@@ -1312,6 +1318,103 @@ bool isOperationValid(char operation)
 
 Token get_token()
 {
+	char redOneLetter;
+	std::cin >> redOneLetter;
+	switch (redOneLetter)
+	{
+	case '+': case '-': case '*': case '/':
+		return Token{redOneLetter};
+	case '0': case '1': case '2': case '3': case '4':
+	case '5': case '6': case '7': case '8': case '9':
+	case '.':
+		{
+			std::cin.putback(redOneLetter);
+			double tokenValue = 0;
+			std::cin >> tokenValue;
+			return Token{ '8', tokenValue };
+		}
+			
+	default:
+		{
+			error("invalid token");
+			break;
+		}
+	}
+}
 
+double expression()
+{
+	double left = term();
+	Token t = get_token();
+	while (true)
+	{
+		switch (t.kind)
+		{
+		case '+':
+			left += term();
+			t = get_token();
+			break;
+		case '-':
+			left -= term();
+			t = get_token();
+			break;
+		default:
+			return left;
+		}
+	
+	}
+	return left;
+}
+
+double term()
+{
+	double left = primary();
+	Token t = get_token();
+	while (true)
+	{
+		switch (t.kind)
+		{
+		case '*':
+			left *= primary();
+			t = get_token();
+			break;
+		case '/':
+		//block is need in a case of a switch statement if you want to define and initialize variables
+		{
+			double nexPrim = primary();
+			if (nexPrim == 0)
+			{
+				error("divided by 0");
+			}
+			left /= nexPrim;
+			t = get_token();
+			break;
+		}
+		default:
+			return left;
+		}
+	}
+}
+
+double primary()
+{
+	Token t = get_token();
+	switch (t.kind)
+	{
+	case '(':
+		{
+			double nextExpression = expression();
+			t = get_token();
+			if (t.kind != ')')
+			{
+				error("')' is expected");
+			}
+			return nextExpression;
+		}
+	case '8':
+		return t.value;
+	default:
+		error("primary expected");
+	}
 }
 

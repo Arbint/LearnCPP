@@ -92,6 +92,11 @@ void ExpressionCalculator();
 
 void BookExpresionCalculator();
 
+void WorkingCalculator();
+
 bool isOperationValid(char operation);
 
 Token get_token();
+double expression();
+double term();
+double primary();
