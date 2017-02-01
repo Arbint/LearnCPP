@@ -1370,7 +1370,6 @@ double term(Token_Stream& InputReader)
 		default:
 			InputReader.putback(t);
 			return left;
-
 		}
 	}
 }
@@ -1392,8 +1391,11 @@ double primary(Token_Stream& InputReader)
 		}
 	case '8':
 		return t.value;
+	case 'q':
+		exit(0);
 	default:
 		error("primary expected");
+		break;
 	}
 }
 

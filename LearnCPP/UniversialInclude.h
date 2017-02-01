@@ -15,5 +15,6 @@
 #include "UniversalMacros.h"
 #include "CustomTypes.h"
 #include <functional>
+#include <stdlib.h>
 
 using namespace std;
