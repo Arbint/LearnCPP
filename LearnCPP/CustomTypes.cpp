@@ -168,7 +168,6 @@ Token Token_Stream::get()
 	case ';'://for printing
 	case 'q'://for quitting
 	case '(': case ')': case '+': case '-': case '*': case '/':
-		std::cout << "First attempt to get input is: " << getAnInput << std::endl;
 		return Token{ getAnInput }; // let each character represent itself
 
 	//if the cin letter is a number or a decimal, put the number back and red it as a double
@@ -180,7 +179,6 @@ Token Token_Stream::get()
 		cin.putback(getAnInput);
 		double getADouble;
 		std::cin >> getADouble;
-		std::cout << "First attempt to get input is: " << getADouble << std::endl;
 		return Token{ '8', getADouble };
 	}
 

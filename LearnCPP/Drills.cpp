@@ -1304,7 +1304,8 @@ void BookExpresionCalculator()
 void WorkingCalculator()
 {
 	std::cout << "Please Enter Expressions(we can handle  + - * / ):\n";
-	std::cout << "the answer is: " << expression() << std::endl;
+	Token_Stream InputReader;
+	std::cout << "the answer is: " << expression(InputReader) << std::endl;
 }
 
 bool isOperationValid(char operation)
@@ -1316,22 +1317,21 @@ bool isOperationValid(char operation)
 	return false;
 }
 
-double expression()
+double expression(Token_Stream& InputReader)
 {
-	Token_Stream InputReader;
-	double left = term();
+	double left = term(InputReader);
 	Token t = InputReader.get();
 	while (true)
 	{
 		switch (t.kind)
 		{
 		case '+':
-			left += term();
+			left += term(InputReader);
 			//get the next token to continue the next while loop
 			t = InputReader.get();
 			break;
 		case '-':
-			left -= term();
+			left -= term(InputReader);
 			t = InputReader.get();
 			break;
 		default:
@@ -1343,23 +1343,22 @@ double expression()
 	return left;
 }
 
-double term()
+double term(Token_Stream& InputReader)
 {
-	Token_Stream InputReader;
-	double left = primary();
+	double left = primary(InputReader);
 	Token t = InputReader.get();
 	while (true)
 	{
 		switch (t.kind)
 		{
 		case '*':
-			left *= primary();
+			left *= primary(InputReader);
 			t = InputReader.get();
 			break;
 		case '/':
 		//block is need in a case of a switch statement if you want to define and initialize variables
 		{
-			double nexPrim = primary();
+			double nexPrim = primary(InputReader);
 			if (nexPrim == 0)
 			{
 				error("divided by 0");
@@ -1376,15 +1375,14 @@ double term()
 	}
 }
 
-double primary()
+double primary(Token_Stream& InputReader)
 {
-	Token_Stream InputReader;
 	Token t = InputReader.get();
 	switch (t.kind)
 	{
 	case '(':
 		{
-			double nextExpression = expression();
+			double nextExpression = expression(InputReader);
 			t = InputReader.get();
 			if (t.kind != ')')
 			{
