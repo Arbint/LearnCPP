@@ -388,3 +388,10 @@ private:
 	Token buffer;
 
 };
+
+class Name_Score
+{
+public:
+	std::string Name;
+	double Score;
+};

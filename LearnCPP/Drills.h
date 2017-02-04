@@ -96,7 +96,6 @@ void WorkingCalculator();
 
 bool isOperationValid(char operation);
 
-
 //an expression is simply a number, or a number * or / by another number or a number * or / by and expression inside ()
 //or, it can be an expression + or - another expression
 double expression(Token_Stream& InputReader);
