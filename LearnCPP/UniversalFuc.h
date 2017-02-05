@@ -511,3 +511,5 @@ T calculatingExpression(std::vector<T> Numbers, std::vector<char> Ops)
 	}
 	return RetrunResult;
 }
+
+Name_Score getNameScore();

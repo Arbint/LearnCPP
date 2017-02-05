@@ -12,10 +12,8 @@ int main()
 {
 	try
 	{	
-		std::function<void()> GameToPlay = WorkingCalculator;
+		std::function<void()> GameToPlay = ScoreRecorderV2;
 		PlayBox(GameToPlay);
-	
-			
 	}
 	catch (runtime_error& error)
 	{

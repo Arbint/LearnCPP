@@ -1317,6 +1317,35 @@ bool isOperationValid(char operation)
 	return false;
 }
 
+void ScoreRecorderV2()
+{
+	std::vector<Name_Score> NameScores;
+	NameScores.push_back(getNameScore());
+	while (!isBufferClean())
+	{
+		NameScores.push_back(getNameScore());
+	}
+	for (Name_Score nsPair : NameScores)
+	{
+		int repeation = 0;
+		for (Name_Score OtherNsPair : NameScores)
+		{
+			if (nsPair.Name == OtherNsPair.Name)
+			{
+				repeation++;
+			}
+			if (repeation >=2)
+			{
+				error("you typed in the same name twice");
+			}
+		}
+	}
+	for (Name_Score nsPair : NameScores)
+	{
+		nsPair.print();
+	}
+}
+
 double expression(Token_Stream& InputReader)
 {
 	double left = term(InputReader);

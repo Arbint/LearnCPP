@@ -10,6 +10,7 @@ int io::printWithEndl(int thingToPrint)
 
 bool io::isBufferClean()
 {
+
 	if (std::cin.rdbuf()->in_avail() == 1)
 	{
 		return true;
@@ -324,5 +325,18 @@ void error(std::string messageOne, std::string messageTwo)
 double GetHexagonArea(double SideLenght)
 {
 	return 6 * ((SideLenght/2) * std::sqrt(square(SideLenght) - square(SideLenght/2)));
+}
+
+Name_Score getNameScore()
+{
+	std::string name;
+	double score;
+	std::cin >> name;
+	std::cin >> score;
+	if (std::cin.fail())
+	{
+		error("Wrong input formate, please use 'name score'(Adam 2)");
+	}
+	return Name_Score(name, score);
 }
 

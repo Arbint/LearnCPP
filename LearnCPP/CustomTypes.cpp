@@ -197,3 +197,8 @@ void Token_Stream::putback(Token t)
 	buffer = t;
 	full = true;
 }
+
+void Name_Score::print()
+{
+	std::cout << Name << " " << Score << std::endl;
+}

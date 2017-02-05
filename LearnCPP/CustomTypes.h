@@ -392,6 +392,15 @@ private:
 class Name_Score
 {
 public:
+	Name_Score(std::string inName, double inScore)
+		:Name(inName), Score(inScore)
+	{
+	}
+	
+public:
+	void print();
+
 	std::string Name;
 	double Score;
+
 };
