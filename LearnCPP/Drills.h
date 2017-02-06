@@ -107,3 +107,11 @@ double term(Token_Stream& InputReader);
 
 //a primary is a number or another thing inside()
 double primary(Token_Stream& InputReader);
+
+void CheckEngishSentence();
+
+bool isNextNoun(std::string nextWord);
+bool isNextObj(std::vector<std::string> sentence, int& index);
+bool isNextVerb(std::string nextWord);
+bool isNextConjunction(std::string nextWord);
+bool isNextSentence(std::vector<std::string> sentence, int& index);

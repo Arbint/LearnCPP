@@ -404,3 +404,13 @@ public:
 	double Score;
 
 };
+
+enum class EWordType
+{
+	Conjunction,
+	Noun,
+	Verb,
+	The,
+	Mark,
+	unknown
+};

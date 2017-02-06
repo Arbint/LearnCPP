@@ -202,3 +202,4 @@ void Name_Score::print()
 {
 	std::cout << Name << " " << Score << std::endl;
 }
+

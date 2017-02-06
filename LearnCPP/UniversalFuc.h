@@ -513,3 +513,7 @@ T calculatingExpression(std::vector<T> Numbers, std::vector<char> Ops)
 }
 
 Name_Score getNameScore();
+
+enum class EWordType;
+
+EWordType GetWorldType(std::string Word);

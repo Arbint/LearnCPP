@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "UniversalFuc.h"
+#include "CustomTypes.h"
 
 int io::printWithEndl(int thingToPrint)
 {
@@ -338,5 +339,34 @@ Name_Score getNameScore()
 		error("Wrong input formate, please use 'name score'(Adam 2)");
 	}
 	return Name_Score(name, score);
+}
+
+EWordType GetWorldType(std::string Word)
+{
+	std::vector<std::string> Nouns{ "birds", "fish", "C++" };
+	std::vector<std::string> Conjunctions{ "and", "or", "but" };
+	std::vector<std::string> Verbs{"rules", "fly", "swim"};
+	std::vector<std::string> Thes{"the"};
+	if (VectorHasElement(Nouns, Word))
+	{
+		return EWordType::Noun;
+	}
+	if (VectorHasElement(Conjunctions, Word))
+	{
+		return EWordType::Conjunction;
+	}
+	if (VectorHasElement(Verbs, Word))
+	{
+		return EWordType::Verb;
+	}
+	if (VectorHasElement(Thes, Word))
+	{
+		return EWordType::The;
+	}
+	if (Word == ".")
+	{
+		return EWordType::Mark;
+	}
+	return EWordType::unknown;
 }
 

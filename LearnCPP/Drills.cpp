@@ -1428,4 +1428,130 @@ double primary(Token_Stream& InputReader)
 	}
 }
 
+void CheckEngishSentence()
+{
+	std::cout << "Please give me an English Sentence, the word you can use are:" << std::endl;
+	std::cout << "birds, fish, c++, rules, fly, swim, and, or, but, the." << std::endl;
+	
+	
+
+	//get the whole sentence in a vector
+	std::vector<std::string> wholeSentence;
+	while (true)
+	{
+		std::string nextWord;
+		std::cin >> nextWord;
+		wholeSentence.push_back(nextWord);
+		if (isBufferClean())
+		{
+			break;
+		}
+	}
+
+	std:cout << "got whole sentence\n";
+	//check if the whole sentence fulfills the grammar needs
+	bool isWholeSentenceValid = true;
+
+	std::string lastString = wholeSentence.back();
+	if (GetWorldType(lastString) != EWordType::Mark)
+	{
+		isWholeSentenceValid = false;
+	}
+	else
+	{
+		int index = 0;
+		while (index < (wholeSentence.size() - 1))
+		{
+			std::cout << "looping " << index << std::endl;
+			if (!isNextSentence(wholeSentence, index))
+			{
+				isWholeSentenceValid = false;
+				break;
+			}
+			if (!isNextConjunction(wholeSentence[index]))
+			{
+				isWholeSentenceValid = false;
+				break;
+			}
+			else
+			{
+				++index;
+			}
+		}
+	}
+	
+	if (isWholeSentenceValid)
+	{
+		std::cout << "This sentence is ok\n";
+	}
+	else
+	{
+		std::cout << "This sentence is not OK\n";
+	}
+
+}
+
+bool isNextNoun(std::string nextWord)
+{
+	EWordType WordType = GetWorldType(nextWord);
+	if (WordType == EWordType::Noun)
+	{
+		return true;
+	}
+	return false;
+}
+
+bool isNextObj(std::vector<std::string> sentence, int& index)
+{
+	EWordType FirstWordType = GetWorldType(sentence[index]);
+	EWordType SecondWordType = GetWorldType(sentence[index + 1]);
+	if (FirstWordType == EWordType::The && SecondWordType == EWordType::Noun)
+	{
+		return true;
+	}
+	return false;
+}
+
+bool isNextVerb(std::string nextWord)
+{
+	EWordType WordType = GetWorldType(nextWord);
+	if (WordType == EWordType::Verb)
+	{
+		return true;
+	}
+	return false;
+}
+
+bool isNextConjunction(std::string nextWord)
+{
+	EWordType WordType = GetWorldType(nextWord);
+	if (WordType == EWordType::Conjunction)
+	{
+		return true;
+	}
+	return false;
+}
+
+bool isNextSentence(std::vector<std::string> sentence, int& index)
+{
+	
+	if (isNextNoun(sentence[index]))
+	{
+		if (isNextVerb(sentence[index + 1]))
+		{
+			index += 2;
+			return true;
+		}
+	}
+	else if (isNextObj(sentence, index))
+	{
+		if (isNextVerb(sentence[index + 1]))
+		{
+			index += 3;
+			return true;
+		}
+	}
+	
+	return false;
+}
 
