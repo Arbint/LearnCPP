@@ -1507,6 +1507,7 @@ bool isNextObj(std::vector<std::string> sentence, int& index)
 	EWordType SecondWordType = GetWorldType(sentence[index + 1]);
 	if (FirstWordType == EWordType::The && SecondWordType == EWordType::Noun)
 	{
+		
 		return true;
 	}
 	return false;
@@ -1545,7 +1546,7 @@ bool isNextSentence(std::vector<std::string> sentence, int& index)
 	}
 	else if (isNextObj(sentence, index))
 	{
-		if (isNextVerb(sentence[index + 1]))
+		if (isNextVerb(sentence[index + 2]))
 		{
 			index += 3;
 			return true;
