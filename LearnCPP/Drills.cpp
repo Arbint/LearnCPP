@@ -1468,7 +1468,7 @@ void CheckEngishSentence()
 				isWholeSentenceValid = false;
 				break;
 			}
-			if (!isNextConjunction(wholeSentence[index]))
+			if (!isNextConjunction(wholeSentence[index]) && !isNextMark(wholeSentence[index]))
 			{
 				isWholeSentenceValid = false;
 				break;
@@ -1552,6 +1552,16 @@ bool isNextSentence(std::vector<std::string> sentence, int& index)
 		}
 	}
 	
+	return false;
+}
+
+bool isNextMark(std::string nextWord)
+{
+	EWordType WordType = GetWorldType(nextWord);
+	if (WordType == EWordType::Mark)
+	{
+		return true;
+	}
 	return false;
 }
 

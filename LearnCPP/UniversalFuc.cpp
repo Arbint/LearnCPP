@@ -343,7 +343,7 @@ Name_Score getNameScore()
 
 EWordType GetWorldType(std::string Word)
 {
-	std::vector<std::string> Nouns{ "birds", "fish", "C++" };
+	std::vector<std::string> Nouns{ "birds", "fish", "c++" };
 	std::vector<std::string> Conjunctions{ "and", "or", "but" };
 	std::vector<std::string> Verbs{"rules", "fly", "swim"};
 	std::vector<std::string> Thes{"the"};

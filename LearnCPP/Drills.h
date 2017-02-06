@@ -115,3 +115,4 @@ bool isNextObj(std::vector<std::string> sentence, int& index);
 bool isNextVerb(std::string nextWord);
 bool isNextConjunction(std::string nextWord);
 bool isNextSentence(std::vector<std::string> sentence, int& index);
+bool isNextMark(std::string nextWord);
