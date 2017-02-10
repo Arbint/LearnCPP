@@ -12,7 +12,7 @@ int main()
 {
 	try
 	{	
-		std::function<void()> GameToPlay = CheckEngishSentence;
+		std::function<void()> GameToPlay = WorkingCalculator;
 		PlayBox(GameToPlay);
 	}
 	catch (runtime_error& error)

@@ -1304,8 +1304,9 @@ void BookExpresionCalculator()
 void WorkingCalculator()
 {
 	std::cout << "Please Enter Expressions(we can handle  + - * / ):\n";
+	std::cout << ">>>";
 	Token_Stream InputReader;
-	std::cout << "the answer is: " << expression(InputReader) << std::endl;
+	std::cout << "= " << expression(InputReader) << std::endl;
 }
 
 bool isOperationValid(char operation)
