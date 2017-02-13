@@ -1368,7 +1368,6 @@ double expression(Token_Stream& InputReader)
 			InputReader.putback(t);
 			return left;
 		}
-	
 	}
 	return left;
 }
@@ -1397,6 +1396,17 @@ double term(Token_Stream& InputReader)
 			t = InputReader.get();
 			break;
 		}
+		case '%':
+		{
+			double nextPrim = primary(InputReader);
+			if (nextPrim == 0)
+			{
+				error("% by 0");
+			}
+			left = std::fmod(left, nextPrim);
+			t = InputReader.get();
+			break;
+		}
 		default:
 			InputReader.putback(t);
 			return left;
@@ -1419,9 +1429,13 @@ double primary(Token_Stream& InputReader)
 			}
 			return nextExpression;
 		}
-	case '8':
+	case NumberType:
 		return t.value;
-	case 'q':
+	case '+':
+		return primary(InputReader);
+	case '-':
+		return -primary(InputReader);
+	case QuitCommand:
 		exit(0);
 	default:
 		error("primary expected");

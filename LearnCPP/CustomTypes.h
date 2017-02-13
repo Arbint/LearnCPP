@@ -2,6 +2,9 @@
 #pragma once
 #include "UniversialInclude.h"
 #include <functional>
+
+
+
 enum class EMath
 {
 	add,
