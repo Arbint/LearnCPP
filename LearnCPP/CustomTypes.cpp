@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "UniversalFuc.h"
 #include "CustomTypes.h"
+#include "Constants.h"
 
 std::ostream& operator<<(std::ostream& out, unitInt& rhs)
 {
@@ -167,7 +168,7 @@ Token Token_Stream::get()
 	//if the cin letter is directives or operators, return a token built from that
 	case ';'://for printing
 	case 'q'://for quitting
-	case '(': case ')': case '+': case '-': case '*': case '/': case '%':
+	case '(': case ')': case '+': case '-': case '*': case '/': case '%': case '=':
 		return Token{ getAnInput }; // let each character represent itself
 
 	//if the cin letter is a number or a decimal, put the number back and red it as a double
@@ -183,6 +184,17 @@ Token Token_Stream::get()
 	}
 
 	default:
+		if (isalpha(getAnInput))
+		{
+			std::cin.putback(getAnInput);
+			std::string getString;
+			std::cin >> getString;
+			if (getString == declkey)
+			{
+				return Token(let, 0);
+			}
+			return Token{ name, getString };
+		}
 		error("Bad Token");
 		break;
 	}

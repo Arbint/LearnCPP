@@ -1,7 +1,7 @@
 #pragma once
 #include "UniversialInclude.h"
 #include "Trigger.h"
-
+#include "CustomTypes.h"
 
 
 void writeLetter();

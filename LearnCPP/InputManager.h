@@ -1,5 +1,6 @@
 #pragma once
 #include "UniversialInclude.h"
+#include "CustomTypes.h"
 class InputManager
 {
 public:

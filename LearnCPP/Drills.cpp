@@ -2,7 +2,7 @@
 #include "Drills.h"
 #include "UniversalFuc.h"
 #include "UniversialInclude.h"
-
+#include "Constants.h"
 
 
 void writeLetter()
@@ -909,7 +909,7 @@ void GetBigestFibonacci()
 {
 	double PreviousFibnacci = 1;
 	double PPreviousFibnacci = 0;
-	int FIbnacciConuntedNow = 1;
+	double FIbnacciConuntedNow = 1;
 	double TestFeb = 1;
 	while (true)
 	{
@@ -1184,7 +1184,7 @@ void DayOfTheWeekValue()
 
 void ExpressionCalculator()
 {
-	std::cout << "Please enter expressions(we can handle + - * \ and chainning):\n";
+	std::cout <<"Please enter expressions(we can handle + - * '\' and chainning):"<<std::endl;
 	std::vector<int> numbers;
 	std::vector<char> ops;
 	
@@ -1441,6 +1441,10 @@ double primary(Token_Stream& InputReader)
 		error("primary expected");
 		break;
 	}
+
+	//this will never run because default of the switch above throw error
+	//it is here to get rid of compiler warnnings.
+	return 0;
 }
 
 void CheckEngishSentence()
@@ -1463,7 +1467,7 @@ void CheckEngishSentence()
 		}
 	}
 
-	std:cout << "got whole sentence\n";
+	std::cout << "got whole sentence\n";
 	//check if the whole sentence fulfills the grammar needs
 	bool isWholeSentenceValid = true;
 

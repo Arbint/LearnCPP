@@ -158,6 +158,7 @@
     <ClInclude Include="UniversialInclude.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Constants.cpp" />
     <ClCompile Include="CustomTypes.cpp" />
     <ClCompile Include="Drills.cpp" />
     <ClCompile Include="InputManager.cpp" />

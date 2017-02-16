@@ -1,6 +1,6 @@
 #pragma once
 #include "UniversialInclude.h"
-
+#include "CustomTypes.h"
 
 namespace io {
 	template<typename T>

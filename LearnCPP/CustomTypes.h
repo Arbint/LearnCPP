@@ -3,8 +3,6 @@
 #include "UniversialInclude.h"
 #include <functional>
 
-
-
 enum class EMath
 {
 	add,
@@ -372,7 +370,14 @@ class Token
 public:
 	char kind;
 	double value;
-
+	std::string name;
+	Token(){}
+	Token(char inKind, double inValue)
+		:kind(inKind), value(inValue){}
+	Token(char inKind)
+		:kind(inKind){}
+	Token(char inKind, std::string inName)
+		:kind{ inKind }, name{ inName } {}
 };
 
 class Token_Stream {
