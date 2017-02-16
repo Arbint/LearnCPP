@@ -98,6 +98,8 @@ bool isOperationValid(char operation);
 
 void ScoreRecorderV2();
 
+double statement(Token_Stream& InputReader);
+double declaration(Token_Stream& InputReader);
 //an expression is simply a number, or a number * or / by another number or a number * or / by and expression inside ()
 //or, it can be an expression + or - another expression
 double expression(Token_Stream& InputReader);

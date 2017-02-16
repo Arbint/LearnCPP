@@ -422,3 +422,22 @@ enum class EWordType
 	Mark,
 	unknown
 };
+
+class Variable 
+{
+public:
+	std::string name;
+	double value;
+	Variable(std::string inName, double inValue)
+		:name(inName), value(inValue) {}
+};
+
+class Varlib
+{
+public:
+	std::vector<Variable> rawLib;
+	double getValue(std::string name);
+	void setValue(std::string name, double newValue);
+	bool isDeclared(std::string name);
+	double defineName(std::string newName, double newVal);
+};

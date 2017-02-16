@@ -1306,7 +1306,7 @@ void WorkingCalculator()
 	std::cout << "Please Enter Expressions(we can handle  + - * / ):\n";
 	std::cout << ">>>";
 	Token_Stream InputReader;
-	std::cout << "= " << expression(InputReader) << std::endl;
+	std::cout << "= " << statement(InputReader) << std::endl;
 }
 
 bool isOperationValid(char operation)
@@ -1345,6 +1345,38 @@ void ScoreRecorderV2()
 	{
 		nsPair.print();
 	}
+}
+
+double statement(Token_Stream& InputReader)
+{
+	Token newToken = InputReader.get();
+	switch (newToken.kind)
+	{
+	case let:
+		return declaration(InputReader);
+	default:
+		InputReader.putback(newToken);
+		return expression(InputReader);
+	}
+}
+
+double declaration(Token_Stream& InputReader)
+{
+	Token newToken = InputReader.get();
+	if (newToken.kind != name)
+	{
+		error("Declaration: name expected in declaration");
+	}
+	std::string name = newToken.name;
+	Token nextToken = InputReader.get();
+	if (nextToken.kind != '=')
+	{
+		error("Declaration: = expected in declaration");
+	}
+	double Value = expression(InputReader);
+	variableLib.defineName(name, Value);
+	return Value;
+
 }
 
 double expression(Token_Stream& InputReader)

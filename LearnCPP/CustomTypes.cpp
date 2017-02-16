@@ -215,3 +215,50 @@ void Name_Score::print()
 	std::cout << Name << " " << Score << std::endl;
 }
 
+double Varlib::getValue(std::string name)
+{
+	for (const Variable& VariableItem : rawLib)
+	{
+		if (VariableItem.name == name)
+		{
+			return VariableItem.value;
+		}
+		error("getValue: undefined variable: " + name);
+	}
+}
+
+void Varlib::setValue(std::string name, double newValue)
+{
+	for (Variable& VariableItem : rawLib)
+	{
+		if (VariableItem.name == name)
+		{
+			VariableItem.value = newValue;
+			return;
+		}
+	}
+	error("setValue: undefined variable: " + name);
+}
+
+bool Varlib::isDeclared(std::string name)
+{
+	for (const Variable& variableItem : rawLib)
+	{
+		if (variableItem.name == name)
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
+double Varlib::defineName(std::string newName, double newVal)
+{
+	if (isDeclared(newName))
+	{
+		error("defineName: " + newName + " already defined");
+	}
+	rawLib.push_back(Variable(newName, newVal));
+	return newVal;
+}
+
