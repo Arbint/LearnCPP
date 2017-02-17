@@ -517,3 +517,7 @@ Name_Score getNameScore();
 enum class EWordType;
 
 EWordType GetWorldType(std::string Word);
+
+double fct(int a, double d);
+
+int UnnamedArgsCanBeIgnored(int x, int y, int z = 0);

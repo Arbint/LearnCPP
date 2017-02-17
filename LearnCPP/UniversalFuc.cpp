@@ -370,3 +370,14 @@ EWordType GetWorldType(std::string Word)
 	return EWordType::unknown;
 }
 
+double fct(int a, double d)
+{
+	return a*d;
+}
+
+int UnnamedArgsCanBeIgnored(int x, int y, int z)
+{
+	std::cout << x + y<< std::endl;
+	return x;
+}
+

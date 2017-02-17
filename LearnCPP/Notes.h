@@ -183,9 +183,35 @@ int badInputErrors()
 		std::cerr << error.what() << std::endl;
 		return 2;
 	}
+	return 2;
 }
 
 void NarrowTest()
 {
 	 
 }
+
+
+/************************************************************************/
+/*Chapter 8                                                             */
+/************************************************************************/
+//a declaration is a statement that introduces a name into a scope,
+//it basically defines how something can be used.
+void declaration()
+{
+	int a = 7;
+	const double cd = 8.7;
+}
+
+//a declaration that also fully specifies the entity declared is called a definition:
+//example:
+void definition()
+{
+	int a = 7;
+}
+
+double sqrt(double)
+{
+	return 0;
+}
+//you can do definition only once, but you can declare stuff many times

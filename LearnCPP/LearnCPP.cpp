@@ -12,8 +12,7 @@ int main()
 {
 	try
 	{	
-		std::function<void()> GameToPlay = WorkingCalculator;
-		PlayBox(GameToPlay);
+		int y = UnnamedArgsCanBeIgnored(1, 2);
 	}
 	catch (runtime_error& error)
 	{

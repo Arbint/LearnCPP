@@ -198,6 +198,8 @@ Token Token_Stream::get()
 		error("Bad Token");
 		break;
 	}
+
+	return 0;
 }
 
 void Token_Stream::putback(Token t)
@@ -223,8 +225,9 @@ double Varlib::getValue(std::string name)
 		{
 			return VariableItem.value;
 		}
-		error("getValue: undefined variable: " + name);
 	}
+	error("getValue: undefined variable: " + name);
+	return 0;
 }
 
 void Varlib::setValue(std::string name, double newValue)
