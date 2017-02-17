@@ -215,3 +215,15 @@ double sqrt(double)
 	return 0;
 }
 //you can do definition only once, but you can declare stuff many times
+
+
+//A reference is a construct that allows a user to declare a new name for 
+//an object, for example, int& is a reference to an int, so we can write:
+void reference()
+{
+	int i = 7;
+	int& r = i;
+	r = 9;
+	i = 10;
+	std::cout << r << " " << i << std::endl;
+}

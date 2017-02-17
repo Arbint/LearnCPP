@@ -532,3 +532,25 @@ void printVectorRef(const std::vector<T>& VectorToPrint)
 	}
 	std::cout << "}/n";
 }
+template <typename T>
+void swapValue(T& VarOne, T& VarTwo)
+{
+	T VarTemp = VarOne;
+	VarOne = VarTwo;
+	VarTwo = VarTemp;
+}
+template <typename T>
+void largerSmaller(std::vector<T>& VectorLarger, std::vector<T>& VectorSmaller)
+{
+	if (VectorLarger.size() != VectorSmaller.size())
+	{
+		error("largerSmaller(): different sizes");
+	}
+	for (int i = 0; i < VectorLarger.size(); ++i)
+	{
+		if (VectorLarger[i] < VectorSmaller[i])
+		{
+			swapValue(VectorLarger[i], VectorSmaller[i]);
+		}
+	}
+}

@@ -12,12 +12,14 @@ int main()
 {
 	try
 	{	
-		std::vector<int> lotsOfInt(1000000);
-		for (int x = 0; x < 1000000; ++x)  
-		{
-			lotsOfInt[x] = x;
-		}
-		printVectorRef(lotsOfInt);
+		std::vector<int> VectorLarger;
+		std::vector<int> VectorSmaller;
+		io::getMultiUserInputs<int>("give me some thing for larger: ", VectorLarger);
+		io::getMultiUserInputs<int>("give me some thing for larger: ", VectorSmaller);
+		std::cout << "switching" << std::endl;
+		largerSmaller(VectorLarger, VectorSmaller);
+		printVector(VectorLarger);
+		printVector(VectorSmaller);
 	}
 	catch (runtime_error& error)
 	{
