@@ -12,7 +12,12 @@ int main()
 {
 	try
 	{	
-		int y = UnnamedArgsCanBeIgnored(1, 2);
+		std::vector<int> lotsOfInt(1000000);
+		for (int x = 0; x < 1000000; ++x)  
+		{
+			lotsOfInt[x] = x;
+		}
+		printVectorRef(lotsOfInt);
 	}
 	catch (runtime_error& error)
 	{

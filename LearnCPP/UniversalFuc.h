@@ -521,3 +521,14 @@ EWordType GetWorldType(std::string Word);
 double fct(int a, double d);
 
 int UnnamedArgsCanBeIgnored(int x, int y, int z = 0);
+
+template <typename T>
+void printVectorRef(const std::vector<T>& VectorToPrint)
+{
+	std::cout << "{";
+	for (const T& item : VectorToPrint)
+	{
+		std::cout << item <<", ";
+	}
+	std::cout << "}/n";
+}
