@@ -3,6 +3,7 @@
 #ifndef  CONSTANTTYPES
 #define  CONSTANTTYPES
 
+class Point;
 class Varlib;
 
 extern constexpr char NumberType = '8';
@@ -12,4 +13,7 @@ extern constexpr char name = 'a';
 extern constexpr char let = 'L';
 extern const std::string declkey;
 extern Varlib variableLib;
+
+
+
 #endif // !

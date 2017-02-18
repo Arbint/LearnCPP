@@ -8,18 +8,18 @@
 #include "trigger.h"
 #include "InputManager.h"
 
+constexpr double xscale = 10;
+constexpr double yscale = 0.8;
+constexpr Point scalePoint(Point p)
+{
+	return{ xscale * p.x, yscale * p.y };
+}
+
 int main()
 {
 	try
 	{	
-		std::vector<int> VectorLarger;
-		std::vector<int> VectorSmaller;
-		io::getMultiUserInputs<int>("give me some thing for larger: ", VectorLarger);
-		io::getMultiUserInputs<int>("give me some thing for larger: ", VectorSmaller);
-		std::cout << "switching" << std::endl;
-		largerSmaller(VectorLarger, VectorSmaller);
-		printVector(VectorLarger);
-		printVector(VectorSmaller);
+
 	}
 	catch (runtime_error& error)
 	{

@@ -441,3 +441,14 @@ public:
 	bool isDeclared(std::string name);
 	double defineName(std::string newName, double newVal);
 };
+
+struct Point
+{
+	double x;
+	double y;
+	constexpr Point(double inX, double inY)
+		: x(inX),y(inY)
+	{
+
+	}
+};
