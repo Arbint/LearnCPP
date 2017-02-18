@@ -452,3 +452,17 @@ struct Point
 
 	}
 };
+
+class Date
+{
+public:
+	int year;
+	int month;
+	int day;
+public:
+	Date(int inYear, int inMonth,int inDay)
+		:year(inYear), month(inMonth), day(inDay)
+	{
+
+	}
+};
