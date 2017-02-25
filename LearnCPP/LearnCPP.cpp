@@ -7,19 +7,15 @@
 #include "Notes.h"
 #include "trigger.h"
 #include "InputManager.h"
+#include "my.h"
 
-constexpr double xscale = 10;
-constexpr double yscale = 0.8;
-constexpr Point scalePoint(Point p)
-{
-	return{ xscale * p.x, yscale * p.y };
-}
+extern int fooTest = 0;
 
 int main()
 {
 	try
 	{	
-
+		tryNameSpace();
 	}
 	catch (runtime_error& error)
 	{

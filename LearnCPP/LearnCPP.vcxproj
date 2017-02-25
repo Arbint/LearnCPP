@@ -149,6 +149,7 @@
     <ClInclude Include="CustomTypes.h" />
     <ClInclude Include="Drills.h" />
     <ClInclude Include="InputManager.h" />
+    <ClInclude Include="my.h" />
     <ClInclude Include="Notes.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
@@ -163,6 +164,7 @@
     <ClCompile Include="Drills.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="LearnCPP.cpp" />
+    <ClCompile Include="my.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -171,6 +173,7 @@
     </ClCompile>
     <ClCompile Include="Trigger.cpp" />
     <ClCompile Include="UniversalFuc.cpp" />
+    <ClCompile Include="use.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

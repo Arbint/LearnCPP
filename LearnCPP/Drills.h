@@ -118,3 +118,24 @@ bool isNextVerb(std::string nextWord);
 bool isNextConjunction(std::string nextWord);
 bool isNextSentence(std::vector<std::string> sentence, int& index);
 bool isNextMark(std::string nextWord);
+
+void swapV(int, int);
+void swapR(int&, int&);
+void swapCR(const int&, const int&);  
+
+namespace X {
+	extern int myVar;
+	void print();
+}
+
+namespace Y {
+	extern int myVar;
+	void print();
+}
+
+namespace Z {
+	extern int myVar;
+	void print();
+}
+
+void tryNameSpace();

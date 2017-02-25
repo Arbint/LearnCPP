@@ -1617,3 +1617,60 @@ bool isNextMark(std::string nextWord)
 	return false;
 }
 
+void swapV(int lhs, int rhs)
+{
+	int temp = lhs;
+	lhs = rhs;
+	rhs = temp;
+}
+
+void swapR(int& lhs, int& rhs)
+{
+	int temp = lhs;
+	lhs = rhs;
+	rhs = temp;
+}
+
+void swapCR(const int& lhs, const int& rhs)
+{
+	int temp = lhs;
+}
+
+void tryNameSpace()
+{
+	X::myVar = 7;
+	X::print();
+	using namespace Y;
+	myVar = 9;
+	print();
+
+	{
+		using Z::myVar;
+		using Z::print;
+		myVar = 11;
+		print();
+	}
+
+	print();
+	X::print();
+}
+
+extern int X::myVar = 0;
+extern int Y::myVar = 0;
+extern int Z::myVar = 0;
+
+void X::print()
+{
+	std::cout << X::myVar << std::endl;
+}
+
+
+void Y::print()
+{
+	std::cout << Y::myVar << std::endl;
+}
+
+void Z::print()
+{
+	std::cout << Z::myVar << std::endl;
+}
