@@ -8,14 +8,23 @@
 #include "trigger.h"
 #include "InputManager.h"
 #include "my.h"
+#include "ChronoData.h"
 
 extern int fooTest = 0;
+
+
+extern vector<string> monthLib{"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
 
 int main()
 {
 	try
-	{	
-		tryNameSpace();
+	{
+		DataStructure::ChronoData defaultData;
+		std::cin >> defaultData;
+		int dayToAdd;
+		std::cin >> dayToAdd;
+		defaultData.add_day(dayToAdd);
+		std::cout << defaultData << std::endl;
 	}
 	catch (runtime_error& error)
 	{

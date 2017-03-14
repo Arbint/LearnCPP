@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <vector>
 #ifndef  CONSTANTTYPES
 #define  CONSTANTTYPES
 
@@ -15,5 +16,6 @@ extern constexpr char let = 'L';
 extern const std::string declkey;
 extern Varlib variableLib;
 
+extern std::vector<std::string> monthLib;
 
 #endif // !

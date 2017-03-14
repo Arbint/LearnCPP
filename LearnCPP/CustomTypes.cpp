@@ -20,6 +20,17 @@ std::ostream& operator<<(std::ostream& outStream, const Message& rhs)
 	outStream << outString;
 	return outStream;
 }
+std::ostream& operator<<(ostream& os, Month& m)
+{
+	os << monthLib[int(m) - 1];
+	return os;
+}
+
+std::ostream& operator<<(ostream& os, Date& date)
+{
+	os << date.GetYear() << "/" << int(date.GetMounth()) << "/" << date.getDay();
+	return os;
+}
 
 std::istream& operator >> (std::istream& out, unitInt& rhs)
 {
@@ -45,6 +56,14 @@ std::istream& operator >> (std::istream& out, unitInt& rhs)
 		std::cout << "cannot support the format, please re enter" << std::endl;
 		goto WrongInputRedoLabel;
 	}
+}
+
+Month operator++(Month& m)
+{
+
+	m = (m == Month::dec) ? Month::jan : Month(int(m) + 1);
+	return m;
+
 }
 
 std::string ElengthTypeToString(ELengthType InType)
@@ -77,6 +96,8 @@ std::string ElengthTypeToString(ELengthType InType)
 		break;
 	}
 }
+
+
 
 bool MessageSorter::memberOfMessageSorter(int x) const
 {
@@ -265,3 +286,13 @@ double Varlib::defineName(std::string newName, double newVal)
 	return newVal;
 }
 
+bool Date::is_valid()
+{
+	return true;
+}
+
+const Date& Date::StaticClass()
+{
+	static Date defaultDate{ 2001, Month::jan, 1 };
+	return defaultDate;
+}

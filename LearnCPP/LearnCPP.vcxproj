@@ -145,6 +145,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ChronoData.h" />
     <ClInclude Include="Constants.h" />
     <ClInclude Include="CustomTypes.h" />
     <ClInclude Include="Drills.h" />
@@ -159,6 +160,7 @@
     <ClInclude Include="UniversialInclude.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ChronoData.cpp" />
     <ClCompile Include="Constants.cpp" />
     <ClCompile Include="CustomTypes.cpp" />
     <ClCompile Include="Drills.cpp" />

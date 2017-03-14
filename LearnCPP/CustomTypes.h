@@ -3,6 +3,21 @@
 #include "UniversialInclude.h"
 #include <functional>
 
+enum class Month
+{
+	jan = 1, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec
+};
+
+
+Month operator++(Month& m);
+ostream& operator<<(ostream& os, Month& m);
+
+//plain Enum:
+enum EPlainMonth
+{
+	jan = 1, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec
+};
+
 enum class EMath
 {
 	add,
@@ -453,16 +468,79 @@ struct Point
 	}
 };
 
+class Year;
+
 class Date
 {
+	//to be used as exception
+	class InValid {};
+
+
 public:
-	int year;
-	int month;
-	int day;
-public:
-	Date(int inYear, int inMonth,int inDay)
+	Date(int inYear, Month inMonth, int inDay)
 		:year(inYear), month(inMonth), day(inDay)
+	{
+		if (!is_valid())
+		{
+			throw InValid{};
+		}
+	}
+	Date(int inYear)
+		:year{inYear}
 	{
 
 	}
+	Date()
+		:year{ StaticClass().GetYear() },
+		month{ StaticClass().GetMounth() },
+		day{ StaticClass().getDay() }
+	{
+
+	}
+
+	int GetYear() const
+	{
+		return year;
+	}
+
+	Month GetMounth() const
+	{
+		return month;
+	}
+	int getDay() const
+	{
+		return day;
+	}
+	bool is_valid();
+
+	const Date& StaticClass();
+private:
+	int year{2001};
+	Month month{Month::jan};
+	int day{1};
+
+};
+
+ostream& operator<<(ostream& os, Date& date);
+
+class Year
+{
+	static const int minYear = 1800;
+	static const int maxYear = 2200;
+public:
+	class Invalid{};
+	Year(int inYear)
+		: year(inYear)
+	{
+		if (inYear < minYear || inYear > maxYear)
+		{
+			throw Invalid{};
+		}
+	}
+	int getYear()
+	{
+		return year;
+	}
+private:
+	int year;
 };
