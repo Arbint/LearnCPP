@@ -105,11 +105,14 @@ void DataStructure::ChronoData::add_One_Month()
 {
 	if (month == Month::dec)
 	{
-		month == Month::jan;
+		month = Month::jan;
 		add_year(1);
 	}
-	int nextMonth = int(month) + 1;
-	month = Month(nextMonth);
+	else
+	{
+		int nextMonth = int(month) + 1;
+		month = Month(nextMonth);
+	}
 }
 
 bool DataStructure::isDataValid(int year, Month month, int day)
