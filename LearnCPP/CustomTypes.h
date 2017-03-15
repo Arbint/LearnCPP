@@ -545,6 +545,35 @@ private:
 	int year;
 };
 
+class NameAgePair
+{
+public:
+	NameAgePair(string inName, int inAge)
+		:name{ inName }, age{inAge}
+	{
+
+	}
+	string getName() const {
+		return name;
+	}
+	int getAge() const {
+		return age;
+	}
+
+	void setName(string& inName)
+	{
+		name = inName;
+	}
+	void setAge(int inAge)
+	{
+		age = inAge;
+	}
+
+private:
+	string name;
+	int age;
+};
+
 class NamePairs
 {
 public:
@@ -554,20 +583,12 @@ public:
 	void printNameAgeInfo();
 
 	//getters:
-	std::vector<std::string> getNames() const
-	{
-		return names;
-	}
+	std::vector<std::string> getNames() const;
 
-	std::vector<double> getAges() const
-	{
-		return ages;
-	}
-	void sortInfo()
-	{
+	std::vector<int> getAges() const;
 
-	}
+	void sortInfo(std::function<bool(NameAgePair lsh, NameAgePair rhs)> waysToSort = [](NameAgePair lhs, NameAgePair rhs) {return lhs.getName() < rhs.getName(); });
+
 private:
-	std::vector<std::string> names = {};
-	std::vector<double> ages = {};
+	std::vector<NameAgePair> nameAgePairs = {};
 };

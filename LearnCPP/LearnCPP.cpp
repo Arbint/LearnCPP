@@ -22,7 +22,9 @@ int main()
 		NamePairs namePairsOne;
 		namePairsOne.readNames();
 		namePairsOne.readAges();
-		namePairsOne.printNameAgeInfo();
+		
+		printVector(namePairsOne.getAges());
+
 	}
 	catch (runtime_error& error)
 	{

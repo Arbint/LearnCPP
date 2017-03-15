@@ -554,3 +554,5 @@ void largerSmaller(std::vector<T>& VectorLarger, std::vector<T>& VectorSmaller)
 		}
 	}
 }
+
+void ignoreLine(std::istream& is);

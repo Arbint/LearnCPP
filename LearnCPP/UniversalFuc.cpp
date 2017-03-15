@@ -381,3 +381,13 @@ int UnnamedArgsCanBeIgnored(int x, int y, int z)
 	return x;
 }
 
+void ignoreLine(std::istream& is)
+{
+	char ch;
+	while (is.get(ch) && ch != '\n')
+	{
+		std::cout << "character read as:" << ch << std::endl;
+	}
+	std::cout << "the final character in the buffer is:" << ch << std::endl;
+}
+

@@ -1,0 +1,6 @@
+﻿1>------ Build started: Project: LearnCPP, Configuration: Debug x64 ------
+1>  CustomTypes.cpp
+1>c:\users\lxwk2\source\repos\learncpp\learncpp\customtypes.cpp(326): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+1>  LearnCPP.vcxproj -> C:\Users\lxwk2\Source\Repos\LearnCPP\x64\Debug\LearnCPP.exe
+1>  LearnCPP.vcxproj -> C:\Users\lxwk2\Source\Repos\LearnCPP\x64\Debug\LearnCPP.pdb (Full PDB)
+========== Build: 1 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========

@@ -307,30 +307,58 @@ void NamePairs::readNames()
 	std::cout << "Please give me a list of names(put space in between):" << std::endl;
 	std::string NewName = "";
 	std::cin >> NewName;
-	names.push_back(NewName);
+	nameAgePairs.push_back(NameAgePair{NewName, 0});
 	while (!isBufferClean())
 	{
 		std::cin >> NewName;
-		names.push_back(NewName);
+		nameAgePairs.push_back(NameAgePair{ NewName, 0 });
 	}
 }
 
 void NamePairs::readAges()
 {
-	for (std::string nameItem : names)
+	for (NameAgePair& nameItem : nameAgePairs)
 	{
-		std::cout << "what is the age of: " << nameItem << std::endl;
+		std::cout << "what is the age of: " << nameItem.getName() << std::endl;
 		double ageForCrrentItem = 0;
 		std::cin >> ageForCrrentItem;
-		ages.push_back(ageForCrrentItem);
+		
+		nameItem.setAge(ageForCrrentItem);
 	}
 }
 
 void NamePairs::printNameAgeInfo()
 {
-	for (int it = 0; it < names.size(); ++it)
+	std::cout << std::endl;
+	std::cout << std::endl;
+	for (NameAgePair nameAgeItem : nameAgePairs)
 	{
-		std::cout << names[it] << " " << ages[it] << std::endl;
+		std::cout << nameAgeItem.getName() << " " << nameAgeItem.getAge() << std::endl;
 	}
+	std::cout << "\n";
 }
 
+std::vector<std::string> NamePairs::getNames() const
+{
+	std::vector<std::string> names = {};
+	for (NameAgePair item : nameAgePairs)
+	{
+		names.push_back(item.getName());
+	}
+	return names;
+}
+
+std::vector<int> NamePairs::getAges() const
+{
+	std::vector<int> ages = {};
+	for (NameAgePair item : nameAgePairs)
+	{
+		ages.push_back(item.getAge());
+	}
+	return ages;
+}
+
+void NamePairs::sortInfo(std::function<bool(NameAgePair lsh, NameAgePair rhs)> waysToSort)
+{
+	std::sort(nameAgePairs.begin(), nameAgePairs.end(), waysToSort);
+}
