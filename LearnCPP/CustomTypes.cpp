@@ -296,3 +296,41 @@ const Date& Date::StaticClass()
 	static Date defaultDate{ 2001, Month::jan, 1 };
 	return defaultDate;
 }
+
+NamePairs::NamePairs()
+{
+
+}
+
+void NamePairs::readNames()
+{
+	std::cout << "Please give me a list of names(put space in between):" << std::endl;
+	std::string NewName = "";
+	std::cin >> NewName;
+	names.push_back(NewName);
+	while (!isBufferClean())
+	{
+		std::cin >> NewName;
+		names.push_back(NewName);
+	}
+}
+
+void NamePairs::readAges()
+{
+	for (std::string nameItem : names)
+	{
+		std::cout << "what is the age of: " << nameItem << std::endl;
+		double ageForCrrentItem = 0;
+		std::cin >> ageForCrrentItem;
+		ages.push_back(ageForCrrentItem);
+	}
+}
+
+void NamePairs::printNameAgeInfo()
+{
+	for (int it = 0; it < names.size(); ++it)
+	{
+		std::cout << names[it] << " " << ages[it] << std::endl;
+	}
+}
+

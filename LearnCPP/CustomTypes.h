@@ -544,3 +544,30 @@ public:
 private:
 	int year;
 };
+
+class NamePairs
+{
+public:
+	NamePairs();
+	void readNames();
+	void readAges();
+	void printNameAgeInfo();
+
+	//getters:
+	std::vector<std::string> getNames() const
+	{
+		return names;
+	}
+
+	std::vector<double> getAges() const
+	{
+		return ages;
+	}
+	void sortInfo()
+	{
+
+	}
+private:
+	std::vector<std::string> names = {};
+	std::vector<double> ages = {};
+};

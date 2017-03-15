@@ -19,12 +19,10 @@ int main()
 {
 	try
 	{
-		DataStructure::ChronoData defaultData;
-		std::cin >> defaultData;
-		int dayToAdd;
-		std::cin >> dayToAdd;
-		defaultData.add_day(dayToAdd);
-		std::cout << defaultData << std::endl;
+		NamePairs namePairsOne;
+		namePairsOne.readNames();
+		namePairsOne.readAges();
+		namePairsOne.printNameAgeInfo();
 	}
 	catch (runtime_error& error)
 	{
