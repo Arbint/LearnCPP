@@ -19,12 +19,8 @@ int main()
 {
 	try
 	{
-		NamePairs namePairsOne;
-		namePairsOne.readNames();
-		namePairsOne.readAges();
-		
-		printVector(namePairsOne.getAges());
 
+		return 0;
 	}
 	catch (runtime_error& error)
 	{

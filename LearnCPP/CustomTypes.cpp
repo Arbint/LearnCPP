@@ -32,6 +32,10 @@ std::ostream& operator<<(ostream& os, Date& date)
 	return os;
 }
 
+
+
+
+
 std::istream& operator >> (std::istream& out, unitInt& rhs)
 {
 	double inAmount;
@@ -358,7 +362,62 @@ std::vector<int> NamePairs::getAges() const
 	return ages;
 }
 
+std::vector<NameAgePair> NamePairs::getNameAgePairs() const
+{
+	return nameAgePairs;
+}
+
 void NamePairs::sortInfo(std::function<bool(NameAgePair lsh, NameAgePair rhs)> waysToSort)
 {
 	std::sort(nameAgePairs.begin(), nameAgePairs.end(), waysToSort);
+}
+
+
+bool NamePairs::operator==(NamePairs& rhs)
+{
+	if (nameAgePairs.size() != rhs.getNameAgePairs().size())
+	{
+		return false;
+	}
+	for (size_t index = 0; index < nameAgePairs.size(); ++index)
+	{
+		if (nameAgePairs[index] != rhs.getNameAgePairs()[index])
+		{
+			return false;
+		}
+	}
+	return true;
+}
+bool NamePairs::operator!=(NamePairs& lhs)
+{
+	return !((*this) == lhs);
+}
+bool NameAgePair::operator==(NameAgePair& rhs)
+{
+	if (getName() == rhs.getName() && getAge() == rhs.getAge())
+	{
+		return true;
+	}
+	return false;
+}
+bool NameAgePair::operator!=(NameAgePair& rhs)
+{
+	return !((*this) == rhs);
+}
+
+
+std::ostream& operator<<(ostream& os, NameAgePair& nameAgePair)
+{
+	os << nameAgePair.getName() << " " << nameAgePair.getAge();
+	return os;
+}
+
+
+std::ostream& operator<<(ostream& os, NamePairs namePair)
+{
+	for (NameAgePair& nameAgeItem : namePair.getNameAgePairs())
+	{
+		os << nameAgeItem << "\n";
+	}
+	return os;
 }

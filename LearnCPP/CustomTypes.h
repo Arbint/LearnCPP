@@ -569,10 +569,14 @@ public:
 		age = inAge;
 	}
 
+//Operator Overrides:
+	bool operator==(NameAgePair& rhs);
+	bool operator!=(NameAgePair& rhs);
 private:
 	string name;
 	int age;
 };
+ostream& operator<<(ostream& os, NameAgePair& nameAgePair);
 
 class NamePairs
 {
@@ -587,8 +591,15 @@ public:
 
 	std::vector<int> getAges() const;
 
+	std::vector<NameAgePair> getNameAgePairs() const;
+
 	void sortInfo(std::function<bool(NameAgePair lsh, NameAgePair rhs)> waysToSort = [](NameAgePair lhs, NameAgePair rhs) {return lhs.getName() < rhs.getName(); });
+
+	//Operator Overloads:
+	bool operator==(NamePairs& rhs);
+	bool operator!=(NamePairs& lhs);
 
 private:
 	std::vector<NameAgePair> nameAgePairs = {};
 };
+ostream& operator<<(ostream& os, NamePairs namePair);
