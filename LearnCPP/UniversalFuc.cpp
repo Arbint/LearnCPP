@@ -391,3 +391,28 @@ void ignoreLine(std::istream& is)
 	std::cout << "the final character in the buffer is:" << ch << std::endl;
 }
 
+bool isCharNumber(char charToCheck)
+{
+	int intOfChar = (int)charToCheck;
+	if (intOfChar < 48 || intOfChar > 57)
+	{
+		return false;
+	}
+	return true;
+
+}
+
+bool isCharLetter(char charToCheck)
+{
+	int intOfChar = (int)charToCheck;
+	if (intOfChar >= 65 && intOfChar <= 90)
+	{
+		return true;
+	}
+	else if (intOfChar >= 97 && intOfChar <= 122)
+	{
+		return true;
+	}
+	return false;
+}
+

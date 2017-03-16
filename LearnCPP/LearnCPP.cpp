@@ -9,6 +9,7 @@
 #include "InputManager.h"
 #include "my.h"
 #include "ChronoData.h"
+#include "Book.h"
 
 extern int fooTest = 0;
 
@@ -19,8 +20,7 @@ int main()
 {
 	try
 	{
-
-		return 0;
+	
 	}
 	catch (runtime_error& error)
 	{
@@ -29,6 +29,10 @@ int main()
 	catch (BadRange& error)
 	{
 		std::cerr << "Runtime Error: " << error.what() << std::endl;
+	}
+	catch (BookInvalid& error)
+	{
+		std::cerr << "Runtime Error: " << error.what()<< std::endl;
 	}
 	catch(...)
 	{

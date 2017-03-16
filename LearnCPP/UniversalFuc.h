@@ -556,3 +556,5 @@ void largerSmaller(std::vector<T>& VectorLarger, std::vector<T>& VectorSmaller)
 }
 
 void ignoreLine(std::istream& is);
+bool isCharNumber(char charToCheck);
+bool isCharLetter(char charToCheck);

@@ -2,6 +2,7 @@
 #include "UniversalFuc.h"
 #include "CustomTypes.h"
 #include "Constants.h"
+#include "Book.h"
 
 std::ostream& operator<<(std::ostream& out, unitInt& rhs)
 {
@@ -324,7 +325,7 @@ void NamePairs::readAges()
 	for (NameAgePair& nameItem : nameAgePairs)
 	{
 		std::cout << "what is the age of: " << nameItem.getName() << std::endl;
-		double ageForCrrentItem = 0;
+		int ageForCrrentItem = 0;
 		std::cin >> ageForCrrentItem;
 		
 		nameItem.setAge(ageForCrrentItem);
