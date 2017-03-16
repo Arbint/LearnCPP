@@ -2,6 +2,16 @@
 #include "UniversalFuc.h"
 #include "UniversialInclude.h"
 
+enum class EBookGenre
+{
+	Fiction = 1,
+	Nonfiction,
+	Periodical,
+	Biography,
+	Children,
+	None
+};
+
 class BookInvalid
 {
 public:
@@ -21,12 +31,14 @@ public:
 
 
 	Book()
-		:Book("000A", "Untitled", "NoBody", "0000000x0", false)
+		:Book("000A", "Untitled", "NoBody", "0000000x0",EBookGenre::None,false)
 	{
 
 	}
-	Book(string inISBN, string inTitle, string inAuthor, string inCopyRightData, bool inbIsCheckedOut)
-		:ISBN{ inISBN }, title{ inTitle }, author{ inAuthor }, copyRightData{ inCopyRightData }, bIsCheckedOut{inbIsCheckedOut}
+	Book(string inISBN, string inTitle, string inAuthor, string inCopyRightData, EBookGenre inGenre, bool inbIsCheckedOut)
+		:ISBN{ inISBN }, title{ inTitle }, author{ inAuthor }, copyRightData{ inCopyRightData }, Genre{inGenre}, bIsCheckedOut {
+		inbIsCheckedOut
+	}
 	{
 		if (!isISBNValid(ISBN))
 		{
@@ -56,6 +68,10 @@ public:
 	{
 		return bIsCheckedOut;
 	}
+	EBookGenre GetBookGenre()
+	{
+		return Genre;
+	}
 
 	//setters:
 	void setISBN(string newISBN);
@@ -75,6 +91,10 @@ public:
 	{
 		bIsCheckedOut = bCheckedOut;
 	}
+	void setBookGenre(EBookGenre newGenre)
+	{
+		Genre = newGenre;
+	}
 
 	//operator overrides:
 	bool operator==(Book& rhs);
@@ -87,7 +107,8 @@ private:
 	string author;
 	string copyRightData;
 	bool bIsCheckedOut;
-	
+	EBookGenre Genre;
+
 	bool isISBNValid(string ISBNToCheck);
 	
 };
