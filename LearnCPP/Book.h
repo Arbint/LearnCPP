@@ -12,6 +12,7 @@ enum class EBookGenre
 	None
 };
 
+class Patron;
 class BookInvalid
 {
 public:

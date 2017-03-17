@@ -153,6 +153,7 @@
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="my.h" />
     <ClInclude Include="Notes.h" />
+    <ClInclude Include="Patron.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Trigger.h" />
@@ -169,6 +170,7 @@
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="LearnCPP.cpp" />
     <ClCompile Include="my.cpp" />
+    <ClCompile Include="Patron.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

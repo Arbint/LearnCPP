@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "Book.h"
 #include "CustomTypes.h"
-
+#include "Patron.h"
 
 Book::~Book()
 {
