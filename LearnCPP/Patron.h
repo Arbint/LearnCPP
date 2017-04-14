@@ -10,19 +10,19 @@ public:
 	~Patron();
 
 	//getters:
-	string getUserName()
+	string getUserName() const
 	{
 		return userName;
 	}
-	int getLibraryCardNumer()
+	int getLibraryCardNumer() const
 	{
 		return libraryCardNumber;
 	}
-	int getLibraryFee()
+	int getLibraryFee() const
 	{
 		return libraryFee;
 	}
-	bool isOwingLibraryFee()
+	bool isOwingLibraryFee() const
 	{
 		return bIsOweLibraryFee;
 	}
@@ -38,5 +38,10 @@ private:
 	int libraryCardNumber;
 	int libraryFee;
 	bool bIsOweLibraryFee;
+	
+public:
+	//operator overload
+	bool operator==(const Patron& lhs);
+	bool operator!=(const Patron& rhs);
 };
 

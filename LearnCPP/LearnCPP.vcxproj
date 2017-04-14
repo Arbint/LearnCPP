@@ -146,6 +146,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Book.h" />
+    <ClInclude Include="BookLibrary.h" />
     <ClInclude Include="ChronoData.h" />
     <ClInclude Include="Constants.h" />
     <ClInclude Include="CustomTypes.h" />
@@ -163,6 +164,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Book.cpp" />
+    <ClCompile Include="BookLibrary.cpp" />
     <ClCompile Include="ChronoData.cpp" />
     <ClCompile Include="Constants.cpp" />
     <ClCompile Include="CustomTypes.cpp" />

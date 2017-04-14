@@ -20,7 +20,10 @@ int main()
 {
 	try
 	{
-	
+		std::vector<int> gaga{1, 2, 3, 4, 5, 4, 3,2,1};
+		int stuffToRemove = 2;
+		removeElementFromVect<int>(gaga, stuffToRemove);
+		printVector(gaga);
 	}
 	catch (runtime_error& error)
 	{

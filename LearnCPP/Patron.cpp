@@ -36,3 +36,21 @@ void Patron::setOweLibraryFee(bool newFeeStats)
 {
 	bIsOweLibraryFee = newFeeStats;
 }
+
+bool Patron::operator!=(const Patron& rhs)
+{
+	if (*this == rhs)
+	{
+		return false;
+	}
+	return true;
+}
+
+bool Patron::operator==(const Patron& lhs)
+{
+	if (getLibraryCardNumer() == lhs.getLibraryCardNumer())
+	{
+		return true;
+	}
+	return false;
+}

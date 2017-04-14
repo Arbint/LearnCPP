@@ -558,3 +558,11 @@ void largerSmaller(std::vector<T>& VectorLarger, std::vector<T>& VectorSmaller)
 void ignoreLine(std::istream& is);
 bool isCharNumber(char charToCheck);
 bool isCharLetter(char charToCheck);
+
+template <typename T>
+void removeElementFromVect(std::vector<T>& vectorToOperatedOn, T& elementToLookFor, bool removeAllInstance = false)
+{
+	//std::remove doesn't actually erase the element from the container, but it does return the new end iterator which 
+	//can be passed to container_type::erase to do the REAL removal of the extra elements that are now at the end of the container:
+	vectorToOperatedOn.erase(std::remove(vectorToOperatedOn.begin(), vectorToOperatedOn.end(), elementToLookFor), vectorToOperatedOn.end());
+}

@@ -28,9 +28,6 @@ private:
 class Book
 {
 public:
-	//error throw class:
-
-
 	Book()
 		:Book("000A", "Untitled", "NoBody", "0000000x0",EBookGenre::None,false)
 	{
@@ -49,7 +46,7 @@ public:
 	~Book();
 
 	//Getters:
-	string getISBN()
+	string getISBN() const
 	{
 		return ISBN;
 	}
@@ -98,8 +95,8 @@ public:
 	}
 
 	//operator overrides:
-	bool operator==(Book& rhs);
-	bool operator!=(Book& rhs);
+	bool operator==(const Book& rhs);
+	bool operator!=(const Book& rhs);
 
 
 private:

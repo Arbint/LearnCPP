@@ -40,7 +40,7 @@ bool Book::isISBNValid(string ISBNToCheck)
 	return true;
 }
 
-bool Book::operator!=(Book& rhs)
+bool Book::operator!=(const Book& rhs)
 {
 	if (*this == rhs)
 	{
@@ -49,7 +49,7 @@ bool Book::operator!=(Book& rhs)
 	return true;
 }
 
-bool Book::operator==(Book& rhs)
+bool Book::operator==(const Book& rhs)
 {
 	if (ISBN == rhs.getISBN())
 	{
