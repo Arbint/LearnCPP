@@ -101,16 +101,13 @@ public:
 	unitInt()
 		:unitInt(0, "noType")
 	{
-	
 	}
 	unitInt(double inAmount, std::string InUnit)
 		:amount(inAmount), unit(InUnit)
 	{
-
 	}
 	~unitInt()
 	{
-
 	}
 	double getAmount()
 	{
@@ -136,7 +133,6 @@ public:
 	LengthUnit(double inAmount, ELengthType inUnitType)
 		:unitInt::unitInt(inAmount, ElengthTypeToString(inUnitType))
 	{
-
 	}
 };
 
@@ -234,7 +230,6 @@ public:
 	keyBind(int inKey, std::function<void()> inFunc)
 	:Key(inKey), Func(inFunc), prevkeyStatus(false)
 	{
-
 	}
 	int Key;
 	std::function<void()> Func;
@@ -379,7 +374,6 @@ public:
 	{
 		return _info;
 	}
-
 };
 
 class Token

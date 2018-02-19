@@ -566,3 +566,32 @@ void removeElementFromVect(std::vector<T>& vectorToOperatedOn, T& elementToLookF
 	//can be passed to container_type::erase to do the REAL removal of the extra elements that are now at the end of the container:
 	vectorToOperatedOn.erase(std::remove(vectorToOperatedOn.begin(), vectorToOperatedOn.end(), elementToLookFor), vectorToOperatedOn.end());
 }
+template<typename T>
+void printVectorElement(int index, std::vector<T> Vector);
+
+template<typename T>
+void printVectorElement(int index, std::vector<T> Vector)
+{
+	std::cout << Vector[index] << std::endl;
+}
+
+template<typename T>
+void cycleVector(std::vector<T> VectorToCycle);
+
+template<typename T>
+void cycleVector(std::vector<T> VectorToCycle)
+{
+	if (VectorToCycle.size() != 0)
+	{
+		int index = 0;
+		int command = 1;
+		while (command == 1)
+		{
+			printVectorElement(index, VectorToCycle);
+			++index;
+			index = index%VectorToCycle.size();
+			std::cout << "current Index is: " << index << std::endl;
+			command = io::GetUerInput<int>("press 1 for next, other button to Quit");
+		}
+	}
+}

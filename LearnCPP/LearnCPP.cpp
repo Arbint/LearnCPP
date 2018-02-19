@@ -11,34 +11,21 @@
 #include "ChronoData.h"
 #include "Book.h"
 
-extern int fooTest = 0;
+enum class Days 
+{
+	Mon = 1,
+	Tue,
+	Wed,
+	Thur,
+	Fri,
+	Sat,
+	Sun
+};
 
-
-extern vector<string> monthLib{"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
-
+std::vector<std::string> monthLib{"Jan"};
+int fooTest = 1;
 int main()
 {
-	try
-	{
-		std::vector<int> gaga{1, 2, 3, 4, 5, 4, 3,2,1};
-		int stuffToRemove = 2;
-		removeElementFromVect<int>(gaga, stuffToRemove);
-		printVector(gaga);
-	}
-	catch (runtime_error& error)
-	{
-		std::cerr << error.what() << std::endl;
-	}
-	catch (BadRange& error)
-	{
-		std::cerr << "Runtime Error: " << error.what() << std::endl;
-	}
-	catch (BookInvalid& error)
-	{
-		std::cerr << "Runtime Error: " << error.what()<< std::endl;
-	}
-	catch(...)
-	{
-		std::cerr << "Unknown error happens." << std::endl;
-	}
+	int castedInt = static_cast<int>(Days(1));
+	std::cout << castedInt;
 }
