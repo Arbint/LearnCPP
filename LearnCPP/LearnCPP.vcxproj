@@ -172,6 +172,7 @@
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="LearnCPP.cpp" />
     <ClCompile Include="my.cpp" />
+    <ClCompile Include="Notes.cpp" />
     <ClCompile Include="Patron.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

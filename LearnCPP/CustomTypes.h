@@ -599,3 +599,18 @@ private:
 	std::vector<NameAgePair> nameAgePairs = {};
 };
 ostream& operator<<(ostream& os, NamePairs namePair);
+
+enum class Days
+{
+	Mon = 1,
+	Tue,
+	Wed,
+	Thur,
+	Fri,
+	Sat,
+	Sun
+};
+
+Days operator++(Days& day);
+std::ostream& operator<<(std::ostream& os, Days day);
+std::string DaysToString(Days& inDay);

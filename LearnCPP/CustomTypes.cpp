@@ -71,6 +71,8 @@ Month operator++(Month& m)
 
 }
 
+
+
 std::string ElengthTypeToString(ELengthType InType)
 {
 	switch (InType)
@@ -421,4 +423,48 @@ std::ostream& operator<<(ostream& os, NamePairs namePair)
 		os << nameAgeItem << "\n";
 	}
 	return os;
+}
+
+Days operator++(Days& day)
+{
+	day = (day == Days::Sun) ? Days::Mon : Days(int(day) + 1);
+	return day;
+}
+
+std::ostream& operator<<(std::ostream& os, Days day)
+{
+	std::string dayString = DaysToString(day);
+	os << dayString;
+	return os;
+}
+
+std::string DaysToString(Days& inDay)
+{
+	switch (inDay)
+	{
+	case Days::Mon:
+		return "Mon";
+		break;
+	case Days::Tue:
+		return "Tue";
+		break;
+	case Days::Wed:
+		return "Wed";
+		break;
+	case Days::Thur:
+		return "Thur";
+		break;
+	case Days::Fri:
+		return "Fri";
+		break;
+	case Days::Sat:
+		return "Sat";
+		break;
+	case Days::Sun:
+		return "Sun";
+		break;
+	default:
+		return "not a valid day";
+		break;
+	}
 }

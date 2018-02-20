@@ -1,7 +1,7 @@
 #pragma once
 #include "UniversialInclude.h"
-
-
+#include "customTypes.h"
+#include "UniversalFuc.h"
 //create a lambda feels just like a function pointer with it's body provided while creating it.
 void createLambda()
 {
@@ -11,6 +11,7 @@ void createLambda()
 
 
 //useage of Lambda:
+
 std::vector<std::string> gaga = { "wocao.org", "malgb", ".org", "cao ni ma. org" };
 AdressBook global_Adress_book{ gaga };
 std::vector<std::string> findAddressesFormOrgs()
@@ -530,3 +531,4 @@ void reference()
 //3) Sometimes(VERY RARELY) you might have a data member that your users
 //can't possibly care about, and you need to modify it inside a const member
 //function.This is when you declare the data member mutable.
+
