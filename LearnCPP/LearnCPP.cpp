@@ -9,13 +9,19 @@
 #include "my.h"
 #include "ChronoData.h"
 #include "Book.h"
-
+#include "Dates.h"
 
 std::vector<std::string> monthLib{"Jan"};
 int fooTest = 1;
 int main()
 {
-	Days dayOne = Days::Sat;
+	try
+	{
+		Dates wrogDate(22, Monthes::aug, 2);
+	}
+	catch(Dates::invalid invaidMessage)
+	{
+		std::cout<<invaidMessage.what()<<std::endl;
+	}
 
-	std::cout << dayOne << std::endl;
 }

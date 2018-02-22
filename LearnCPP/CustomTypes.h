@@ -613,4 +613,5 @@ enum class Days
 
 Days operator++(Days& day);
 std::ostream& operator<<(std::ostream& os, Days day);
+
 std::string DaysToString(Days& inDay);

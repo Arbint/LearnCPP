@@ -150,6 +150,7 @@
     <ClInclude Include="ChronoData.h" />
     <ClInclude Include="Constants.h" />
     <ClInclude Include="CustomTypes.h" />
+    <ClInclude Include="Dates.h" />
     <ClInclude Include="Drills.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="my.h" />
@@ -168,6 +169,7 @@
     <ClCompile Include="ChronoData.cpp" />
     <ClCompile Include="Constants.cpp" />
     <ClCompile Include="CustomTypes.cpp" />
+    <ClCompile Include="Dates.cpp" />
     <ClCompile Include="Drills.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="LearnCPP.cpp" />
