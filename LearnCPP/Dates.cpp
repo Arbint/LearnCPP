@@ -2,7 +2,7 @@
 #include "Dates.h"
 
 
-Dates::Dates(int year, Monthes month, int day)
+Dates::Dates(int inYear, Monthes inMonth, int inDay):year(inYear), month(inMonth), day(inDay)
 {
 	if (!isValid())
 	{
@@ -48,6 +48,9 @@ void Dates::addYear()
 bool Dates::isValid()
 {
 	if (year < YearMin || year > YearMax)
+	{
+		return false;
+	}else if (day > getMonthDayAmount()|| day < 1)
 	{
 		return false;
 	}

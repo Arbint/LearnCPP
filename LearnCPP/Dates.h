@@ -8,7 +8,7 @@ enum class Monthes {
 class Dates
 {
 public:
-	Dates(int year, Monthes month, int day);
+	Dates(int inYear, Monthes inMonth, int inDay);
 	Dates() :year(2001), month(Monthes::Jan), day(1) {}
 	~Dates();
 	int Year() { return year; }

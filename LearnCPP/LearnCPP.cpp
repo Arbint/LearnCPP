@@ -17,7 +17,7 @@ int main()
 {
 	try
 	{
-		Dates wrogDate(22, Monthes::aug, 2);
+		Dates BirthDay{};
 	}
 	catch(Dates::invalid invaidMessage)
 	{
