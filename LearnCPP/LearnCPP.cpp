@@ -17,11 +17,12 @@ int main()
 {
 	try
 	{
-		Dates BirthDay{};
+		Dates BirthDay{1990, Monthes::apr, 29};
+		BirthDay.addDay(3000);
+		std::cout << BirthDay << std::endl;
 	}
 	catch(Dates::invalid invaidMessage)
 	{
 		std::cout<<invaidMessage.what()<<std::endl;
 	}
-
 }

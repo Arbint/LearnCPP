@@ -22,7 +22,23 @@ int Dates::GetDaysInMonth()
 void Dates::addDay()
 {
 	int DaysInMonth = getMonthDayAmount();
+	if (day == DaysInMonth)
+	{
+		addMonth();
+		day = 1;
+	}
+	else
+	{
+		++day;
+	}
+}
 
+void Dates::addDay(int daysToAdd)
+{
+	for (int i = 0; i < daysToAdd; ++i)
+	{
+		addDay();
+	}
 }
 
 void Dates::addMonth()
@@ -40,9 +56,34 @@ void Dates::addMonth()
 	}
 }
 
+void Dates::addMonth(int MonthToAdd)
+{
+	for (int i = 0; i < MonthToAdd; ++i)
+	{
+		addMonth();
+	}
+}
+void Dates::addYear(int YearsToAdd)
+{
+	for (int i = 0; i < YearsToAdd; ++i)
+	{
+		addYear();
+	}
+}
+
 void Dates::addYear()
 {
 	++year;
+}
+
+int Dates::GetMonthAsNum()
+{
+	return static_cast<int>(month);
+}
+
+std::string Dates::GetMonthAsString()
+{
+	return std::to_string(GetMonthAsNum());
 }
 
 bool Dates::isValid()
@@ -97,4 +138,14 @@ int Dates::GetMonthNum()
 {
 	int monthNum = static_cast<int>(month);
 	return monthNum;
+}
+
+std::ostream& operator<<(std::ostream& os, Dates& inDate)
+{
+	string day = intToString(inDate.getDay());
+	string month = intToString(inDate.GetMonthAsNum());
+	string year = intToString(inDate.getYear());
+	string dateString = month + "/" + day + "/" + year;
+	os << dateString;
+	return os;
 }

@@ -595,3 +595,5 @@ void cycleVector(std::vector<T> VectorToCycle)
 		}
 	}
 }
+
+string intToString(int inInt);

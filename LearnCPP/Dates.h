@@ -1,5 +1,6 @@
 #pragma once
 #include "UniversialInclude.h"
+#include "UniversalFuc.h"
 
 enum class Monthes {
 	Jan = 1,feb,mar,apr,may,jun,jul,aug,sep,oct,nov,dec
@@ -14,10 +15,15 @@ public:
 	int Year() { return year; }
 	//TODO: Test Func, Delete
 	int GetDaysInMonth();
-	//TODO: Finish Implementing Adding day month and year
-	void addDay();
-	void addMonth();
-	void addYear();
+	void addDay(int daysToAdd);
+	void addMonth(int MonthToAdd);
+	void addYear(int YearsToAdd);
+	int getYear() { return year; }
+	Monthes GetMonth() { return month; }
+	int GetMonthAsNum();
+	string GetMonthAsString();
+	int getDay() { return day; }
+
 private:
 	int year;
 	Monthes month;
@@ -29,6 +35,9 @@ private:
 	bool isLeapYear();
 	int getMonthDayAmount();
 	int GetMonthNum();
+	void addDay();
+	void addMonth();
+	void addYear();
 // error handling
 public:
 	class invalid {
@@ -40,3 +49,5 @@ public:
 		std::string errorMessage;
 	};
 };
+
+std::ostream& operator<<(std::ostream& os, Dates& inDate);

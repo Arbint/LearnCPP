@@ -416,3 +416,8 @@ bool isCharLetter(char charToCheck)
 	return false;
 }
 
+std::string intToString(int inInt)
+{
+	return std::to_string(inInt);
+}
+
