@@ -51,9 +51,6 @@
     <ClInclude Include="Constants.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="my.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="ChronoData.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -93,9 +90,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Constants.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="my.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="use.cpp">

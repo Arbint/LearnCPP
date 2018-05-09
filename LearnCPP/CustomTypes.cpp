@@ -4,6 +4,8 @@
 #include "Constants.h"
 #include "Book.h"
 
+std::vector<std::string> monthLib{ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
+
 std::ostream& operator<<(std::ostream& out, unitInt& rhs)
 {
 	std::string unit = rhs.getUnit();

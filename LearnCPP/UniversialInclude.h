@@ -15,5 +15,6 @@
 #include "UniversalMacros.h"
 #include <functional>
 #include <stdlib.h>
+#include <fstream>
 
 using namespace std;
