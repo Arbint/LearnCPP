@@ -470,3 +470,9 @@ std::string DaysToString(Days& inDay)
 		break;
 	}
 }
+
+std::ostream& operator<<(std::ostream& os, Reading rd)
+{
+	os << "time: " << rd.hour << " Temp: " << rd.temperature;
+	return os;
+}

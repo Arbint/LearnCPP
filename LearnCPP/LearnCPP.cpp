@@ -15,17 +15,25 @@ int main()
 {
 	try
 	{
-		std::cout << "Please enter input file name: ";
-		string inName;
-		cin >> inName;
-		ifstream ist{inName};
+		std::ifstream ist{"temps.txt"};
 		if (!ist)
 		{
-			error("Can't open file");
+			std::cout << "no exist" << std::endl;
+		}
+		std::vector<Reading> temps;
+		int hour;
+		double temperature;
+		while (ist>>hour>>temperature)
+		{
+			temps.push_back(Reading{hour, temperature});
+		}
+		for (Reading temPair : temps)
+		{
+			std::cout << temPair << std::endl;
 		}
 	}
 	catch(Dates::invalid invaidMessage)
 	{
 		std::cout<<invaidMessage.what()<<std::endl;
-	}
+	}  
 }
