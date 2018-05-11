@@ -139,3 +139,5 @@ namespace Z {
 }
 
 void tryNameSpace();
+
+void readAndWirteFileExample();

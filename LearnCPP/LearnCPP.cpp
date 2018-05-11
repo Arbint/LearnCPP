@@ -15,22 +15,10 @@ int main()
 {
 	try
 	{
-		std::ifstream ist{"temps.txt"};
-		if (!ist)
-		{
-			std::cout << "no exist" << std::endl;
-		}
-		std::vector<Reading> temps;
-		int hour;
-		double temperature;
-		while (ist>>hour>>temperature)
-		{
-			temps.push_back(Reading{hour, temperature});
-		}
-		for (Reading temPair : temps)
-		{
-			std::cout << temPair << std::endl;
-		}
+		std::vector<std::string> Strings;
+		std::ifstream stringFile{"Jingtian Li US Travel Plan.docx"};
+		FillVector<string>(stringFile, Strings, '/');
+		printVector<std::string>(Strings);
 	}
 	catch(Dates::invalid invaidMessage)
 	{

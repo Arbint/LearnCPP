@@ -3,7 +3,7 @@
 #include "UniversalFuc.h"
 #include "UniversialInclude.h"
 #include "Constants.h"
-
+#include "CustomTypes.h"
 
 void writeLetter()
 {
@@ -1653,6 +1653,27 @@ void tryNameSpace()
 
 	print();
 	X::print();
+}
+
+void readAndWirteFileExample()
+{
+	std::ifstream ist{ "temps.txt" };
+	if (!ist)
+	{
+		std::cout << "no exist" << std::endl;
+	}
+	std::ofstream ost{ "tempsw.txt" };
+	std::vector<Reading> temps;
+	int hour;
+	double temperature;
+	while (ist >> hour >> temperature)
+	{
+		temps.push_back(Reading{ hour, temperature });
+	}
+	for (Reading temPair : temps)
+	{
+		ost << temPair << std::endl;
+	}
 }
 
 extern int X::myVar = 0;
