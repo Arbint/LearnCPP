@@ -475,10 +475,10 @@ void Reading::PrintInfo()
 {
 	std::cout << "Hour: " << hour << ", Tempearture: " << tempearture << std::endl;
 }
-}
+
 
 std::ostream& operator<<(std::ostream& os, Reading rd)
 {
-	os << "time: " << rd.hour << " Temp: " << rd.temperature;
+	os << "time: " << rd.hour << " Temp: " << rd.tempearture;
 	return os;
 }

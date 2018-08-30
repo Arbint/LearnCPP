@@ -3,12 +3,6 @@
 #include "UniversialInclude.h"
 #include <functional>
 
-struct Reading 
-{
-	int hour;
-	double tempearture;
-	void PrintInfo();
-};
 
 class Book;
 
@@ -626,7 +620,9 @@ std::string DaysToString(Days& inDay);
 struct Reading
 {
 	int hour;
-	double temperature;
+	double tempearture;
+	void PrintInfo();
 };
+
 
 std::ostream& operator<<(std::ostream& os, Reading rd);

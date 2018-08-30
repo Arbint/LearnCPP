@@ -10,8 +10,6 @@
 #include "Book.h"
 #include "Dates.h"
 
-std::vector<std::string> monthLib{"Jan"};
-int fooTest = 1;
 int main()
 {
 	std::cout << "Please enter input file name: ";
