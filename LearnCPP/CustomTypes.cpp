@@ -4,6 +4,8 @@
 #include "Constants.h"
 #include "Book.h"
 
+std::vector<std::string> monthLib{ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
+
 std::ostream& operator<<(std::ostream& out, unitInt& rhs)
 {
 	std::string unit = rhs.getUnit();
@@ -472,4 +474,11 @@ std::string DaysToString(Days& inDay)
 void Reading::PrintInfo()
 {
 	std::cout << "Hour: " << hour << ", Tempearture: " << tempearture << std::endl;
+}
+}
+
+std::ostream& operator<<(std::ostream& os, Reading rd)
+{
+	os << "time: " << rd.hour << " Temp: " << rd.temperature;
+	return os;
 }

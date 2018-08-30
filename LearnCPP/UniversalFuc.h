@@ -625,5 +625,30 @@ void cycleVector(std::vector<T> VectorToCycle)
 }
 
 string intToString(int inInt);
-
-
+template <typename T>
+void FillVector(istream& ist, std::vector<T> vectorToFill, char terminator)
+{
+	for (T elementRead; ist>>T)
+	{
+		vectorToFill.push_back(elementRead);
+	}
+	if (ist.eof())
+	{
+		return;
+	}
+	if (ist.bad())
+	{
+		error("it is bad");
+	}
+	if (ist.fail())
+	{
+		ist.clear();
+		char c;
+		ist >> c;
+		if (c!=terminator)
+		{
+			ist.unget();
+			ist.clear(ios_base::failbit);
+		}
+	}
+}

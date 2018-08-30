@@ -6,15 +6,12 @@
 #include "Drills.h"
 #include "trigger.h"
 #include "InputManager.h"
-#include "my.h"
 #include "ChronoData.h"
 #include "Book.h"
 #include "Dates.h"
-#include "CustomTypes.h"
+
 std::vector<std::string> monthLib{"Jan"};
 int fooTest = 1;
-
-
 int main()
 {
 	std::cout << "Please enter input file name: ";
