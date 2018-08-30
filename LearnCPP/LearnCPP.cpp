@@ -10,19 +10,37 @@
 #include "ChronoData.h"
 #include "Book.h"
 #include "Dates.h"
-
+#include "CustomTypes.h"
 std::vector<std::string> monthLib{"Jan"};
 int fooTest = 1;
+
+
 int main()
 {
-	try
+	std::cout << "Please enter input file name: ";
+	string iname;
+	std::cin >> iname;
+	ifstream ist{iname};
+	if (!ist)
 	{
-		Dates BirthDay{1990, Monthes::apr, 29};
-		BirthDay.addDay(3000);
-		std::cout << BirthDay << std::endl;
+		std::cout << "cannot open input files: " << iname << std::endl;
 	}
-	catch(Dates::invalid invaidMessage)
+	else
 	{
-		std::cout<<invaidMessage.what()<<std::endl;
+		std::string oname;
+		std::cout << "Please enter name of output file: ";
+		cin >> oname;
+		ofstream ost{ oname };
+		vector<Reading> temps;
+		int hour;
+		double temperature;
+		while (ist >> hour >> temperature)
+		{
+			temps.push_back(Reading{ hour, temperature });
+		}
+		for (int i=0; i < temps.size(); ++i)
+		{
+			ost << '(' << temps[i].hour << ',' << temps[i].tempearture << ")\n";
+		}
 	}
 }

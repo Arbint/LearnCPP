@@ -3,6 +3,13 @@
 #include "UniversialInclude.h"
 #include <functional>
 
+struct Reading 
+{
+	int hour;
+	double tempearture;
+	void PrintInfo();
+};
+
 class Book;
 
 enum class Month

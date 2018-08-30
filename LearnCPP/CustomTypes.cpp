@@ -468,3 +468,8 @@ std::string DaysToString(Days& inDay)
 		break;
 	}
 }
+
+void Reading::PrintInfo()
+{
+	std::cout << "Hour: " << hour << ", Tempearture: " << tempearture << std::endl;
+}

@@ -124,6 +124,34 @@ namespace io {
 		}
 	}
 }
+template<typename DataType>
+void fill_vector(std::istream& ist, vector<DataType>& v, char terminator)
+{
+	for (DataType item; ist>>item)
+	{
+		v.push_back(item);
+	}
+	if (ist.eof()) 
+	{
+		return;
+	}
+	if (ist.bad())
+	{
+		error("ist is bad");
+	}
+	if (ist.fail())
+	{
+		ist.clear();
+		char c;
+		ist >> c;
+		if (c!=terminator)
+		{	
+			ist.unget();
+			//clear others flags of iostreams but ios_base::failbit;
+			ist.clear(ios_base::failbit);
+		}
+	}
+}
 
 //add a new line to a string, " " means adding only a new line with no letters. or just 
 //leave it as default value if you intend to do so;
@@ -597,3 +625,5 @@ void cycleVector(std::vector<T> VectorToCycle)
 }
 
 string intToString(int inInt);
+
+

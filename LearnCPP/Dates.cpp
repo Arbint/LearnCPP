@@ -14,7 +14,7 @@ Dates::~Dates()
 {
 }
 
-int Dates::GetDaysInMonth()
+int Dates::GetDaysInMonth() const
 {
 	return getMonthDayAmount();
 }
@@ -73,20 +73,26 @@ void Dates::addYear(int YearsToAdd)
 
 void Dates::addYear()
 {
+	int monthNum = GetMonthAsNum();
+	if (month == Monthes::feb && day == 29 && isLeapYear())
+	{
+		month = Monthes::mar;
+		day = 1;
+	}
 	++year;
 }
 
-int Dates::GetMonthAsNum()
+int Dates::GetMonthAsNum() const
 {
 	return static_cast<int>(month);
 }
 
-std::string Dates::GetMonthAsString()
+std::string Dates::GetMonthAsString() const
 {
 	return std::to_string(GetMonthAsNum());
 }
 
-bool Dates::isValid()
+bool Dates::isValid() const
 {
 	if (year < YearMin || year > YearMax)
 	{
@@ -98,7 +104,7 @@ bool Dates::isValid()
 	return true;
 }
 
-bool Dates::isLeapYear()
+bool Dates::isLeapYear() const
 {
 	if (year%4 == 0)
 	{
@@ -107,7 +113,7 @@ bool Dates::isLeapYear()
 	return false;
 }
 
-int Dates::getMonthDayAmount()
+int Dates::getMonthDayAmount() const
 {
 	int days = 31;
 	switch (month)
@@ -134,7 +140,7 @@ int Dates::getMonthDayAmount()
 	return days;
 }
 
-int Dates::GetMonthNum()
+int Dates::GetMonthNum() const
 {
 	int monthNum = static_cast<int>(month);
 	return monthNum;
