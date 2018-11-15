@@ -152,6 +152,7 @@
     <ClInclude Include="CustomTypes.h" />
     <ClInclude Include="Dates.h" />
     <ClInclude Include="Drills.h" />
+    <ClInclude Include="FactoryMethodClass.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="Notes.h" />
     <ClInclude Include="Patron.h" />
@@ -170,6 +171,7 @@
     <ClCompile Include="CustomTypes.cpp" />
     <ClCompile Include="Dates.cpp" />
     <ClCompile Include="Drills.cpp" />
+    <ClCompile Include="FactoryMethodClass.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="LearnCPP.cpp" />
     <ClCompile Include="Notes.cpp" />

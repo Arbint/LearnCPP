@@ -421,3 +421,69 @@ std::string intToString(int inInt)
 	return std::to_string(inInt);
 }
 
+int getInt()
+{
+	int n = 0;
+	while (true)
+	{
+		if (cin >> n) return n;
+		{
+			print("sorry, that was not a number, please try again");
+			skipToInt();
+		}
+	}
+}
+
+int getInt(int low, int high)
+{
+	print("Please enter an integer in the range: "+intToString(low)+" : "+intToString(high));
+	while (true)
+	{
+		int n = getInt();
+		if (n >= low && n <= high) return n;
+		print("Sorry, " + intToString(n) + " is not in the: " + intToString(low) + " : " + intToString(high) + " range, please try again!");
+	}
+}
+
+int getInt(int low, int high, const string& greeting, const string& sorry)
+{
+	cout << greeting << ": [" << low << ":" << high << "]" << endl;
+	while (true)
+	{
+		int n = getInt();
+		if (n >= low && n <= high) return n;
+		cout << sorry << ":[" << low << ":" << high <<std::endl;
+	}
+}
+
+void end_of_loop(istream& ist, char terminatorCharacter, const string& errorMessage)
+{
+	if (ist.fail())
+	{
+		ist.clear();
+		char ch;
+		if (ist>>ch&&ch==terminatorCharacter)
+		{
+			return;
+		}
+		error(errorMessage);
+	}
+}
+
+void skipToInt()
+{
+	if (cin.fail())
+	{
+		cin.clear();
+		for (char ch; cin >> ch;)
+		{
+			if (isdigit(ch) || ch == '-')
+			{
+				cin.unget();
+				return;
+			}
+		}
+	}
+	error("no input");
+}
+

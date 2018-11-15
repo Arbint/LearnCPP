@@ -628,6 +628,8 @@ string intToString(int inInt);
 template <typename T>
 void FillVector(istream& ist, std::vector<T> vectorToFill, char terminator)
 {
+	//this ask the istream to throw ios_base::failure if the read is not good.
+	ist.exceptions(ist.exceptions() | ios_base::badbit);
 	for (T elementRead; ist>>T)
 	{
 		vectorToFill.push_back(elementRead);
@@ -636,6 +638,12 @@ void FillVector(istream& ist, std::vector<T> vectorToFill, char terminator)
 	{
 		return;
 	}
+
+	//this if statement is not needed if the 
+	/*
+		ist.exceptions(ist.exceptions() | ios_base::badbit);
+	*/
+	//exists
 	if (ist.bad())
 	{
 		error("it is bad");
@@ -652,3 +660,16 @@ void FillVector(istream& ist, std::vector<T> vectorToFill, char terminator)
 		}
 	}
 }
+
+void skipToInt();
+
+template<typename T>
+void print(T thingsToPrint)
+{
+	std::cout << thingsToPrint << std::endl;
+}
+int getInt();
+int getInt(int low, int high);
+int getInt(int low, int high, const string& greeting, const string& sorry);
+
+void end_of_loop(istream& ist, char terminatorCharacter, const string& errorMessage);

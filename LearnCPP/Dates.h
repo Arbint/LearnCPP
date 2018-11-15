@@ -50,5 +50,5 @@ public:
 		std::string errorMessage;
 	};
 };
-
+std::istream& operator>>(istream& is, Date& inDate);
 std::ostream& operator<<(std::ostream& os, Dates& inDate);

@@ -35,10 +35,6 @@ std::ostream& operator<<(ostream& os, Date& date)
 	return os;
 }
 
-
-
-
-
 std::istream& operator >> (std::istream& out, unitInt& rhs)
 {
 	double inAmount;

@@ -146,6 +146,27 @@ int Dates::GetMonthNum() const
 	return monthNum;
 }
 
+std::istream& operator>>(istream& is, Date& inDate)
+{
+	int y, m, d;
+	char ch1, ch2, ch3, ch4;
+	is >> ch1 >> y >> ch2 >> m >> ch3 >> d >> ch4;
+	if (!is)
+	{
+		std::cout << "hell you gave me crap! again: " << std::endl;
+		return is;
+	}
+	if (ch1!='('||ch2!=','||ch3!=','||ch4!=')')
+	{
+		std::cout << "Wrong format! " << std::endl;
+		is.clear(ios_base::failbit);
+		return is;
+	}
+	Month Mon= static_cast<Month>(m);
+	inDate = Date{y,Mon,d};
+	return is;
+}
+
 std::ostream& operator<<(std::ostream& os, Dates& inDate)
 {
 	string day = intToString(inDate.getDay());

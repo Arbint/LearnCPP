@@ -9,33 +9,18 @@
 #include "ChronoData.h"
 #include "Book.h"
 #include "Dates.h"
-
+#include "FactoryMethodClass.h"
 int main()
 {
-	std::cout << "Please enter input file name: ";
-	string iname;
-	std::cin >> iname;
-	ifstream ist{iname};
-	if (!ist)
-	{
-		std::cout << "cannot open input files: " << iname << std::endl;
-	}
-	else
-	{
-		std::string oname;
-		std::cout << "Please enter name of output file: ";
-		cin >> oname;
-		ofstream ost{ oname };
-		vector<Reading> temps;
-		int hour;
-		double temperature;
-		while (ist >> hour >> temperature)
-		{
-			temps.push_back(Reading{ hour, temperature });
-		}
-		for (int i=0; i < temps.size(); ++i)
-		{
-			ost << '(' << temps[i].hour << ',' << temps[i].tempearture << ")\n";
-		}
-	}
+	FactoryMethodClass* FMC_One = FactoryMethodClass::GetInstance();
+	FMC_One->Set("jt", 29);
+	
+	FactoryMethodClass* FMC_Two = FactoryMethodClass::GetInstance();
+	FMC_Two->Set("Matt", 25);
+	
+	FMC_One->Print();
+	FMC_Two->Print();
+
+	delete FMC_One;
 }
+
