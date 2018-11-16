@@ -10,17 +10,20 @@
 #include "Book.h"
 #include "Dates.h"
 #include "FactoryMethodClass.h"
-int main()
-{
-	FactoryMethodClass* FMC_One = FactoryMethodClass::GetInstance();
-	FMC_One->Set("jt", 29);
-	
-	FactoryMethodClass* FMC_Two = FactoryMethodClass::GetInstance();
-	FMC_Two->Set("Matt", 25);
-	
-	FMC_One->Print();
-	FMC_Two->Print();
+#include "AutoPtr.h"
 
-	delete FMC_One;
+
+
+Auto_ptr4<Resource> generateResource()
+{
+	Auto_ptr4<Resource> res(new Resource);
+	return res; // this return value will invoke the move constructor
 }
 
+int main()
+{
+	Auto_ptr4<Resource> mainres;
+	mainres = generateResource(); // this assignment will invoke the copy assignment
+
+	return 0;
+}

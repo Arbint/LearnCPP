@@ -69,6 +69,9 @@
     <ClInclude Include="FactoryMethodClass.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="AutoPtr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -117,6 +120,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="FactoryMethodClass.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AutoPtr.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

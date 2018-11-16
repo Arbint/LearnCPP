@@ -145,6 +145,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AutoPtr.h" />
     <ClInclude Include="Book.h" />
     <ClInclude Include="BookLibrary.h" />
     <ClInclude Include="ChronoData.h" />
@@ -164,6 +165,7 @@
     <ClInclude Include="UniversialInclude.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AutoPtr.cpp" />
     <ClCompile Include="Book.cpp" />
     <ClCompile Include="BookLibrary.cpp" />
     <ClCompile Include="ChronoData.cpp" />
